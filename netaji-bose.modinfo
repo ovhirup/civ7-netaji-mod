@@ -3,8 +3,10 @@
      (CivilizationVII.app/Contents/Resources/DLC/ashoka-himiko-alt). -->
 <Mod id="abhirup-netaji-subhas-chandra-bose" version="1" xmlns="ModInfo">
 	<Properties>
-		<Name>LOC_MOD_NETAJI_BOSE_NAME</Name>
-		<Description>LOC_MOD_NETAJI_BOSE_DESCRIPTION</Description>
+		<!-- Plain text (not LOC keys) so the Additional Content list shows a
+		     readable name — user mods don't get the DLC text bootstrap. -->
+		<Name>Netaji Subhas Chandra Bose — Leader</Name>
+		<Description>Adds Netaji Subhas Chandra Bose, hero of the Indian independence movement, as a playable leader.</Description>
 		<Authors>Abhirup Banerjee</Authors>
 		<Package>Mod</Package>
 		<AffectsSavedGames>1</AffectsSavedGames>

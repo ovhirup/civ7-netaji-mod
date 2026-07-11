@@ -28,6 +28,9 @@
 		<Row Tag="LOC_DIPLOMACY_AGENDA_PURNA_SWARAJ_DESC" Language="en_US">
 			<Text>Respects civilizations that rule only the settlements they founded. Despises those who occupy the homelands of others.</Text>
 		</Row>
+		<Row Tag="LOC_LOADING_LEADER_INTRO_TEXT_BOSE" Language="en_US">
+			<Text>Netaji! The Azad Hind Fauj awaits your command. From Delhi's red fort to the farthest coast, lead your people to complete independence — give them your blood, and they shall give you freedom.</Text>
+		</Row>
 		<Row Tag="LOC_MAIN_CHAR_SELECT_LEADER_SUBHAS_CHANDRA_BOSE_ANY" Language="en_US">
 			<Text>"Give me blood, and I shall give you freedom!"</Text>
 		</Row>
