@@ -7,7 +7,8 @@ project. Implementation (schema/XML) happens separately in Claude Code.
 
 ## Identity
 Industry + composite unity: Netaji's state-planned self-reliance ("Mother
-Industries", the National Planning Committee he chaired in 1938), plus the
+Industries", the National Planning Committee he convened as Congress president
+in 1938 — Nehru chaired it), plus the
 INA's deliberately composite Hindu-Muslim-Sikh unity. Complements Bose's
 military leader kit rather than repeating it.
 
@@ -49,8 +50,9 @@ keys per the component. Match Civ VII's dignified register.
    Chola/Maurya → Bharat transition reasons.
 
 ## Historical anchors (vetted)
-- National Planning Committee, 1938 (Bose as chair) → "Mother Industries" /
-  state-planned industrialization.
+- National Planning Committee, 1938 — Bose convened it as Congress president;
+  Nehru chaired it. → "Mother Industries" / state-planned industrialization.
+  (Always "convened", never "chaired".)
 - INA / Azad Hind Fauj: composite Hindu-Muslim-Sikh regiments; "Jai Hind",
   "Dilli Chalo".
 - Forward Bloc (1939); Purna Swaraj (complete independence, 1930 Congress

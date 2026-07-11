@@ -51,8 +51,9 @@ gives Bose a Modern pairing that matches who he was.
 
 ### Identity — industry + composite unity
 State-planned self-reliance (Netaji's actual economic program: the National
-Planning Committee he chaired in 1938, "Mother Industries") as the mechanical
-core, plus a unity bonus across diverse settlements reflecting the INA's
+Planning Committee he convened as Congress president in 1938 — Nehru chaired
+it — "Mother Industries") as the mechanical core, plus a unity bonus across
+diverse settlements reflecting the INA's
 deliberately composite Hindu-Muslim-Sikh composition. Chosen so it
 *complements* rather than duplicates Bose's military-flavored leader kit.
 
