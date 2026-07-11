@@ -23,5 +23,31 @@
 		<Row Tag="LOC_LOADING_CIV_INTRO_TEXT_BHARAT" Language="en_US">
 			<Text>The Maurya carved their edicts in stone; the Chola sent their bronzes across the southern seas; through every age of conquest, the learning of the subcontinent endured — its astronomers, its surgeons, its masters of steel. Now that inheritance passes to a free people. Bharat rises — one nation of many faiths and many tongues, its ranks unbroken, its forges lit, its future planned by no hand but its own. Jai Hind!</Text>
 		</Row>
+
+		<!-- Civ ability "Mother Industries" (deliverable 2). {X}/{Y}/{Z} are
+		     placeholders for the Code side; suggested official-magnitude
+		     defaults 10 / 25 / +2. TODO on build: verify [icon:YIELD_PRODUCTION]
+		     renders (unconfirmed key — cf. the COMBAT_MELEE trap). -->
+		<Row Tag="LOC_TRAIT_BHARAT_ABILITY_NAME" Language="en_US">
+			<Text>Mother Industries</Text>
+		</Row>
+		<Row Tag="LOC_TRAIT_BHARAT_ABILITY_DESCRIPTION" Language="en_US">
+			<Text>+{X}%[icon:YIELD_PRODUCTION] Production in settlements with a Production building. {Y}% less War Weariness in your settlements. +{Z}[icon:YIELD_HAPPINESS] Happiness in all settlements for each foreign civilization that founded a settlement you control.</Text>
+		</Row>
+
+		<!-- Unique unit "Azad Hind Fauj" (deliverable 3), replaces Infantry.
+		     Combat bonus mirrors the leader ability (leader: +CS inside friendly
+		     territory; unit: +CS outside it). TODO on build: confirm the
+		     replaced-unit display name ("Infantry") and match the pedia key
+		     shape against the Mughal Sepoy rows in age-modern. -->
+		<Row Tag="LOC_UNIT_AZAD_HIND_FAUJ_NAME" Language="en_US">
+			<Text>Azad Hind Fauj</Text>
+		</Row>
+		<Row Tag="LOC_UNIT_AZAD_HIND_FAUJ_DESCRIPTION" Language="en_US">
+			<Text>Unique Bharatiya infantry unit that replaces the Infantry. +{X}[icon:NAR_REW_COMBAT] Combat Strength when fighting outside friendly territory.</Text>
+		</Row>
+		<Row Tag="LOC_PEDIA_UNIT_AZAD_HIND_FAUJ_HISTORY_PARA_1" Language="en_US">
+			<Text>"Azad Hind Fauj" — the Free India Army. First raised in 1942 from Indian soldiers and expatriates across Southeast Asia and reborn under Subhas Chandra Bose in 1943, the Indian National Army was built as no colonial army had been: its regiments deliberately mixed Hindu, Muslim, and Sikh soldiers in the same ranks, bound by a single greeting — "Jai Hind." In the Rani of Jhansi Regiment, under Captain Lakshmi Swaminathan, it fielded one of the modern world's first all-women infantry units. In 1944 its columns crossed onto Indian soil in Manipur beneath the cry "Dilli Chalo!" — On to Delhi! The march was turned back, but the army won its war in defeat: when three of its officers — a Hindu, a Muslim, and a Sikh, tried together — faced court-martial at the Red Fort in 1945, all India rose in their defense, and within two years India was free. Jai Hind!</Text>
+		</Row>
 	</LocalizedText>
 </Database>

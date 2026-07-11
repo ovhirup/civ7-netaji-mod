@@ -13,6 +13,8 @@ a deliverable; nothing is canon until the user says so.
 - Leader ability: **Azad Hind Fauj**. Agenda: **Purna Swaraj**.
 - Greeting/slogans in play: "Jai Hind", "Dilli Chalo", "Give me blood, and I shall give you freedom".
 - **"Jai Hind!"** is the standard closing salute for Bharat civ text. *(ratified 2026-07-12)*
+- The **unique unit shares the name "Azad Hind Fauj"** with the leader ability — intentional (both *are* the army); never disambiguate them. *(ratified 2026-07-12)*
+- **`{X}`/`{Y}`/`{Z}` placeholders** are the convention for Code-slotted numbers in draft functional text. *(ratified 2026-07-12)*
 
 ## Approved voice exemplars
 - **Ancient-heritage as inheritance, never as bonus** *(ratified 2026-07-12)*:
@@ -24,6 +26,10 @@ a deliverable; nothing is canon until the user says so.
 - **Civ text closes on the salute, not the leader's imagery**: Bharat civ text
   ends on "Jai Hind!" rather than echoing the leader intro's red-fort /
   blood-for-freedom lines (keep leader and civ voices distinct).
+- **Leader and unit combat bonuses mirror each other** *(ratified 2026-07-12)*:
+  the leader defends the homeland (+CS *inside* friendly territory), the Azad
+  Hind Fauj marches to liberate (+CS *outside* it) — complementary, not
+  overlapping.
 
 ## Rejected approaches (do not revisit)
 - Vimana / Vaimanika Shastra as a mechanic or flavor — rejected (pseudoscience; Workshop liability).
