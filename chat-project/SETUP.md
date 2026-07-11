@@ -37,6 +37,7 @@ Add these to **Project knowledge**:
 From `chat-project/`:
 - `CONTEXT-TECHNICAL.md`  — string/format rules, art constraints, anchors
 - `BHARAT-CIV-BRIEF.md`   — the Bharat civ writing brief (needed for civ work)
+- `STYLE-CANON.md`        — ratified-decisions record (the learning loop; grows over time)
 
 From `chat-project/knowledge/` (the synced copies):
 - `DESIGN.md`      — the full design + roadmap
