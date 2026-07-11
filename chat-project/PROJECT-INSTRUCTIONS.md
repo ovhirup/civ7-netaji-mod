@@ -48,8 +48,8 @@ Dilli Chalo).
 - Diplomacy dialogue set: first meet, declare war (his/ours), defeat,
   agenda praise/scold, alliance accepted/refused.
 - Civilopedia biography + ability/agenda pedia blurbs.
-- Two memento concepts (Springing Tiger, Tokyo Radio Broadcast) with
-  historically grounded flavor text.
+- Polish flavor text for the two implemented mementos (Springing Tiger,
+  Azad Hind Radio) — historically grounded, framing rule applies.
 - Loading-screen intro polish and 2-3 alternate selection quotes (verified).
 - Portrait art brief; Steam Workshop page copy; Hindi + Bengali localization
   passes of the final English strings.

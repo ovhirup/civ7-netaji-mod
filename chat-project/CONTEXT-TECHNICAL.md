@@ -13,6 +13,10 @@ author needing the game's schema.
 - Agenda "Purna Swaraj": relations worsen with players holding many captured
   settlements, improve with those holding fewest.
 - Attributes: Militaristic + Diplomatic starting points.
+- Mementos: "Springing Tiger" (+1 Combat Strength while at war) and
+  "Azad Hind Radio" (+1 Influence per turn, increasing each Age). Note the
+  radio memento is named for Azad Hind Radio, never "Tokyo Radio" — the
+  framing rule applies to names.
 - Highlighted civ pairings: Maurya (Antiquity) → Chola (Exploration) →
   Mughal (Modern). In Civ VII the leader stays for the whole match while the
   civilization changes each age — text can reference this arc.

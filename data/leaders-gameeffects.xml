@@ -38,23 +38,43 @@
 	</Modifier>
 
 	<!-- Agenda: Purna Swaraj. Relations worsen with players holding many
-	     captured settlements, improve with those holding fewest. Structure
-	     copied from ASHOKA_ALT_MOD_AGENDA_WITHOUT_REGRET.
-	     NOTE: the only base-game captured-settlements WeightType is the
-	     ideology-scoped one below; a Modern-Age flavor fit, but if it proves
-	     inert in earlier ages, swap for another COMPARE_* (see base-standard
-	     for the full list). -->
+	     conquered settlements, improve with those holding fewest. Structure +
+	     WeightType copied verbatim from the Alexander DLC's
+	     ALEXANDER_MOD_AGENDA_GODLIKE_BASILEUS (file: DLC/alexander/modules/
+	     data/leaders-gameeffects.xml). AwardAmtType2 uses NEG/SMALL to match
+	     that example exactly (previously this mod used the ideology-scoped
+	     COMPARE_IDEOLOGY_CAPTURED_SETTLEMENTS WeightType, which is inert
+	     before the Modern Age since it depends on an ideology system that
+	     doesn't exist yet).
+	     REGISTRATION CHECK (see CRITICAL SUB-STEP in task brief): grepped the
+	     entire local game install (base-standard + every DLC) for
+	     DIPLOMACY_AGENDA_COMPARE_NUM_CONQUERED_SETTLEMENTS. It appears ONLY
+	     as an <Argument name="WeightType"> value inside Alexander's own
+	     leaders-gameeffects.xml — there is no <Row Type="..."
+	     Kind="KIND_DIPLOMACY_AGENDA_WEIGHTING_TYPE"/> for it in
+	     base-standard/data/diplomacy-actions.xml (unlike every other
+	     DIPLOMACY_AGENDA_COMPARE_* value, which DOES have such a row there,
+	     e.g. DIPLOMACY_AGENDA_COMPARE_IDEOLOGY_CAPTURED_SETTLEMENTS at line
+	     271 of that file), and no DiplomacyAgendaWeightingTypes row for it
+	     either (base-standard has one for every other COMPARE_* at lines
+	     1033-1063, but none for NUM_CONQUERED_SETTLEMENTS). Alexander's own
+	     config.xml/data files register no such row either. Conclusion: this
+	     WeightType is engine-hardcoded (recognized natively by the C++ agenda
+	     system without a corresponding data-table entry) rather than
+	     data-driven like the rest of the enum. No InsertOrIgnore row is
+	     added here because inventing one would risk a bogus duplicate/typed
+	     row with no real schema backing — there is nothing to mirror. -->
 	<Modifier id="BOSE_MOD_AGENDA_PURNA_SWARAJ" collection="COLLECTION_OWNER" effect="EFFECT_DIPLOMACY_AGENDA_TIMED_UPDATE">
 		<String context="Name">LOC_DIPLOMACY_AGENDA_PURNA_SWARAJ_NAME</String>
 		<Argument name="ModName">LOC_DIPLOMACY_AGENDA_PURNA_SWARAJ_NAME</Argument>
 		<Argument name="Tooltip">LOC_DIPLOMACY_AGENDA_PURNA_SWARAJ_DESC</Argument>
-		<Argument name="WeightType">DIPLOMACY_AGENDA_COMPARE_IDEOLOGY_CAPTURED_SETTLEMENTS</Argument>
+		<Argument name="WeightType">DIPLOMACY_AGENDA_COMPARE_NUM_CONQUERED_SETTLEMENTS</Argument>
 		<Argument name="FirstMeetDelay">20</Argument>
 		<Argument name="UpdateFreq">10</Argument>
 		<Argument name="AwardTo1">DIPLOMACY_AGENDA_AWARD_HIGHEST</Argument>
 		<Argument name="AwardAmtType1">DIPLOMACY_AGENDA_NEG_AMT_MEDIUM</Argument>
 		<Argument name="AwardTo2">DIPLOMACY_AGENDA_AWARD_LOWEST</Argument>
-		<Argument name="AwardAmtType2">DIPLOMACY_AGENDA_AMT_MEDIUM</Argument>
+		<Argument name="AwardAmtType2">DIPLOMACY_AGENDA_AMT_SMALL</Argument>
 		<Argument name="NotifyMessage">LOC_NOTIFICATION_DIPLOMATIC_AGENDA_DEFAULT_MESSAGE</Argument>
 		<Argument name="NotifySummary">LOC_NOTIFICATION_DIPLOMATIC_AGENDA_DEFAULT_SUMMARY</Argument>
 	</Modifier>

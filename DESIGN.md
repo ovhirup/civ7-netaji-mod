@@ -27,9 +27,14 @@ civs occupying other players' original settlements.
 ## Civ pairings (historical-choice highlights)
 Maurya (Antiquity) → Chola (Exploration) → Mughal (Modern).
 
-## Mementos (later phase)
-- **Springing Tiger** — combat bonus when at war with a larger empire.
-- **Tokyo Radio Broadcast** — Influence/Culture bonus (propaganda reach).
+## Mementos (implemented 2026-07-12)
+- **Springing Tiger** — +1 Combat Strength while at war. (Original idea was
+  "when at war with a larger empire", but the engine has no empire-size
+  combat requirement — simplified to a plain at-war gate at official
+  minor-memento magnitude.)
+- **Azad Hind Radio** — +1 Influence per turn, increasing each Age.
+  (Renamed from "Tokyo Radio Broadcast": the framing rule applies to
+  internal names too.)
 
 ## Optional second persona (later phase)
 - *Bose, Congress President* — diplomatic/cultural variant.

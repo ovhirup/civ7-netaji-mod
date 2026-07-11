@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Schema copied verbatim from the ashoka-himiko-alt DLC's data/mementos.xml
+     (official Firaxis leader DLC). No <Kinds> block needed — KIND_MEMENTOS is
+     already registered by base-standard, which this mod depends on.
+
+     Game-side Tag values ("Military", "Diplomatic") copied verbatim from
+     base-standard/data/mementos.xml (e.g. MEMENTO_FOUNDATION_TREATY_OF_KADESH
+     uses Tag="Diplomatic"). Region="Unrestricted" and Tier="1" (INTEGER on
+     this gameplay-side table, per Base/Assets/schema/gameplay/
+     01_GameplaySchema.sql CREATE TABLE 'Mementos') copied from the ashoka
+     example rows. -->
+<Database>
+	<Types>
+		<Row Type="MEMENTO_BOSE_SPRINGING_TIGER" Kind="KIND_MEMENTOS"/>
+		<Row Type="MEMENTO_BOSE_AZAD_HIND_RADIO" Kind="KIND_MEMENTOS"/>
+	</Types>
+	<Mementos>
+		<Row MementoType="MEMENTO_BOSE_SPRINGING_TIGER" Name="LOC_MEMENTO_BOSE_SPRINGING_TIGER_NAME" Tag="Military" Region="Unrestricted" Tier="1" Description="LOC_MEMENTO_BOSE_SPRINGING_TIGER_DESCRIPTION" FunctionalDescription="LOC_MEMENTO_BOSE_SPRINGING_TIGER_FUNCTIONAL_DESCRIPTION"/>
+		<Row MementoType="MEMENTO_BOSE_AZAD_HIND_RADIO" Name="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_NAME" Tag="Diplomatic" Region="Unrestricted" Tier="1" Description="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_DESCRIPTION" FunctionalDescription="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_FUNCTIONAL_DESCRIPTION"/>
+	</Mementos>
+	<MementoModifiers>
+		<Row MementoType="MEMENTO_BOSE_SPRINGING_TIGER" ModifierId="MEMENTO_BOSE_SPRINGING_TIGER_MODIFIER"/>
+		<Row MementoType="MEMENTO_BOSE_AZAD_HIND_RADIO" ModifierId="MEMENTO_BOSE_AZAD_HIND_RADIO_MODIFIER"/>
+	</MementoModifiers>
+</Database>

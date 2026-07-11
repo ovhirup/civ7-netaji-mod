@@ -26,6 +26,8 @@
 				<UpdateDatabase>
 					<Item>data/leaders.xml</Item>
 					<Item>data/leaders-gameeffects.xml</Item>
+					<Item>data/mementos.xml</Item>
+					<Item>data/mementos-gameeffects.xml</Item>
 				</UpdateDatabase>
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>

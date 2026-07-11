@@ -12,9 +12,11 @@ a leader-only mod) and `base-standard`. Not yet load-tested in game.
 
 ```
 netaji-bose.modinfo             Mod manifest (game + shell action groups)
-config/config.xml               Setup-screen registration, civ pairing biases
+config/config.xml               Setup-screen registration, civ pairing biases, mementos
 data/leaders.xml                Leader, trait, attribute + victory-bias traits
 data/leaders-gameeffects.xml    Ability modifiers + agenda (GameEffects format)
+data/mementos.xml               Memento type/table rows (gameplay side)
+data/mementos-gameeffects.xml   Memento modifiers (GameEffects format)
 text/en_us/LeaderText.xml       English localization
 assets/                         Art requirements (nothing ships yet)
 ```
@@ -26,8 +28,12 @@ assets/                         Art requirements (nothing ships yet)
   settlement.
 - **Attributes:** Militaristic + Political (Diplomatic tree) starting points.
 - **Purna Swaraj (agenda):** relations worsen with players holding many
-  captured settlements, improve with those holding fewest.
+  conquered settlements, improve with those holding fewest.
 - **Pairings:** Maurya → Chola → Mughal highlighted as historical choices.
+- **Mementos (intended unlocked by default — see gap 2 below):**
+  - *Springing Tiger* — +1 Combat Strength for units while their owner is
+    at war.
+  - *Azad Hind Radio* — +1 Influence per turn, increasing each Age.
 
 ## Testing locally
 
@@ -44,9 +50,11 @@ Known gaps to expect on first load:
 1. **No leader icon/portrait** — setup screen will show a fallback icon, and
    in-game the leader will use a placeholder 3D model (Civ VII has no custom
    3D-leader pipeline; see assets/README.md for the 2D-portrait workaround).
-2. **Agenda WeightType** is the ideology-scoped captured-settlements compare —
-   verify it fires outside the Modern Age; swap if inert (options listed in
-   base-standard).
+2. **Memento availability is unverified.** Hidden="0" should make Springing
+   Tiger and Azad Hind Radio appear unlocked, but the shell picker also
+   consults online metaprogression state and no official content uses
+   Hidden="0". In the memento editor, confirm both tiles are *selectable* —
+   if they show locked, the availability path needs rework.
 3. Balance numbers are first guesses.
 
 ## Ground truth for further work
