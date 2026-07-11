@@ -25,15 +25,14 @@ assets/                         Art requirements (nothing ships yet)
 
 - **Azad Hind Fauj (ability):** +5 Combat Strength in friendly territory;
   +5 Happiness in settlements you did not found; +2 Culture per conquered
-  settlement.
+  settlement; +1 Combat Strength while at war; +1 Influence per turn
+  (increasing each Age). (The last two were refolded in from dropped
+  mementos — see below.)
 - **Attributes:** Militaristic + Political (Diplomatic tree) starting points.
 - **Purna Swaraj (agenda):** relations worsen with players holding many
   conquered settlements, improve with those holding fewest.
-- **Pairings:** Maurya → Chola → Mughal highlighted as historical choices.
-- **Mementos (intended unlocked by default — see gap 2 below):**
-  - *Springing Tiger* — +1 Combat Strength for units while their owner is
-    at war.
-  - *Azad Hind Radio* — +1 Influence per turn, increasing each Age.
+- **Pairings:** Maurya → Chola → **Bharat** highlighted as historical choices
+  (Bharat civ added; Mughal demoted to a geographic choice).
 
 ## Testing locally
 
@@ -50,11 +49,9 @@ Known gaps to expect on first load:
 1. **No leader icon/portrait** — setup screen will show a fallback icon, and
    in-game the leader will use a placeholder 3D model (Civ VII has no custom
    3D-leader pipeline; see assets/README.md for the 2D-portrait workaround).
-2. **Mementos equip via a UI patch.** `Hidden="0"` makes Springing Tiger and
-   Azad Hind Radio *visible*, but equipping is gated on the online profile's
-   earned-rewards list (which mod data can't write). `ui/bose-memento-unlock.js`
-   (loaded via `<UIScripts>`) wraps `isRewardUnlocked` to unlock just our two.
-   This is the mod's only non-data file — re-verify after major game patches.
+2. **Mementos were dropped.** Custom mementos can't be made equippable without
+   replacing Firaxis core UI files (fragile). Their effects were refolded into
+   the leader ability (see above). The mod is now fully data-only.
 3. Balance numbers are first guesses.
 
 ## Ground truth for further work

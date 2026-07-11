@@ -37,6 +37,36 @@
 		<Argument name="Tooltip">LOC_TRAIT_LEADER_BOSE_ABILITY_NAME</Argument>
 	</Modifier>
 
+	<!-- 4. +1 Combat Strength while at war (the INA "Springing Tiger" spirit).
+	        Refolded from the former Springing Tiger memento (mementos dropped —
+	        custom mementos can't be made equippable without fragile core-UI-file
+	        replacement). Uses the same attach->unit_combat pattern as the
+	        homeland bonus above (and Ashoka's Conqueror ability): the "player is
+	        at war" gate is an OwnerRequirement on the attach modifier. -->
+	<Modifier id="BOSE_MOD_SPRINGING_TIGER_ATTACH" collection="COLLECTION_PLAYER_UNITS" effect="EFFECT_ATTACH_MODIFIERS">
+		<OwnerRequirements>
+			<Requirement type="REQUIREMENT_PLAYER_HAS_X_WARS">
+				<Argument name="WarType">FORMAL_WAR</Argument>
+				<Argument name="Amount">1</Argument>
+			</Requirement>
+		</OwnerRequirements>
+		<Argument name="ModifierId">BOSE_MOD_SPRINGING_TIGER_COMBAT</Argument>
+	</Modifier>
+	<Modifier id="BOSE_MOD_SPRINGING_TIGER_COMBAT" collection="COLLECTION_UNIT_COMBAT" effect="EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER">
+		<Argument name="Amount">1</Argument>
+		<String context="Preview">LOC_ABILITY_BOSE_SPRINGING_TIGER_PREVIEW</String>
+	</Modifier>
+
+	<!-- 5. +1 Influence per turn, increasing each Age (Bose's Azad Hind Radio
+	        broadcasts). Refolded from the former Azad Hind Radio memento; copied
+	        from the Machiavelli/Toyotomi influence pattern (COLLECTION_OWNER +
+	        EFFECT_PLAYER_ADJUST_YIELD + YIELD_DIPLOMACY + ScaleByGameAge). -->
+	<Modifier id="BOSE_MOD_AZAD_HIND_RADIO_INFLUENCE" collection="COLLECTION_OWNER" effect="EFFECT_PLAYER_ADJUST_YIELD">
+		<Argument name="YieldType">YIELD_DIPLOMACY</Argument>
+		<Argument name="Amount" type="ScaleByGameAge" extra="100">1</Argument>
+		<Argument name="Tooltip">LOC_TRAIT_LEADER_BOSE_ABILITY_NAME</Argument>
+	</Modifier>
+
 	<!-- Agenda: Purna Swaraj. Relations worsen with players holding many
 	     conquered settlements, improve with those holding fewest. Structure +
 	     WeightType copied verbatim from the Alexander DLC's

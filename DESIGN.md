@@ -30,14 +30,19 @@ planned Bharat civ (below) becomes the Modern-age historical pairing, so the
 arc becomes Maurya → Chola → **Bharat**, with Mughal demoted to a geographic
 choice.
 
-## Mementos (implemented 2026-07-12)
-- **Springing Tiger** — +1 Combat Strength while at war. (Original idea was
-  "when at war with a larger empire", but the engine has no empire-size
-  combat requirement — simplified to a plain at-war gate at official
-  minor-memento magnitude.)
-- **Azad Hind Radio** — +1 Influence per turn, increasing each Age.
-  (Renamed from "Tokyo Radio Broadcast": the framing rule applies to
-  internal names too.)
+## Mementos (attempted, then dropped — effects refolded into the leader ability)
+Two mementos were built (Springing Tiger, Azad Hind Radio) but **removed**:
+custom mementos load and display, but cannot be made *equippable* without
+replacing Firaxis's core memento UI files (`leader-select-model.js` /
+`memento-select-model.js`) — the reward-lock gate reads online-profile state
+that mod data can't write, and a `<UIScripts>` monkeypatch silently never ran.
+That core-file replacement is version-fragile and conflicts with other UI mods,
+so it was rejected for a Workshop mod. The two effects now live as always-on
+lines on the **Azad Hind Fauj leader ability** instead:
+- **+1 Combat Strength while at war** (the INA "Springing Tiger" spirit).
+- **+1 Influence per turn, increasing each Age** (Bose's Azad Hind Radio).
+Lesson recorded in STYLE-CANON: Civ VII has no data-only path to equippable
+custom mementos.
 
 ## Next major milestone — Bharat (Modern Age civilization)
 

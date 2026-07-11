@@ -9,7 +9,7 @@ a deliverable; nothing is canon until the user says so.
 ## Locked names & terms
 - Civ name: **Bharat** (the independent nation-state; never "India" as the civ label).
 - Civ full name: **Republic of Bharat**; adjective: **Bharatiya**. *(ratified 2026-07-12)*
-- Radio memento: **Azad Hind Radio** — never "Tokyo Radio" (framing rule).
+- **Azad Hind Radio** (Bose's broadcasts) — never "Tokyo Radio" (framing rule). *(Now a leader-ability effect — the memento was dropped, see Rejected.)*
 - Leader ability: **Azad Hind Fauj**. Agenda: **Purna Swaraj**.
 - Greeting/slogans in play: "Jai Hind", "Dilli Chalo", "Give me blood, and I shall give you freedom".
 - **"Jai Hind!"** is the standard closing salute for Bharat civ text. *(ratified 2026-07-12)*
@@ -43,6 +43,10 @@ a deliverable; nothing is canon until the user says so.
 - Any Axis-alliance reference, mechanic, or iconography — rejected (framing rule).
 - Religious-identity framing for Bharat — rejected in favor of composite nationalism + civilizational knowledge.
 - Memento power above official minor-memento magnitude (e.g. +2 combat) — rejected; use +1.
+- **Custom (mod-added) mementos entirely** — rejected: they can't be made
+  equippable without fragile core-UI-file replacement. The two we built
+  (Springing Tiger, Azad Hind Radio) were dropped and their effects refolded
+  into the leader ability. Don't re-attempt. *(2026-07-12)*
 
 ## Open questions awaiting a decision
 *(Track unresolved choices here so they surface next session rather than being forgotten.)*

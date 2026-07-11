@@ -31,18 +31,7 @@
 		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Bias="4" ReasonType="LOC_UNLOCK_PLAY_AS_BOSE_BHARAT_TOOLTIP" ChoiceType="LOC_CREATE_GAME_HISTORICAL_CHOICE"/>
 		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_MUGHAL" LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Bias="2" ReasonType="LOC_UNLOCK_PLAY_AS_BOSE_MUGHAL_TOOLTIP" ChoiceType="LOC_CREATE_GAME_GEOGRAPHIC_CHOICE"/>
 	</LeaderCivilizationBias>
-	<!-- Mementos Data. Row placement/columns copied verbatim from
-	     ashoka-himiko-alt DLC's config/config.xml <Mementos> block.
-	     Hidden="0" (schema default is 1/hidden) is INTENDED to make both
-	     mementos available immediately with no metaprogression grind, but
-	     this is UNVERIFIED: no official row sets Hidden="0", and the shell
-	     memento picker also consults Online.Metaprogression /
-	     Online.UserProfile.isRewardUnlocked (see core/ui/shell/create-panels/
-	     memento-editor.js). First in-game check: confirm both tiles are
-	     SELECTABLE, not merely visible. If locked, availability needs a
-	     different path (e.g. unlockableRewards/LegendPathsRewards rows). -->
-	<Mementos>
-		<Row Type="MEMENTO_BOSE_SPRINGING_TIGER" Name="LOC_MEMENTO_BOSE_SPRINGING_TIGER_NAME" Description="LOC_MEMENTO_BOSE_SPRINGING_TIGER_DESCRIPTION" FunctionalDescription="LOC_MEMENTO_BOSE_SPRINGING_TIGER_FUNCTIONAL_DESCRIPTION" UnlockTitle="LOC_MEMENTO_BOSE_SPRINGING_TIGER_UNLOCK_TITLE" Tag="LOC_ATTRIBUTE_MILITARISTIC" Hidden="0"/>
-		<Row Type="MEMENTO_BOSE_AZAD_HIND_RADIO" Name="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_NAME" Description="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_DESCRIPTION" FunctionalDescription="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_FUNCTIONAL_DESCRIPTION" UnlockTitle="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_UNLOCK_TITLE" Tag="LOC_ATTRIBUTE_DIPLOMATIC" Hidden="0"/>
-	</Mementos>
+	<!-- Mementos were dropped (custom mementos can't be made equippable without
+	     fragile core-UI-file replacement); their effects are refolded into the
+	     leader ability. See data/leaders-gameeffects.xml and DESIGN.md. -->
 </Database>

@@ -17,10 +17,13 @@
 			<Text>Azad Hind Fauj</Text>
 		</Row>
 		<Row Tag="LOC_TRAIT_LEADER_BOSE_ABILITY_DESCRIPTION" Language="en_US">
-			<Text>+5[icon:NAR_REW_COMBAT] Combat Strength for units fighting in friendly territory. +5[icon:YIELD_HAPPINESS] Happiness in settlements you did not found. +2[icon:YIELD_CULTURE] Culture per conquered settlement.</Text>
+			<Text>+5[icon:NAR_REW_COMBAT] Combat Strength for units fighting in friendly territory. +5[icon:YIELD_HAPPINESS] Happiness in settlements you did not found. +2[icon:YIELD_CULTURE] Culture per conquered settlement. +1[icon:NAR_REW_COMBAT] Combat Strength for all units while at war. +1[icon:YIELD_DIPLOMACY] Influence per turn, increasing each Age.</Text>
 		</Row>
 		<Row Tag="LOC_ABILITY_BOSE_HOMELAND_COMBAT_PREVIEW" Language="en_US">
 			<Text>+5[icon:NAR_REW_COMBAT] Combat Strength in friendly territory (Azad Hind Fauj)</Text>
+		</Row>
+		<Row Tag="LOC_ABILITY_BOSE_SPRINGING_TIGER_PREVIEW" Language="en_US">
+			<Text>+1[icon:NAR_REW_COMBAT] Combat Strength while at war (Springing Tiger)</Text>
 		</Row>
 		<Row Tag="LOC_DIPLOMACY_AGENDA_PURNA_SWARAJ_NAME" Language="en_US">
 			<Text>Purna Swaraj</Text>
@@ -43,43 +46,11 @@
 		<Row Tag="LOC_UNLOCK_PLAY_AS_BOSE_MUGHAL_TOOLTIP" Language="en_US">
 			<Text>"Dilli Chalo!" — Bose's Indian National Army marched for Delhi, the old Mughal capital.</Text>
 		</Row>
-
-		<!-- Memento A: Springing Tiger. Combat icon uses [icon:NAR_REW_COMBAT],
-		     the verified registered fonticon for Combat Strength (see
-		     base-standard/data/icons/text-icons.xml) — NOT [icon:COMBAT_MELEE],
-		     which does not appear anywhere in the official game files. -->
-		<Row Tag="LOC_MEMENTO_BOSE_SPRINGING_TIGER_NAME" Language="en_US">
-			<Text>Springing Tiger</Text>
-		</Row>
-		<Row Tag="LOC_MEMENTO_BOSE_SPRINGING_TIGER_DESCRIPTION" Language="en_US">
-			<Text>The leaping tiger insignia of the Azad Hind Fauj, carried into battle by soldiers marching under Bose's banner for a free India.</Text>
-		</Row>
-		<Row Tag="LOC_MEMENTO_BOSE_SPRINGING_TIGER_FUNCTIONAL_DESCRIPTION" Language="en_US">
-			<Text>+1[icon:NAR_REW_COMBAT] Combat Strength for units while their owner is at war.</Text>
-		</Row>
-		<!-- Combat preview follows the official {1_Amount} placeholder pattern
-		     (base-standard MementoText.xml, e.g. LOC_MEMENTO_AMINA_TAKOBA_COMBAT_PREVIEW)
-		     so the number auto-syncs with the modifier's Amount. -->
-		<Row Tag="LOC_MEMENTO_BOSE_SPRINGING_TIGER_COMBAT_PREVIEW" Language="en_US">
-			<Text>+{1_Amount} Springing Tiger Memento</Text>
-		</Row>
-		<Row Tag="LOC_MEMENTO_BOSE_SPRINGING_TIGER_UNLOCK_TITLE" Language="en_US">
-			<Text>Available from the start</Text>
-		</Row>
-
-		<!-- Memento B: Azad Hind Radio — the independence movement's own voice,
-		     per the mod's framing rule. -->
-		<Row Tag="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_NAME" Language="en_US">
-			<Text>Azad Hind Radio</Text>
-		</Row>
-		<Row Tag="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_DESCRIPTION" Language="en_US">
-			<Text>The radio voice of the Azad Hind government, carrying Bose's call for complete independence to listeners across the world.</Text>
-		</Row>
-		<Row Tag="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_FUNCTIONAL_DESCRIPTION" Language="en_US">
-			<Text>+1[icon:YIELD_DIPLOMACY] Influence per turn, increasing each Age.</Text>
-		</Row>
-		<Row Tag="LOC_MEMENTO_BOSE_AZAD_HIND_RADIO_UNLOCK_TITLE" Language="en_US">
-			<Text>Available from the start</Text>
-		</Row>
+		<!-- The two mementos (Springing Tiger, Azad Hind Radio) were dropped:
+		     custom mementos can't be made equippable without fragile core-UI-file
+		     replacement. Their effects are refolded into the leader ability above
+		     (+1 Combat Strength while at war; +1 Influence/turn increasing each Age)
+		     — see data/leaders-gameeffects.xml. Their flavor lives on in the
+		     ability and in the mod's writing. -->
 	</LocalizedText>
 </Database>
