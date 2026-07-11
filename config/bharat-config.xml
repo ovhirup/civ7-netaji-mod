@@ -34,6 +34,17 @@
 		<Row CivilizationDomain="AntiquityAgeCivilizations" AgeType="AGE_ANTIQUITY" CivilizationType="CIVILIZATION_BHARAT" Type="TRAIT_BHARAT_ABILITY" Kind="KIND_TRAIT" Name="LOC_TRAIT_BHARAT_ABILITY_NAME" Description="LOC_TRAIT_BHARAT_ABILITY_AQ_DESCRIPTION"/>
 		<Row CivilizationDomain="ExplorationAgeCivilizations" AgeType="AGE_EXPLORATION" CivilizationType="CIVILIZATION_BHARAT" Type="TRAIT_BHARAT_ABILITY" Kind="KIND_TRAIT" Name="LOC_TRAIT_BHARAT_ABILITY_NAME" Description="LOC_TRAIT_BHARAT_ABILITY_EX_DESCRIPTION"/>
 		<Row CivilizationDomain="ModernAgeCivilizations" AgeType="AGE_MODERN" CivilizationType="CIVILIZATION_BHARAT" Type="TRAIT_BHARAT_ABILITY" Kind="KIND_TRAIT" Name="LOC_TRAIT_BHARAT_ABILITY_NAME" Description="LOC_TRAIT_BHARAT_ABILITY_DESCRIPTION"/>
+		<!-- Unique unit: Azad Hind Fauj (Stage 2). Single row for the tier-1
+		     UnitType only, ModernAgeCivilizations domain only (the unit is
+		     Modern-only) — mirrors Mughal's own single Sepoy row exactly
+		     (Base/modules/age-modern/config/config.xml line 74: one row,
+		     Type="UNIT_SEPOY", no AQ/EX rows). Reuses the in-game unit
+		     Description LOC key rather than adding a separate "_BASE_"
+		     variant like Sepoy's LOC_UNIT_SEPOY_BASE_DESCRIPTION — our text
+		     is already tier-agnostic flavor, so no new key was needed.
+		     Icon is an art placeholder (see assets/README.md); falls back
+		     like the leader portrait and civ symbol do. -->
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" Type="UNIT_AZAD_HIND_FAUJ" Kind="KIND_UNIT" Name="LOC_UNIT_AZAD_HIND_FAUJ_NAME" Description="LOC_UNIT_AZAD_HIND_FAUJ_DESCRIPTION" Icon="unitflag_azad_hind_fauj.png"/>
 	</CivilizationItems>
 	<CivilizationTags>
 		<!-- Industry (Economic) + composite-unity/military identity

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tier 2/3 tech-unlock gating for Azad Hind Fauj, mirrored verbatim from
+     the Sepoy's own rows in
+     Base/modules/age-modern/data/progression-trees-tech.xml:
+       NODE_TECH_MO_INDUSTRIALIZATION -> UNIT_SEPOY_2 (UnlockDepth=1, RequiredTraitType=TRAIT_MUGHAL)
+       NODE_TECH_MO_ARMOR            -> UNIT_SEPOY_3 (UnlockDepth=1, RequiredTraitType=TRAIT_MUGHAL)
+     Same node types, same UnlockDepth, RequiredTraitType swapped to
+     TRAIT_BHARAT. Loaded scope="game" criteria="modern-age-current"
+     alongside data/bharat-units.xml (mirrors Nepal's own
+     data/progression-trees-tech.xml gating). -->
+<Database>
+	<ProgressionTreeNodeUnlocks>
+		<Row ProgressionTreeNodeType="NODE_TECH_MO_INDUSTRIALIZATION" TargetKind="KIND_UNIT" TargetType="UNIT_AZAD_HIND_FAUJ_2" UnlockDepth="1" RequiredTraitType="TRAIT_BHARAT"/>
+		<Row ProgressionTreeNodeType="NODE_TECH_MO_ARMOR" TargetKind="KIND_UNIT" TargetType="UNIT_AZAD_HIND_FAUJ_3" UnlockDepth="1" RequiredTraitType="TRAIT_BHARAT"/>
+	</ProgressionTreeNodeUnlocks>
+</Database>

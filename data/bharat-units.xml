@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat unique unit "Azad Hind Fauj" (STAGE 2, deliverable 3): a 3-tier
+     Modern infantry line, mirrored row-for-row from the Mughal Sepoy
+     (Base/modules/age-modern/data/units.xml) with two deliberate deviations:
+
+       1. PURE MELEE, not the Sepoy's ranged/bombard hybrid. Unit_Stats below
+          matches the BASE units this line replaces (UNIT_LINE_INFANTRY=50,
+          UNIT_RIFLEMAN=55, UNIT_INFANTRY_COMPANY=60 Combat, all from this
+          same age-modern/data/units.xml) — RangedCombat/Bombard/Range are
+          omitted (schema default 0), not copied from Sepoy's 5/10/15
+          ranged + 45/50/55 bombard values.
+       2. TypeTags drop UNIT_CLASS_SIEGE (that tag exists on Sepoy only
+          because of its ranged-bombard role, which this unit does not have).
+
+     Everything else — BaseMoves/BaseSightRange/ZoneOfControl/Domain/
+     UnitMovementClass/CoreClass/FormationClass, the Unit_Costs (290/340/400,
+     which also happen to equal the base units' own costs — verified in this
+     file), UnitUpgrades chain, UnitReplaces targets, and the
+     COMBAT/MELEE/INFANTRY/UNIQUE(+ELITE_INFANTRY on tier 3) tag set — mirrors
+     Sepoy exactly, with TraitType="TRAIT_BHARAT" in place of TRAIT_MUGHAL.
+
+     Combat-bonus wiring (+1 CS outside friendly territory, all tiers):
+     mirrors the Tonga UNIT_KALIA pattern (DLC/tonga/modules/data/units.xml),
+     which is the closest official precedent for an unconditional, tag-scoped
+     unique-unit combat modifier with NO leader/golden-age gating hop:
+       UnitClass_Abilities binds ABILITY_AZAD_HIND_FAUJ to every unit tagged
+       UNIT_CLASS_AZAD_HIND_FAUJ (i.e. all 3 tiers, via TypeTags below) ->
+       UnitAbilityModifiers attaches the actual strength-modifier Modifier
+       (defined in data/bharat-units-gameeffects.xml) to that ability.
+     This is a one-hop grant, unlike Charlemagne's cavalry bonus (which is a
+     two-hop leader-trait -> conditional-ability-grant -> modifier chain,
+     because that bonus is gated on being in a Golden Age; ours isn't gated
+     on anything but the unit's own class + location, so the extra hop is
+     unnecessary). The unit-class tag on TypeTags is what makes this
+     Bharat-only and unit-specific: no other civ's units carry that tag, and
+     Bharat's own other units (if any exist later) that don't carry it won't
+     get the ability either.
+
+     Loaded scope="game" criteria="modern-age-current" (AgeInUse AGE_MODERN)
+     from netaji-bose.modinfo, mirroring Nepal's own units.xml gating
+     (DLC/nepal/modules/nepal.modinfo, ActionGroup
+     "nepal-gameplay-modern") — Modern-age unit data is not loaded before the
+     Modern age is in play. -->
+<Database>
+	<Types>
+		<!-- Civ Unique Military -->
+		<Row Type="UNIT_AZAD_HIND_FAUJ" Kind="KIND_UNIT"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_2" Kind="KIND_UNIT"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_3" Kind="KIND_UNIT"/>
+		<!-- Combat-bonus ability carrier (see header comment) -->
+		<Row Type="ABILITY_AZAD_HIND_FAUJ" Kind="KIND_ABILITY"/>
+	</Types>
+	<Units>
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ" Name="LOC_UNIT_AZAD_HIND_FAUJ_NAME" Description="LOC_UNIT_AZAD_HIND_FAUJ_DESCRIPTION" Tier="1" Maintenance="3" BaseMoves="2" BaseSightRange="2" ZoneOfControl="true" Domain="DOMAIN_LAND" UnitMovementClass="UNIT_MOVEMENT_CLASS_FOOT" CoreClass="CORE_CLASS_MILITARY" FormationClass="FORMATION_CLASS_LAND_COMBAT" TraitType="TRAIT_BHARAT"/>
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ_2" Name="LOC_UNIT_AZAD_HIND_FAUJ_NAME" Description="LOC_UNIT_AZAD_HIND_FAUJ_2_DESCRIPTION" Tier="2" Maintenance="6" BaseMoves="2" BaseSightRange="2" ZoneOfControl="true" Domain="DOMAIN_LAND" UnitMovementClass="UNIT_MOVEMENT_CLASS_FOOT" CoreClass="CORE_CLASS_MILITARY" FormationClass="FORMATION_CLASS_LAND_COMBAT" TraitType="TRAIT_BHARAT"/>
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ_3" Name="LOC_UNIT_AZAD_HIND_FAUJ_NAME" Description="LOC_UNIT_AZAD_HIND_FAUJ_3_DESCRIPTION" Tier="3" Maintenance="9" BaseMoves="2" BaseSightRange="2" ZoneOfControl="true" Domain="DOMAIN_LAND" UnitMovementClass="UNIT_MOVEMENT_CLASS_FOOT" CoreClass="CORE_CLASS_MILITARY" FormationClass="FORMATION_CLASS_LAND_COMBAT" TraitType="TRAIT_BHARAT"/>
+	</Units>
+	<Unit_Stats>
+		<!-- Pure melee: matches UNIT_LINE_INFANTRY/UNIT_RIFLEMAN/UNIT_INFANTRY_COMPANY
+		     Combat values in this same file. RangedCombat/Bombard/Range omitted
+		     (default 0) — deliberately NOT the Sepoy's ranged/bombard hybrid. -->
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ" Combat="50"/>
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ_2" Combat="55"/>
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ_3" Combat="60"/>
+	</Unit_Stats>
+	<Unit_Costs>
+		<!-- Matches both Sepoy's and the base units' own Production costs. -->
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ" YieldType="YIELD_PRODUCTION" Cost="290"/>
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ_2" YieldType="YIELD_PRODUCTION" Cost="340"/>
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ_3" YieldType="YIELD_PRODUCTION" Cost="400"/>
+	</Unit_Costs>
+	<UnitUpgrades>
+		<Row Unit="UNIT_AZAD_HIND_FAUJ" UpgradeUnit="UNIT_AZAD_HIND_FAUJ_2"/>
+		<Row Unit="UNIT_AZAD_HIND_FAUJ_2" UpgradeUnit="UNIT_AZAD_HIND_FAUJ_3"/>
+	</UnitUpgrades>
+	<UnitReplaces>
+		<Row CivUniqueUnitType="UNIT_AZAD_HIND_FAUJ" ReplacesUnitType="UNIT_LINE_INFANTRY"/>
+		<Row CivUniqueUnitType="UNIT_AZAD_HIND_FAUJ_2" ReplacesUnitType="UNIT_RIFLEMAN"/>
+		<Row CivUniqueUnitType="UNIT_AZAD_HIND_FAUJ_3" ReplacesUnitType="UNIT_INFANTRY_COMPANY"/>
+	</UnitReplaces>
+	<Tags>
+		<!-- Registered exactly how Sepoy registers UNIT_CLASS_SEPOY: a bare
+		     Tags row (Category="UNIT_CLASS", the category already exists from
+		     the base game) referenced inline from TypeTags below — no
+		     TagCategories row, no separate Types row for the tag itself. -->
+		<Row Tag="UNIT_CLASS_AZAD_HIND_FAUJ" Category="UNIT_CLASS"/>
+	</Tags>
+	<TypeTags>
+		<Row Type="UNIT_AZAD_HIND_FAUJ" Tag="UNIT_CLASS_COMBAT"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ" Tag="UNIT_CLASS_MELEE"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ" Tag="UNIT_CLASS_INFANTRY"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ" Tag="UNIT_CLASS_AZAD_HIND_FAUJ"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ" Tag="UNIT_CLASS_UNIQUE"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_2" Tag="UNIT_CLASS_COMBAT"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_2" Tag="UNIT_CLASS_MELEE"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_2" Tag="UNIT_CLASS_INFANTRY"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_2" Tag="UNIT_CLASS_AZAD_HIND_FAUJ"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_2" Tag="UNIT_CLASS_UNIQUE"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_3" Tag="UNIT_CLASS_COMBAT"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_3" Tag="UNIT_CLASS_MELEE"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_3" Tag="UNIT_CLASS_INFANTRY"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_3" Tag="UNIT_CLASS_ELITE_INFANTRY"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_3" Tag="UNIT_CLASS_AZAD_HIND_FAUJ"/>
+		<Row Type="UNIT_AZAD_HIND_FAUJ_3" Tag="UNIT_CLASS_UNIQUE"/>
+	</TypeTags>
+	<!-- Combat-bonus ability wiring (see header comment for why this pattern,
+	     not the leader-trait/golden-age pattern). -->
+	<UnitClass_Abilities>
+		<Row UnitAbilityType="ABILITY_AZAD_HIND_FAUJ" UnitClassType="UNIT_CLASS_AZAD_HIND_FAUJ"/>
+	</UnitClass_Abilities>
+	<UnitAbilities>
+		<Row UnitAbilityType="ABILITY_AZAD_HIND_FAUJ" Name="LOC_UNIT_AZAD_HIND_FAUJ_NAME" Description="LOC_ABILITY_AZAD_HIND_FAUJ_COMBAT_PREVIEW"/>
+	</UnitAbilities>
+	<UnitAbilityModifiers>
+		<Row UnitAbilityType="ABILITY_AZAD_HIND_FAUJ" ModifierId="AZAD_HIND_FAUJ_MOD_ADJUST_UNIT_COMBAT_STRENGTH_MODIFIER"/>
+	</UnitAbilityModifiers>
+	<Unit_Advisories>
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ" AdvisoryClassType="ADVISORY_CLASS_MILITARY"/>
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ_2" AdvisoryClassType="ADVISORY_CLASS_MILITARY"/>
+		<Row UnitType="UNIT_AZAD_HIND_FAUJ_3" AdvisoryClassType="ADVISORY_CLASS_MILITARY"/>
+	</Unit_Advisories>
+</Database>

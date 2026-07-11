@@ -108,7 +108,24 @@
 			<Text>Azad Hind Fauj</Text>
 		</Row>
 		<Row Tag="LOC_UNIT_AZAD_HIND_FAUJ_DESCRIPTION" Language="en_US">
-			<Text>Unique Bharatiya infantry unit that replaces the Infantry. +{X}[icon:NAR_REW_COMBAT] Combat Strength when fighting outside friendly territory.</Text>
+			<Text>Unique Bharatiya infantry unit that replaces the Line Infantry. +1[icon:NAR_REW_COMBAT] Combat Strength when fighting outside friendly territory.</Text>
+		</Row>
+		<!-- Stage 2: tier 2/3 descriptions, lightly varied from the tier-1 text
+		     above per the Sepoy pattern (LOC_UNIT_SEPOY_2/3_DESCRIPTION each
+		     restate the same ability text with only the tier number changed). -->
+		<Row Tag="LOC_UNIT_AZAD_HIND_FAUJ_2_DESCRIPTION" Language="en_US">
+			<Text>Tier 2 unique Bharatiya infantry unit that replaces the Rifle Infantry. +1[icon:NAR_REW_COMBAT] Combat Strength when fighting outside friendly territory.</Text>
+		</Row>
+		<Row Tag="LOC_UNIT_AZAD_HIND_FAUJ_3_DESCRIPTION" Language="en_US">
+			<Text>Tier 3 unique Bharatiya infantry unit that replaces the Infantry Company. +1[icon:NAR_REW_COMBAT] Combat Strength when fighting outside friendly territory.</Text>
+		</Row>
+		<!-- Combat modifier preview string, shown on the unit's Combat Strength
+		     tooltip breakdown (AZAD_HIND_FAUJ_MOD_ADJUST_UNIT_COMBAT_STRENGTH_MODIFIER
+		     in data/bharat-units-gameeffects.xml, and reused as the
+		     UnitAbilities.Description for ABILITY_AZAD_HIND_FAUJ in
+		     data/bharat-units.xml). -->
+		<Row Tag="LOC_ABILITY_AZAD_HIND_FAUJ_COMBAT_PREVIEW" Language="en_US">
+			<Text>+1 [icon:NAR_REW_COMBAT] Combat Strength when fighting outside friendly territory.</Text>
 		</Row>
 		<Row Tag="LOC_PEDIA_UNIT_AZAD_HIND_FAUJ_HISTORY_PARA_1" Language="en_US">
 			<Text>"Azad Hind Fauj" — the Free India Army. First raised in 1942 from Indian soldiers and expatriates across Southeast Asia and reborn under Subhas Chandra Bose in 1943, the Indian National Army was built as no colonial army had been: its regiments deliberately mixed Hindu, Muslim, and Sikh soldiers in the same ranks, bound by a single greeting — "Jai Hind." In the Rani of Jhansi Regiment, under Captain Lakshmi Swaminathan, it fielded one of the modern world's first all-women infantry units. In 1944 its columns crossed onto Indian soil in Manipur beneath the cry "Dilli Chalo!" — On to Delhi! The march was turned back, but the army won its war in defeat: when three of its officers — a Hindu, a Muslim, and a Sikh, tried together — faced court-martial at the Red Fort in 1945, all India rose in their defense, and within two years India was free. Jai Hind!</Text>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Azad Hind Fauj unique-unit combat bonus: +1 Combat Strength outside
+     friendly territory, all 3 tiers.
+
+     Attached to the units via UnitAbilityModifiers -> ABILITY_AZAD_HIND_FAUJ
+     in data/bharat-units.xml (Kalia-style one-hop grant: the ability is
+     bound to UNIT_CLASS_AZAD_HIND_FAUJ via UnitClass_Abilities, so only
+     units carrying that tag — i.e. only these 3 Bharat units — ever get it).
+
+     The REQUIREMENT_UNIT_TAG_MATCHES below is a belt-and-suspenders
+     duplicate of that same scoping (kept because it costs nothing and
+     matches the Charlemagne pattern verbatim
+     base-standard/data/units-gameeffects.xml
+     CHARLEMAGNE_MOD_ADJUST_CAVALRY_STRENGTH); the actual Bharat-only
+     enforcement is the UnitClass_Abilities grant, not this requirement.
+
+     REQUIREMENT_UNIT_IN_OWNER_TERRITORY inverse="true" +
+     Argument name="friendlyOnly"=true is copied verbatim from
+     base-standard/data/units-gameeffects.xml
+     XERXES_MOD_ADJUST_UNIT_GIVE_FOREIGN_COMBAT_ABILITY (the only base-game
+     use of this inverse-territory pattern). -->
+<GameEffects xmlns="GameEffects">
+	<Modifier id="AZAD_HIND_FAUJ_MOD_ADJUST_UNIT_COMBAT_STRENGTH_MODIFIER" collection="COLLECTION_UNIT_COMBAT" effect="EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER">
+		<SubjectRequirements>
+			<Requirement type="REQUIREMENT_UNIT_TAG_MATCHES">
+				<Argument name="Tag">UNIT_CLASS_AZAD_HIND_FAUJ</Argument>
+			</Requirement>
+			<Requirement type="REQUIREMENT_UNIT_IN_OWNER_TERRITORY" inverse="true">
+				<Argument name="friendlyOnly">true</Argument>
+			</Requirement>
+		</SubjectRequirements>
+		<Argument name="Amount">1</Argument>
+		<String context="Preview">LOC_ABILITY_AZAD_HIND_FAUJ_COMBAT_PREVIEW</String>
+	</Modifier>
+</GameEffects>

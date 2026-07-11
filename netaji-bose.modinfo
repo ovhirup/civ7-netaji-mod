@@ -14,9 +14,25 @@
 	<Dependencies>
 		<Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME"/>
 	</Dependencies>
+	<!-- The Bharat unit rows FK-reference age-modern content (the base units
+	     they replace: UNIT_LINE_INFANTRY/RIFLEMAN/INFANTRY_COMPANY; and the
+	     tech nodes NODE_TECH_MO_*). Reference age-modern so our modern-age
+	     ActionGroup is guaranteed to load AFTER it — otherwise those foreign
+	     keys can fail and the whole units transaction rolls back. Mirrors
+	     nepal.modinfo's <References>. -->
+	<References>
+		<Mod id="age-modern" title="LOC_MODULE_AGE_MODERN_NAME"/>
+	</References>
 	<ActionCriteria>
 		<Criteria id="always">
 			<AlwaysMet></AlwaysMet>
+		</Criteria>
+		<!-- Azad Hind Fauj unit data is Modern-age content; gate it exactly
+		     like Nepal gates its own data/units.xml (DLC/nepal/modules/
+		     nepal.modinfo, ActionGroup "nepal-gameplay-modern",
+		     criteria "modern-age-current"). -->
+		<Criteria id="modern-age-current">
+			<AgeInUse>AGE_MODERN</AgeInUse>
 		</Criteria>
 	</ActionCriteria>
 	<ActionGroups>
@@ -32,6 +48,17 @@
 					<Item>text/en_us/LeaderText.xml</Item>
 					<Item>text/en_us/BharatText.xml</Item>
 				</UpdateText>
+			</Actions>
+		</ActionGroup>
+		<!-- Azad Hind Fauj unique unit (Stage 2) — Modern-age only, mirrors
+		     Nepal's units.xml gating. -->
+		<ActionGroup id="game-bharat-units-modern" scope="game" criteria="modern-age-current">
+			<Actions>
+				<UpdateDatabase>
+					<Item>data/bharat-units.xml</Item>
+					<Item>data/bharat-units-gameeffects.xml</Item>
+					<Item>data/bharat-progression-tech.xml</Item>
+				</UpdateDatabase>
 			</Actions>
 		</ActionGroup>
 		<!-- Shell/front-end: game-setup screen registration -->
