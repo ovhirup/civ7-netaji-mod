@@ -49,5 +49,95 @@
 		<Row Tag="LOC_PEDIA_UNIT_AZAD_HIND_FAUJ_HISTORY_PARA_1" Language="en_US">
 			<Text>"Azad Hind Fauj" — the Free India Army. First raised in 1942 from Indian soldiers and expatriates across Southeast Asia and reborn under Subhas Chandra Bose in 1943, the Indian National Army was built as no colonial army had been: its regiments deliberately mixed Hindu, Muslim, and Sikh soldiers in the same ranks, bound by a single greeting — "Jai Hind." In the Rani of Jhansi Regiment, under Captain Lakshmi Swaminathan, it fielded one of the modern world's first all-women infantry units. In 1944 its columns crossed onto Indian soil in Manipur beneath the cry "Dilli Chalo!" — On to Delhi! The march was turned back, but the army won its war in defeat: when three of its officers — a Hindu, a Muslim, and a Sikh, tried together — faced court-martial at the Red Fort in 1945, all India rose in their defense, and within two years India was free. Jai Hind!</Text>
 		</Row>
+
+		<!-- ============================================================
+		     Deliverables 4-7 drafted repo-first (Fable) during a Chrome
+		     outage; to be pushed into the Chat project + canon on reconnect.
+		     Numbers are {X}/{Y} placeholders for the Code side. TODO on build:
+		     verify yield icons (YIELD_PRODUCTION / YIELD_FOOD / YIELD_HAPPINESS)
+		     render, and match quarter/building/civic/pedia key shapes to the
+		     age-modern Mughal template.
+		     ============================================================ -->
+
+		<!-- (4) Unique quarter: National Planning Commission = Yojana Bhavan
+		     (planned industry) + Aushadhalaya (planned public health). Theme:
+		     Netaji's state that planned both the forge and the clinic. -->
+		<Row Tag="LOC_QUARTER_NATIONAL_PLANNING_COMMISSION_NAME" Language="en_US">
+			<Text>National Planning Commission</Text>
+		</Row>
+		<Row Tag="LOC_QUARTER_NATIONAL_PLANNING_COMMISSION_DESCRIPTION" Language="en_US">
+			<Text>Unique Bharatiya Quarter, formed by building both the Yojana Bhavan and the Aushadhalaya in the same District. When complete, this settlement gains +{X}[icon:YIELD_PRODUCTION] Production and +{Y}[icon:YIELD_HAPPINESS] Happiness.</Text>
+		</Row>
+		<Row Tag="LOC_QUARTER_NATIONAL_PLANNING_COMMISSION_PEDIA" Language="en_US">
+			<Text>In 1938 the Indian National Congress convened a National Planning Committee and named Subhas Chandra Bose its patron; for the first time the future of a free India was mapped as a single design — industry, agriculture, health, and education planned together rather than left to chance or empire.</Text>
+		</Row>
+
+		<Row Tag="LOC_BUILDING_YOJANA_BHAVAN_NAME" Language="en_US">
+			<Text>Yojana Bhavan</Text>
+		</Row>
+		<Row Tag="LOC_BUILDING_YOJANA_BHAVAN_DESCRIPTION" Language="en_US">
+			<Text>+{X}[icon:YIELD_PRODUCTION] Production. +{Y}[icon:YIELD_PRODUCTION] Production toward constructing buildings in this settlement.</Text>
+		</Row>
+		<Row Tag="LOC_BUILDING_YOJANA_BHAVAN_PEDIA" Language="en_US">
+			<Text>The "Planning House" — home of the Five-Year Plans, where a self-reliant nation set its own targets for steel, power, and rail rather than importing the finished goods of others.</Text>
+		</Row>
+
+		<Row Tag="LOC_BUILDING_AUSHADHALAYA_NAME" Language="en_US">
+			<Text>Aushadhalaya</Text>
+		</Row>
+		<Row Tag="LOC_BUILDING_AUSHADHALAYA_DESCRIPTION" Language="en_US">
+			<Text>+{X}[icon:YIELD_FOOD] Food and +{Y}[icon:YIELD_HAPPINESS] Happiness in this settlement.</Text>
+		</Row>
+		<Row Tag="LOC_BUILDING_AUSHADHALAYA_PEDIA" Language="en_US">
+			<Text>A public dispensary of the planned state, heir to a healing tradition as old as Sushruta — whose treatises catalogued surgery and medicine a thousand years before the modern hospital — now set to the service of every citizen.</Text>
+		</Row>
+
+		<!-- (5) Unique civics / traditions -->
+		<Row Tag="LOC_CIVIC_BHARAT_SWADESHI_NAME" Language="en_US">
+			<Text>Swadeshi</Text>
+		</Row>
+		<Row Tag="LOC_CIVIC_BHARAT_SWADESHI_DESCRIPTION" Language="en_US">
+			<Text>"Of our own country" — the pledge to make at home what was once bought from the imperial market.</Text>
+		</Row>
+		<Row Tag="LOC_CIVIC_BHARAT_NATIONAL_PLANNING_NAME" Language="en_US">
+			<Text>National Planning</Text>
+		</Row>
+		<Row Tag="LOC_CIVIC_BHARAT_NATIONAL_PLANNING_DESCRIPTION" Language="en_US">
+			<Text>A single plan for the whole nation's forges, fields, and clinics — the future left to no hand but its own.</Text>
+		</Row>
+		<Row Tag="LOC_CIVIC_BHARAT_FORWARD_BLOC_NAME" Language="en_US">
+			<Text>Forward Bloc</Text>
+		</Row>
+		<Row Tag="LOC_CIVIC_BHARAT_FORWARD_BLOC_DESCRIPTION" Language="en_US">
+			<Text>Bose's 1939 call to gather every strand of the movement into one forward-marching column.</Text>
+		</Row>
+		<Row Tag="LOC_CIVIC_BHARAT_AZAD_HIND_NAME" Language="en_US">
+			<Text>Azad Hind</Text>
+		</Row>
+		<Row Tag="LOC_CIVIC_BHARAT_AZAD_HIND_DESCRIPTION" Language="en_US">
+			<Text>"Free India" — a provisional government of many faiths and tongues, governing as a free people before freedom was won.</Text>
+		</Row>
+
+		<!-- (6) Civilopedia entry -->
+		<Row Tag="LOC_CIVILIZATION_BHARAT_CHAPTER_HISTORY_PARA_1" Language="en_US">
+			<Text>Bharat is the name the subcontinent gave itself long before any mapmaker called it India — a land named in its oldest texts for a legendary king, and understood for millennia not as one state but as one civilization of many kingdoms, faiths, and tongues. From the edicts the Maurya cut into rock, to the bronzes the Chola cast and carried across the southern seas, to the astronomers who measured the heavens and the surgeons who set down their craft, that civilization endured through every age of conquest, absorbing conquerors rather than being erased by them.</Text>
+		</Row>
+		<Row Tag="LOC_CIVILIZATION_BHARAT_CHAPTER_HISTORY_PARA_2" Language="en_US">
+			<Text>What it had never been, in the modern age, was free. The struggle for Purna Swaraj — complete independence — gathered every strand of a vast and quarrelsome people: the spinner and the strategist, the lawyer and the soldier. Subhas Chandra Bose gave one wing of that struggle its sharpest edge, raising an army whose regiments deliberately mixed Hindu, Muslim, and Sikh under a single salute, and chairing, as early as 1938, a National Planning Committee that dared to design the economy of a nation that did not yet exist. His conviction was simple and total: a free people must be able to feed, arm, and heal themselves by their own hand.</Text>
+		</Row>
+		<Row Tag="LOC_CIVILIZATION_BHARAT_CHAPTER_HISTORY_PARA_3" Language="en_US">
+			<Text>The Bharat of this age is that conviction made real: a self-reliant republic that turns an ancient inheritance of learning toward modern purpose, that plans its own forges and its own clinics, and that draws its strength not from a single creed but from the many peoples who march in one column beneath one flag. Jai Hind.</Text>
+		</Row>
+
+		<!-- (7) Unlock tooltips -->
+		<Row Tag="LOC_UNLOCK_PLAY_AS_BOSE_BHARAT_TOOLTIP" Language="en_US">
+			<Text>Subhas Chandra Bose fought to forge a free and self-reliant Bharat — the nation this civilization makes real.</Text>
+		</Row>
+		<Row Tag="LOC_UNLOCK_PLAY_AS_MAURYA_BHARAT_TOOLTIP" Language="en_US">
+			<Text>From the Maurya's stone edicts to a free republic — the same civilization, come at last into its own hands.</Text>
+		</Row>
+		<Row Tag="LOC_UNLOCK_PLAY_AS_CHOLA_BHARAT_TOOLTIP" Language="en_US">
+			<Text>The Chola carried the subcontinent's craft across the seas; Bharat gathers that inheritance into one self-reliant nation.</Text>
+		</Row>
 	</LocalizedText>
 </Database>

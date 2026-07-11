@@ -14,6 +14,8 @@ a deliverable; nothing is canon until the user says so.
 - Greeting/slogans in play: "Jai Hind", "Dilli Chalo", "Give me blood, and I shall give you freedom".
 - **"Jai Hind!"** is the standard closing salute for Bharat civ text. *(ratified 2026-07-12)*
 - The **unique unit shares the name "Azad Hind Fauj"** with the leader ability — intentional (both *are* the army); never disambiguate them. *(ratified 2026-07-12)*
+- Unique quarter **National Planning Commission** = buildings **Yojana Bhavan** (planned industry) + **Aushadhalaya** (planned public health, Ayurveda/Sushruta heritage). *(drafted repo-first 2026-07-12; ratify on Chat sync)*
+- Unique civics: **Swadeshi, National Planning, Forward Bloc, Azad Hind**. *(drafted repo-first 2026-07-12; ratify on Chat sync)*
 - **`{X}`/`{Y}`/`{Z}` placeholders** are the convention for Code-slotted numbers in draft functional text. *(ratified 2026-07-12)*
 
 ## Approved voice exemplars
