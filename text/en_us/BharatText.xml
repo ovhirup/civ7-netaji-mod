@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat civilization strings. STAGED, not yet wired: this file is NOT in
+     netaji-bose.modinfo yet because the Bharat civ (config rows, ability,
+     units) doesn't exist. It loads once the Bharat build (DESIGN.md milestone)
+     adds it to an ActionGroup. Text drafted in the Claude Chat project
+     (Fable 5), deliverable 1.
+     TODO on build: check FULLNAME article usage against the Mughal FULLNAME
+     row in age-modern (the Chat draft flagged this). -->
+<Database>
+	<LocalizedText>
+		<Row Tag="LOC_CIVILIZATION_BHARAT_NAME" Language="en_US">
+			<Text>Bharat</Text>
+		</Row>
+		<Row Tag="LOC_CIVILIZATION_BHARAT_FULLNAME" Language="en_US">
+			<Text>Republic of Bharat</Text>
+		</Row>
+		<Row Tag="LOC_CIVILIZATION_BHARAT_ADJECTIVE" Language="en_US">
+			<Text>Bharatiya</Text>
+		</Row>
+		<Row Tag="LOC_CIVILIZATION_BHARAT_DESCRIPTION" Language="en_US">
+			<Text>The free and self-reliant nation forged in the struggle for Purna Swaraj — heir to the subcontinent's ancient learning, its many faiths and tongues marching in a single column under a single greeting: Jai Hind.</Text>
+		</Row>
+		<Row Tag="LOC_LOADING_CIV_INTRO_TEXT_BHARAT" Language="en_US">
+			<Text>The Maurya carved their edicts in stone; the Chola sent their bronzes across the southern seas; through every age of conquest, the learning of the subcontinent endured — its astronomers, its surgeons, its masters of steel. Now that inheritance passes to a free people. Bharat rises — one nation of many faiths and many tongues, its ranks unbroken, its forges lit, its future planned by no hand but its own. Jai Hind!</Text>
+		</Row>
+	</LocalizedText>
+</Database>
