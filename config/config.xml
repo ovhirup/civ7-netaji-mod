@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shell-side (game setup screen) registration.
-     TODO: This file is intentionally minimal. The frontend config schema is the
-     least-documented part of Civ VII modding — the reliable way to fill this in
-     is to copy the config.xml of a working Workshop leader mod (e.g. anything
-     from the "All Historical Leaders" collection) or generate one with
-     civ7-modding-tools, then rename types to LEADER_SUBHAS_CHANDRA_BOSE.
-     Typical contents: leader entry for the setup screen, icon reference,
-     and leader-civilization pairing hints. -->
+     Schema copied from ashoka-himiko-alt DLC config/config.xml.
+     LeaderIcon: no custom icon ships yet, so the setup screen will show a
+     missing/fallback icon until assets land (see assets/README.md). -->
 <Database>
+	<Leaders>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" LeaderName="LOC_LEADER_SUBHAS_CHANDRA_BOSE_NAME" LeaderDescription="LOC_LEADER_SUBHAS_CHANDRA_BOSE_DESCRIPTION" LeaderIcon="LEADER_SUBHAS_CHANDRA_BOSE"/>
+	</Leaders>
+	<LeaderItems>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Type="TRAIT_LEADER_BOSE_ABILITY" Kind="KIND_TRAIT" Name="LOC_TRAIT_LEADER_BOSE_ABILITY_NAME" Description="LOC_TRAIT_LEADER_BOSE_ABILITY_DESCRIPTION"/>
+	</LeaderItems>
+	<LeaderTags>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TagType="TAG_TRAIT_MILITARISTIC"/>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TagType="TAG_TRAIT_POLITICAL"/>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TagType="TAG_GENDER_MALE"/>
+	</LeaderTags>
+	<LeaderQuotes>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Quote="LOC_MAIN_CHAR_SELECT_LEADER_SUBHAS_CHANDRA_BOSE_ANY"/>
+	</LeaderQuotes>
+	<!-- Setup-screen pairing highlights: the India arc across the three ages -->
+	<LeaderCivilizationBias>
+		<Row CivilizationDomain="AntiquityAgeCivilizations" CivilizationType="CIVILIZATION_MAURYA" LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Bias="4" ReasonType="LOC_UNLOCK_PLAY_AS_BOSE_MAURYA_TOOLTIP" ChoiceType="LOC_CREATE_GAME_HISTORICAL_CHOICE"/>
+		<Row CivilizationDomain="ExplorationAgeCivilizations" CivilizationType="CIVILIZATION_CHOLA" LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Bias="4" ReasonType="LOC_UNLOCK_PLAY_AS_BOSE_CHOLA_TOOLTIP" ChoiceType="LOC_CREATE_GAME_HISTORICAL_CHOICE"/>
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_MUGHAL" LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Bias="4" ReasonType="LOC_UNLOCK_PLAY_AS_BOSE_MUGHAL_TOOLTIP" ChoiceType="LOC_CREATE_GAME_HISTORICAL_CHOICE"/>
+	</LeaderCivilizationBias>
 </Database>

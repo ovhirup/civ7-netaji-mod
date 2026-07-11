@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Leader ability "Azad Hind Fauj" + agenda "Purna Swaraj".
+     All effect/requirement/collection names verified against base-standard
+     and the ashoka-himiko-alt DLC in the local game install. -->
+<GameEffects xmlns="GameEffects">
+
+	<!-- 1. +5 Combat Strength for units fighting in friendly territory
+	        (homeland defense / liberation). Attach pattern copied from
+	        ASHOKA_ALT_MOD_CONQUEROR_ABILITY. -->
+	<Modifier id="BOSE_MOD_UNIT_ATTACH_HOMELAND_STRENGTH" collection="COLLECTION_PLAYER_UNITS" effect="EFFECT_ATTACH_MODIFIERS">
+		<Argument name="ModifierId">BOSE_MOD_HOMELAND_COMBAT_STRENGTH</Argument>
+	</Modifier>
+	<Modifier id="BOSE_MOD_HOMELAND_COMBAT_STRENGTH" collection="COLLECTION_UNIT_COMBAT" effect="EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER">
+		<SubjectRequirements>
+			<Requirement type="REQUIREMENT_UNIT_IN_OWNER_TERRITORY"/>
+		</SubjectRequirements>
+		<Argument name="Amount">5</Argument>
+		<String context="Preview">LOC_ABILITY_BOSE_HOMELAND_COMBAT_PREVIEW</String>
+	</Modifier>
+
+	<!-- 2. +5 Happiness in settlements you did not found (liberated peoples
+	        rally to the cause). Requirement pattern copied from
+	        ASHOKA_ALT_MOD_CAPTURED_SETTLEMENT_PRODUCTION. -->
+	<Modifier id="BOSE_MOD_CAPTURED_SETTLEMENT_HAPPINESS" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<SubjectRequirements>
+			<Requirement type="REQUIREMENT_CITY_IS_ORIGINAL_OWNER" inverse="true"/>
+		</SubjectRequirements>
+		<Argument name="YieldType">YIELD_HAPPINESS</Argument>
+		<Argument name="Amount">5</Argument>
+		<Argument name="Tooltip">LOC_TRAIT_LEADER_BOSE_ABILITY_NAME</Argument>
+	</Modifier>
+
+	<!-- 3. +2 Culture per conquered settlement (the liberation cause spreads). -->
+	<Modifier id="BOSE_MOD_CULTURE_PER_CONQUERED_SETTLEMENT" collection="COLLECTION_OWNER" effect="EFFECT_PLAYER_ADJUST_YIELD_PER_CONQUERED_SETTLEMENT">
+		<Argument name="YieldType">YIELD_CULTURE</Argument>
+		<Argument name="Amount">2</Argument>
+		<Argument name="Tooltip">LOC_TRAIT_LEADER_BOSE_ABILITY_NAME</Argument>
+	</Modifier>
+
+	<!-- Agenda: Purna Swaraj. Relations worsen with players holding many
+	     captured settlements, improve with those holding fewest. Structure
+	     copied from ASHOKA_ALT_MOD_AGENDA_WITHOUT_REGRET.
+	     NOTE: the only base-game captured-settlements WeightType is the
+	     ideology-scoped one below; a Modern-Age flavor fit, but if it proves
+	     inert in earlier ages, swap for another COMPARE_* (see base-standard
+	     for the full list). -->
+	<Modifier id="BOSE_MOD_AGENDA_PURNA_SWARAJ" collection="COLLECTION_OWNER" effect="EFFECT_DIPLOMACY_AGENDA_TIMED_UPDATE">
+		<String context="Name">LOC_DIPLOMACY_AGENDA_PURNA_SWARAJ_NAME</String>
+		<Argument name="ModName">LOC_DIPLOMACY_AGENDA_PURNA_SWARAJ_NAME</Argument>
+		<Argument name="Tooltip">LOC_DIPLOMACY_AGENDA_PURNA_SWARAJ_DESC</Argument>
+		<Argument name="WeightType">DIPLOMACY_AGENDA_COMPARE_IDEOLOGY_CAPTURED_SETTLEMENTS</Argument>
+		<Argument name="FirstMeetDelay">20</Argument>
+		<Argument name="UpdateFreq">10</Argument>
+		<Argument name="AwardTo1">DIPLOMACY_AGENDA_AWARD_HIGHEST</Argument>
+		<Argument name="AwardAmtType1">DIPLOMACY_AGENDA_NEG_AMT_MEDIUM</Argument>
+		<Argument name="AwardTo2">DIPLOMACY_AGENDA_AWARD_LOWEST</Argument>
+		<Argument name="AwardAmtType2">DIPLOMACY_AGENDA_AMT_MEDIUM</Argument>
+		<Argument name="NotifyMessage">LOC_NOTIFICATION_DIPLOMATIC_AGENDA_DEFAULT_MESSAGE</Argument>
+		<Argument name="NotifySummary">LOC_NOTIFICATION_DIPLOMATIC_AGENDA_DEFAULT_SUMMARY</Argument>
+	</Modifier>
+
+</GameEffects>

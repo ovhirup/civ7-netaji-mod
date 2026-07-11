@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+	<LocalizedText>
+		<Row Tag="LOC_MOD_NETAJI_BOSE_NAME" Language="en_US">
+			<Text>Netaji Subhas Chandra Bose — Leader</Text>
+		</Row>
+		<Row Tag="LOC_MOD_NETAJI_BOSE_DESCRIPTION" Language="en_US">
+			<Text>Adds Netaji Subhas Chandra Bose, hero of the Indian independence movement, as a playable leader.</Text>
+		</Row>
+		<Row Tag="LOC_LEADER_SUBHAS_CHANDRA_BOSE_NAME" Language="en_US">
+			<Text>Subhas Chandra Bose</Text>
+		</Row>
+		<Row Tag="LOC_LEADER_SUBHAS_CHANDRA_BOSE_DESCRIPTION" Language="en_US">
+			<Text>Netaji, Supreme Commander of the Azad Hind Fauj and relentless organizer of the struggle for complete independence.</Text>
+		</Row>
+		<Row Tag="LOC_TRAIT_LEADER_BOSE_ABILITY_NAME" Language="en_US">
+			<Text>Azad Hind Fauj</Text>
+		</Row>
+		<Row Tag="LOC_TRAIT_LEADER_BOSE_ABILITY_DESCRIPTION" Language="en_US">
+			<Text>+5[icon:COMBAT_MELEE] Combat Strength for units fighting in friendly territory. +5[icon:YIELD_HAPPINESS] Happiness in settlements you did not found. +2[icon:YIELD_CULTURE] Culture per conquered settlement.</Text>
+		</Row>
+		<Row Tag="LOC_ABILITY_BOSE_HOMELAND_COMBAT_PREVIEW" Language="en_US">
+			<Text>+5[icon:COMBAT_MELEE] Combat Strength in friendly territory (Azad Hind Fauj)</Text>
+		</Row>
+		<Row Tag="LOC_DIPLOMACY_AGENDA_PURNA_SWARAJ_NAME" Language="en_US">
+			<Text>Purna Swaraj</Text>
+		</Row>
+		<Row Tag="LOC_DIPLOMACY_AGENDA_PURNA_SWARAJ_DESC" Language="en_US">
+			<Text>Respects civilizations that rule only the settlements they founded. Despises those who occupy the homelands of others.</Text>
+		</Row>
+		<Row Tag="LOC_MAIN_CHAR_SELECT_LEADER_SUBHAS_CHANDRA_BOSE_ANY" Language="en_US">
+			<Text>"Give me blood, and I shall give you freedom!"</Text>
+		</Row>
+		<Row Tag="LOC_UNLOCK_PLAY_AS_BOSE_MAURYA_TOOLTIP" Language="en_US">
+			<Text>Subhas Chandra Bose led the struggle for the independence of India, heartland of the Maurya.</Text>
+		</Row>
+		<Row Tag="LOC_UNLOCK_PLAY_AS_BOSE_CHOLA_TOOLTIP" Language="en_US">
+			<Text>The Indian National Army drew soldiers from across the subcontinent, including the old Chola lands of the south.</Text>
+		</Row>
+		<Row Tag="LOC_UNLOCK_PLAY_AS_BOSE_MUGHAL_TOOLTIP" Language="en_US">
+			<Text>"Dilli Chalo!" — Bose's Indian National Army marched for Delhi, the old Mughal capital.</Text>
+		</Row>
+	</LocalizedText>
+</Database>

@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Core leader definition: registers the leader, attaches his trait,
-     and pairs him with the India-arc civilizations across the three ages. -->
+<!-- Schema copied from ashoka-himiko-alt DLC data/leaders.xml (official Firaxis leader DLC). -->
 <Database>
+	<Kinds>
+		<InsertOrIgnore Kind="KIND_TRAIT"/>
+	</Kinds>
 	<Types>
 		<Row Type="LEADER_SUBHAS_CHANDRA_BOSE" Kind="KIND_LEADER"/>
+		<Row Type="TRAIT_LEADER_BOSE_ABILITY" Kind="KIND_TRAIT"/>
 	</Types>
-
 	<Leaders>
-		<!-- InheritFrom copies baseline setup (default agenda pool, AI scaffolding)
-		     from a base-game leader. TODO: verify the base leader type string
-		     against base-standard/data/leaders.xml in the game install. -->
-		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE"
-		     Name="LOC_LEADER_SUBHAS_CHANDRA_BOSE_NAME"
-		     InheritFrom="LEADER_DEFAULT"
-		     Description="LOC_LEADER_SUBHAS_CHANDRA_BOSE_DESCRIPTION"/>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Name="LOC_LEADER_SUBHAS_CHANDRA_BOSE_NAME" IsMajorLeader="true" InheritFrom="LEADER_DEFAULT"/>
 	</Leaders>
-
+	<Traits>
+		<Row TraitType="TRAIT_LEADER_BOSE_ABILITY" InternalOnly="true" Name="LOC_TRAIT_LEADER_BOSE_ABILITY_NAME" Description="LOC_TRAIT_LEADER_BOSE_ABILITY_DESCRIPTION"/>
+	</Traits>
 	<LeaderTraits>
-		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TraitType="TRAIT_LEADER_AZAD_HIND_FAUJ"/>
+		<!-- Leader ability -->
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TraitType="TRAIT_LEADER_BOSE_ABILITY"/>
+		<!-- Starting attribute points: military organizer + coalition-builder
+		     (POLITICAL is the Diplomatic attribute tree) -->
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TraitType="TRAIT_LEADER_ATTRIBUTE_MILITARISTIC"/>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TraitType="TRAIT_LEADER_ATTRIBUTE_POLITICAL"/>
+		<!-- AI victory-path bias per age -->
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TraitType="TRAIT_AQ_MILITARY_VICTORY"/>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TraitType="TRAIT_EX_MILITARY_VICTORY"/>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TraitType="TRAIT_MO_MILITARY_VICTORY"/>
 	</LeaderTraits>
-
-	<!-- Civilization pairing bonuses (the "historical choice" highlight in setup).
-	     The India arc: Maurya (Antiquity) -> Chola (Exploration) -> Mughal (Modern).
-	     TODO: verify exact CivilizationType strings in base-standard. -->
-	<LeaderCivilizations>
-		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" CivilizationType="CIVILIZATION_MAURYA"/>
-		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" CivilizationType="CIVILIZATION_CHOLA"/>
-		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" CivilizationType="CIVILIZATION_MUGHAL"/>
-	</LeaderCivilizations>
+	<TraitModifiers>
+		<Row TraitType="TRAIT_LEADER_BOSE_ABILITY" ModifierId="BOSE_MOD_UNIT_ATTACH_HOMELAND_STRENGTH"/>
+		<Row TraitType="TRAIT_LEADER_BOSE_ABILITY" ModifierId="BOSE_MOD_CAPTURED_SETTLEMENT_HAPPINESS"/>
+		<Row TraitType="TRAIT_LEADER_BOSE_ABILITY" ModifierId="BOSE_MOD_CULTURE_PER_CONQUERED_SETTLEMENT"/>
+		<Row TraitType="TRAIT_LEADER_BOSE_ABILITY" ModifierId="BOSE_MOD_AGENDA_PURNA_SWARAJ"/>
+	</TraitModifiers>
+	<TypeQuotes>
+		<Row Type="LEADER_SUBHAS_CHANDRA_BOSE" Quote="LOC_MAIN_CHAR_SELECT_LEADER_SUBHAS_CHANDRA_BOSE_ANY"/>
+	</TypeQuotes>
 </Database>

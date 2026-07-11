@@ -3,50 +3,64 @@
 Adds Netaji Subhas Chandra Bose, hero of the Indian independence movement,
 as a playable leader. See [DESIGN.md](DESIGN.md) for the full design.
 
-**Status: skeleton.** The structure and localization are real; several data
-values are `TODO_` placeholders that must be validated against the game's
-own files before the mod will load cleanly (see below).
+**Status: skeleton, schema-validated.** Every table, effect, requirement, and
+trait name was verified against the local game install — specifically the
+official `ashoka-himiko-alt` leader DLC (the closest first-party template for
+a leader-only mod) and `base-standard`. Not yet load-tested in game.
 
 ## Layout
 
 ```
-netaji-bose.modinfo        Mod manifest (entry point)
-config/config.xml          Setup-screen registration (TODO — see file header)
-data/leaders.xml           Leader definition + civ pairings
-data/traits.xml            Leader ability (modifiers)
-data/agendas.xml           AI agenda
-text/en_us/leader-text.xml English localization
-assets/                    Art requirements (nothing ships yet)
+netaji-bose.modinfo             Mod manifest (game + shell action groups)
+config/config.xml               Setup-screen registration, civ pairing biases
+data/leaders.xml                Leader, trait, attribute + victory-bias traits
+data/leaders-gameeffects.xml    Ability modifiers + agenda (GameEffects format)
+text/en_us/LeaderText.xml       English localization
+assets/                         Art requirements (nothing ships yet)
 ```
 
-## Finishing the TODOs
+## What the leader does
 
-Every `TODO_` value must be replaced with a real string from the game's data.
-Ground truth lives in the game install:
+- **Azad Hind Fauj (ability):** +5 Combat Strength in friendly territory;
+  +5 Happiness in settlements you did not found; +2 Culture per conquered
+  settlement.
+- **Attributes:** Militaristic + Political (Diplomatic tree) starting points.
+- **Purna Swaraj (agenda):** relations worsen with players holding many
+  captured settlements, improve with those holding fewest.
+- **Pairings:** Maurya → Chola → Mughal highlighted as historical choices.
 
-- macOS (Steam): `~/Library/Application Support/Steam/steamapps/common/Sid Meier's Civilization VII/`
-  → look under `Base/modules/base-standard/data/` for `leaders*.xml`,
-  trait/modifier definitions, and agenda tables.
-- Search those files for an existing leader with a similar effect
-  (e.g. combat strength in friendly territory) and copy its
-  `ModifierType` / `SubjectRequirementSetId` / `BehaviorType` strings.
-- `config/config.xml` is easiest to fill by copying a working Workshop
-  leader mod's config and renaming the types.
+## Testing locally
 
-Alternative: generate the boilerplate with
-[civ7-modding-tools](https://github.com/izica/civ7-modding-tools)
-(`npm install civ7-modding-tools`) and diff against these files.
-
-## Installing for local testing
-
-Copy this folder to the Civ VII Mods directory and enable it under
+Copy (or symlink) this folder into the Mods directory and enable it under
 **Additional Content** in-game:
 
-- macOS: `~/Library/Application Support/Civilization VII/Mods/`
-- Windows: `Documents\My Games\Civilization VII\Mods\`
+```sh
+ln -s ~/dev/civ7-netaji-mod "$HOME/Library/Application Support/Civilization VII/Mods/civ7-netaji-mod"
+```
+
+Windows equivalent: `Documents\My Games\Civilization VII\Mods\`.
+
+Known gaps to expect on first load:
+1. **No leader icon/portrait** — setup screen will show a fallback icon, and
+   in-game the leader will use a placeholder 3D model (Civ VII has no custom
+   3D-leader pipeline; see assets/README.md for the 2D-portrait workaround).
+2. **Agenda WeightType** is the ideology-scoped captured-settlements compare —
+   verify it fires outside the Modern Age; swap if inert (options listed in
+   base-standard).
+3. Balance numbers are first guesses.
+
+## Ground truth for further work
+
+Official data files to copy schema from (local install):
+
+```
+~/Library/Application Support/Steam/steamapps/common/Sid Meier's Civilization VII/
+  CivilizationVII.app/Contents/Resources/Base/modules/base-standard/   # core schema
+  CivilizationVII.app/Contents/Resources/DLC/ashoka-himiko-alt/        # leader DLC template
+```
 
 ## Publishing
 
-Upload via the official Modding SDK (added with game update 1.2.2) to
-Steam Workshop. Keep the mod data-only per the
+Upload via the official Modding SDK (added with game update 1.2.2) to Steam
+Workshop. Keep the mod data-only per the
 [2K third-party mods FAQ](https://support.civilization.com/hc/en-us/articles/44037954953235-Civilization-VII-Third-Party-Party-Mods-FAQ).
