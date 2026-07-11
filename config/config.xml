@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shell-side (game setup screen) registration.
+     TODO: This file is intentionally minimal. The frontend config schema is the
+     least-documented part of Civ VII modding — the reliable way to fill this in
+     is to copy the config.xml of a working Workshop leader mod (e.g. anything
+     from the "All Historical Leaders" collection) or generate one with
+     civ7-modding-tools, then rename types to LEADER_SUBHAS_CHANDRA_BOSE.
+     Typical contents: leader entry for the setup screen, icon reference,
+     and leader-civilization pairing hints. -->
+<Database>
+</Database>

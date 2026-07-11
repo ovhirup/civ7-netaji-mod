@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="abhirup-netaji-subhas-chandra-bose" version="0.1.0" xmlns="ModInfo">
+	<Properties>
+		<Name>LOC_MOD_NETAJI_BOSE_NAME</Name>
+		<Description>LOC_MOD_NETAJI_BOSE_DESCRIPTION</Description>
+		<Authors>Abhirup Banerjee</Authors>
+		<Package>Mod</Package>
+		<AffectsSavedGames>1</AffectsSavedGames>
+	</Properties>
+	<Dependencies>
+		<Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME"/>
+	</Dependencies>
+	<ActionCriteria>
+		<Criteria id="always">
+			<AlwaysMet/>
+		</Criteria>
+	</ActionCriteria>
+	<ActionGroups>
+		<!-- Shell/front-end: makes the leader appear in the game-setup screen.
+		     TODO: config/config.xml must be filled in by mirroring a working
+		     Workshop leader mod or the civ7-modding-tools output (see README). -->
+		<ActionGroup id="shell-netaji-bose" scope="shell" criteria="always">
+			<Actions>
+				<UpdateDatabase>
+					<Item>config/config.xml</Item>
+				</UpdateDatabase>
+				<UpdateText>
+					<Item>text/en_us/leader-text.xml</Item>
+				</UpdateText>
+			</Actions>
+		</ActionGroup>
+		<!-- Gameplay database -->
+		<ActionGroup id="game-netaji-bose" scope="game" criteria="always">
+			<Actions>
+				<UpdateDatabase>
+					<Item>data/leaders.xml</Item>
+					<Item>data/traits.xml</Item>
+					<Item>data/agendas.xml</Item>
+				</UpdateDatabase>
+				<UpdateText>
+					<Item>text/en_us/leader-text.xml</Item>
+				</UpdateText>
+			</Actions>
+		</ActionGroup>
+	</ActionGroups>
+</Mod>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Core leader definition: registers the leader, attaches his trait,
+     and pairs him with the India-arc civilizations across the three ages. -->
+<Database>
+	<Types>
+		<Row Type="LEADER_SUBHAS_CHANDRA_BOSE" Kind="KIND_LEADER"/>
+	</Types>
+
+	<Leaders>
+		<!-- InheritFrom copies baseline setup (default agenda pool, AI scaffolding)
+		     from a base-game leader. TODO: verify the base leader type string
+		     against base-standard/data/leaders.xml in the game install. -->
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE"
+		     Name="LOC_LEADER_SUBHAS_CHANDRA_BOSE_NAME"
+		     InheritFrom="LEADER_DEFAULT"
+		     Description="LOC_LEADER_SUBHAS_CHANDRA_BOSE_DESCRIPTION"/>
+	</Leaders>
+
+	<LeaderTraits>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" TraitType="TRAIT_LEADER_AZAD_HIND_FAUJ"/>
+	</LeaderTraits>
+
+	<!-- Civilization pairing bonuses (the "historical choice" highlight in setup).
+	     The India arc: Maurya (Antiquity) -> Chola (Exploration) -> Mughal (Modern).
+	     TODO: verify exact CivilizationType strings in base-standard. -->
+	<LeaderCivilizations>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" CivilizationType="CIVILIZATION_MAURYA"/>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" CivilizationType="CIVILIZATION_CHOLA"/>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" CivilizationType="CIVILIZATION_MUGHAL"/>
+	</LeaderCivilizations>
+</Database>

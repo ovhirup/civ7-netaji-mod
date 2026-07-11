@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+	<LocalizedText>
+		<Row Tag="LOC_MOD_NETAJI_BOSE_NAME" Language="en_US">
+			<Text>Netaji Subhas Chandra Bose — Leader</Text>
+		</Row>
+		<Row Tag="LOC_MOD_NETAJI_BOSE_DESCRIPTION" Language="en_US">
+			<Text>Adds Netaji Subhas Chandra Bose, hero of the Indian independence movement, as a playable leader. Founder of the Azad Hind government and supreme commander of the Indian National Army.</Text>
+		</Row>
+		<Row Tag="LOC_LEADER_SUBHAS_CHANDRA_BOSE_NAME" Language="en_US">
+			<Text>Subhas Chandra Bose</Text>
+		</Row>
+		<Row Tag="LOC_LEADER_SUBHAS_CHANDRA_BOSE_DESCRIPTION" Language="en_US">
+			<Text>Netaji, Supreme Commander of the Azad Hind Fauj. A relentless organizer of the struggle for complete independence — "Give me blood, and I shall give you freedom."</Text>
+		</Row>
+		<Row Tag="LOC_TRAIT_LEADER_AZAD_HIND_FAUJ_NAME" Language="en_US">
+			<Text>Azad Hind Fauj</Text>
+		</Row>
+		<Row Tag="LOC_TRAIT_LEADER_AZAD_HIND_FAUJ_DESCRIPTION" Language="en_US">
+			<Text>+5 Combat Strength for units fighting in friendly territory. Captured settlements suffer no unhappiness penalty. Gain a burst of Culture when capturing a settlement founded by another player.</Text>
+		</Row>
+		<Row Tag="LOC_AGENDA_PURNA_SWARAJ_NAME" Language="en_US">
+			<Text>Purna Swaraj</Text>
+		</Row>
+		<Row Tag="LOC_AGENDA_PURNA_SWARAJ_DESCRIPTION" Language="en_US">
+			<Text>Respects civilizations that rule only the settlements they founded. Despises those who occupy the homelands of others.</Text>
+		</Row>
+	</LocalizedText>
+</Database>
