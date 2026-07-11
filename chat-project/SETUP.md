@@ -63,3 +63,20 @@ fastest; DESIGN.md occasionally; the `chat-project/*.md` briefs rarely change).
 
 Chat produces `LocalizedText` rows / briefs / research → paste back to Claude
 Code to wire into the mod → sync + re-upload after the milestone.
+
+## Model use (advisor / executor split)
+
+A claude.ai Project runs ONE model per chat (the composer dropdown) — there is
+no automatic "plan on Fable, execute on Sonnet" routing, and it can't be set in
+the meta prompt (a running model can't downgrade itself). So tiering here is
+manual: switch the dropdown per task.
+- **Fable / Opus** — judgment: design calls, historical vetting, deciding
+  canon, final Civilopedia polish, art-direction calls.
+- **Sonnet** — first drafts of dialogue sets, descriptions, localization.
+- **Haiku** — mechanical reformatting, bulk strings once the pattern is set.
+
+The genuine, automated advisor→executor→verifier tiering lives on the **Claude
+Code side** (mixed-model workflows: cheap recon → Sonnet execution → Fable
+verification), which is where the token-heavy work actually happens. The Chat
+project is low-volume and mostly wants the strong model, so don't over-optimize
+it — reach for a cheaper tier only on genuinely bulk drafting.
