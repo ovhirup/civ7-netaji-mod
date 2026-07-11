@@ -30,7 +30,8 @@ author needing the game's schema.
   - `LOC_LOADING_LEADER_INTRO_TEXT_BOSE` — loading-screen intro
   - `LOC_MAIN_CHAR_SELECT_LEADER_SUBHAS_CHANDRA_BOSE_ANY` — selection quote
 - Inline icon markup allowed in gameplay text: `[icon:YIELD_CULTURE]`,
-  `[icon:YIELD_HAPPINESS]`, `[icon:COMBAT_MELEE]`. Use only in ability/effect
+  `[icon:YIELD_HAPPINESS]`, `[icon:NAR_REW_COMBAT]` (Combat Strength — note
+  `[icon:COMBAT_MELEE]` does NOT exist in the game). Use only in ability/effect
   descriptions, never in dialogue or pedia prose.
 - Delivery format for every string:
   `<Row Tag="LOC_..." Language="en_US"><Text>...</Text></Row>`

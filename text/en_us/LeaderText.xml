@@ -46,9 +46,8 @@
 
 		<!-- Memento A: Springing Tiger. Combat icon uses [icon:NAR_REW_COMBAT],
 		     the verified registered fonticon for Combat Strength (see
-		     base-standard/data/icons/text-icons.xml) — NOT [icon:NAR_REW_COMBAT],
-		     which does not appear anywhere in the official game files (see
-		     final report / reviewer notes). -->
+		     base-standard/data/icons/text-icons.xml) — NOT [icon:COMBAT_MELEE],
+		     which does not appear anywhere in the official game files. -->
 		<Row Tag="LOC_MEMENTO_BOSE_SPRINGING_TIGER_NAME" Language="en_US">
 			<Text>Springing Tiger</Text>
 		</Row>
