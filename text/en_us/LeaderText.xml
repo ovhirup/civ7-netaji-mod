@@ -8,7 +8,7 @@
 			<Text>Adds Netaji Subhas Chandra Bose, hero of the Indian independence movement, as a playable leader.</Text>
 		</Row>
 		<Row Tag="LOC_LEADER_SUBHAS_CHANDRA_BOSE_NAME" Language="en_US">
-			<Text>Subhas Chandra Bose</Text>
+			<Text>Netaji Subhas Chandra Bose</Text>
 		</Row>
 		<Row Tag="LOC_LEADER_SUBHAS_CHANDRA_BOSE_DESCRIPTION" Language="en_US">
 			<Text>Netaji, Supreme Commander of the Azad Hind Fauj and relentless organizer of the struggle for complete independence.</Text>
