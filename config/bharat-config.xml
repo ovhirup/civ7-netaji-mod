@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat shell (game-setup screen) registration. Loaded scope="shell" from
+     netaji-bose.modinfo.
+
+     STAGE 1 (loadable skeleton, per DESIGN.md "Bharat" milestone). Grounded
+     verbatim against Base/modules/age-modern/config/config.xml (Mughal's
+     Civilizations / CivilizationItems / CivilizationTags / CivilizationUnlocks
+     rows) and the frontend SQL schema
+     (Base/Assets/schema/frontend/schema-frontend-50-setup-data.sql).
+
+     CivilizationIcon="civ_sym_bharat.png": no custom art ships yet (see
+     assets/README.md) — falls back to a placeholder, same as the leader
+     portrait does.
+
+     NOTE: the Bose->Bharat LeaderCivilizationBias row lives in config/config.xml
+     (this mod's existing leader shell file), not here — see the comment there
+     for why (avoids a duplicate/conflicting row across two mod files; the
+     table has no PRIMARY KEY so SQLite would not catch the duplication for us). -->
+<Database>
+	<Civilizations>
+		<Row Domain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" CivilizationName="LOC_CIVILIZATION_BHARAT_NAME" CivilizationFullName="LOC_CIVILIZATION_BHARAT_FULLNAME" CivilizationDescription="LOC_CIVILIZATION_BHARAT_DESCRIPTION" CivilizationIcon="civ_sym_bharat.png" CivilizationIntroText="LOC_LOADING_CIV_INTRO_TEXT_BHARAT"/>
+	</Civilizations>
+	<CivilizationItems>
+		<!-- Ability trait registered per age-domain, mirroring Mughal exactly.
+		     CivilizationItems' PRIMARY KEY is (CivilizationDomain,
+		     CivilizationType, Type), so these 3 rows are valid AND required —
+		     confirmed against Mughal (age-modern/config/config.xml lines
+		     29-31), which is Modern-only (ApexAge=AGE_MODERN) exactly like
+		     Bharat yet still carries Antiquity/Exploration domain rows for
+		     this same trait. AQ/EX description text is a verbatim copy of the
+		     Modern description (Mughal's own AQ/EX rows are byte-identical to
+		     its Modern row too — there is no separate scaled-down antiquity/
+		     exploration ability text, since the civ isn't playable there). -->
+		<Row CivilizationDomain="AntiquityAgeCivilizations" AgeType="AGE_ANTIQUITY" CivilizationType="CIVILIZATION_BHARAT" Type="TRAIT_BHARAT_ABILITY" Kind="KIND_TRAIT" Name="LOC_TRAIT_BHARAT_ABILITY_NAME" Description="LOC_TRAIT_BHARAT_ABILITY_AQ_DESCRIPTION"/>
+		<Row CivilizationDomain="ExplorationAgeCivilizations" AgeType="AGE_EXPLORATION" CivilizationType="CIVILIZATION_BHARAT" Type="TRAIT_BHARAT_ABILITY" Kind="KIND_TRAIT" Name="LOC_TRAIT_BHARAT_ABILITY_NAME" Description="LOC_TRAIT_BHARAT_ABILITY_EX_DESCRIPTION"/>
+		<Row CivilizationDomain="ModernAgeCivilizations" AgeType="AGE_MODERN" CivilizationType="CIVILIZATION_BHARAT" Type="TRAIT_BHARAT_ABILITY" Kind="KIND_TRAIT" Name="LOC_TRAIT_BHARAT_ABILITY_NAME" Description="LOC_TRAIT_BHARAT_ABILITY_DESCRIPTION"/>
+	</CivilizationItems>
+	<CivilizationTags>
+		<!-- Industry (Economic) + composite-unity/military identity
+		     (Militaristic), per DESIGN.md. -->
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" TagType="TAG_APEX_AGE_MODERN"/>
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" TagType="TAG_TRAIT_ECONOMIC"/>
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" TagType="TAG_TRAIT_MILITARISTIC"/>
+	</CivilizationTags>
+	<CivilizationUnlocks>
+		<!-- Mirrors Mughal's Persia/Chola->Mughal rows exactly (Name and
+		     Description both point at the unlocked civ's own name — the
+		     unlock-reason tooltip pattern lives in the deeper backend
+		     unlocks-shared.xml REQSET/UnlockType mechanism, which Mughal/Nepal
+		     both also carry but which is out of scope for this loadable
+		     skeleton; see reviewer notes). -->
+		<Row CivilizationDomain="AntiquityAgeCivilizations" CivilizationType="CIVILIZATION_MAURYA" AgeDomain="StandardAges" AgeType="AGE_MODERN" Type="CIVILIZATION_BHARAT" Kind="KIND_CIVILIZATION" Name="LOC_CIVILIZATION_BHARAT_NAME" Description="LOC_CIVILIZATION_BHARAT_NAME" Icon="CIVILIZATION_BHARAT"/>
+		<Row CivilizationDomain="ExplorationAgeCivilizations" CivilizationType="CIVILIZATION_CHOLA" AgeDomain="StandardAges" AgeType="AGE_MODERN" Type="CIVILIZATION_BHARAT" Kind="KIND_CIVILIZATION" Name="LOC_CIVILIZATION_BHARAT_NAME" Description="LOC_CIVILIZATION_BHARAT_NAME" Icon="CIVILIZATION_BHARAT"/>
+	</CivilizationUnlocks>
+</Database>

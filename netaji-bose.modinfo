@@ -28,9 +28,11 @@
 					<Item>data/leaders-gameeffects.xml</Item>
 					<Item>data/mementos.xml</Item>
 					<Item>data/mementos-gameeffects.xml</Item>
+					<Item>data/bharat-civilization.xml</Item>
 				</UpdateDatabase>
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>
+					<Item>text/en_us/BharatText.xml</Item>
 				</UpdateText>
 				<!-- In-game (age-transition) memento editor also gates equipping
 				     on isRewardUnlocked, so load the unlock patch in game scope too. -->
@@ -44,9 +46,11 @@
 			<Actions>
 				<UpdateDatabase>
 					<Item>config/config.xml</Item>
+					<Item>config/bharat-config.xml</Item>
 				</UpdateDatabase>
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>
+					<Item>text/en_us/BharatText.xml</Item>
 				</UpdateText>
 				<!-- Create-game memento picker lives in the shell; this is the
 				     primary place the unlock patch must run. -->

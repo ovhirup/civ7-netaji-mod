@@ -18,11 +18,18 @@
 	<LeaderQuotes>
 		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Quote="LOC_MAIN_CHAR_SELECT_LEADER_SUBHAS_CHANDRA_BOSE_ANY"/>
 	</LeaderQuotes>
-	<!-- Setup-screen pairing highlights: the India arc across the three ages -->
+	<!-- Setup-screen pairing highlights: the India arc across the three ages.
+	     Modern pairing repointed Maurya -> Chola -> Bharat (DESIGN.md "Bharat"
+	     milestone): Bharat is the free, self-reliant nation Bose fought to
+	     create, so it takes the Historical-choice slot; Mughal (an imperial
+	     dynasty, not what Bose fought for) is demoted to a lower-bias
+	     Geographic choice rather than dropped outright, since it's still a
+	     legitimate Modern-age Indian-subcontinent civ. -->
 	<LeaderCivilizationBias>
 		<Row CivilizationDomain="AntiquityAgeCivilizations" CivilizationType="CIVILIZATION_MAURYA" LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Bias="4" ReasonType="LOC_UNLOCK_PLAY_AS_BOSE_MAURYA_TOOLTIP" ChoiceType="LOC_CREATE_GAME_HISTORICAL_CHOICE"/>
 		<Row CivilizationDomain="ExplorationAgeCivilizations" CivilizationType="CIVILIZATION_CHOLA" LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Bias="4" ReasonType="LOC_UNLOCK_PLAY_AS_BOSE_CHOLA_TOOLTIP" ChoiceType="LOC_CREATE_GAME_HISTORICAL_CHOICE"/>
-		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_MUGHAL" LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Bias="4" ReasonType="LOC_UNLOCK_PLAY_AS_BOSE_MUGHAL_TOOLTIP" ChoiceType="LOC_CREATE_GAME_HISTORICAL_CHOICE"/>
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Bias="4" ReasonType="LOC_UNLOCK_PLAY_AS_BOSE_BHARAT_TOOLTIP" ChoiceType="LOC_CREATE_GAME_HISTORICAL_CHOICE"/>
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_MUGHAL" LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" Bias="2" ReasonType="LOC_UNLOCK_PLAY_AS_BOSE_MUGHAL_TOOLTIP" ChoiceType="LOC_CREATE_GAME_GEOGRAPHIC_CHOICE"/>
 	</LeaderCivilizationBias>
 	<!-- Mementos Data. Row placement/columns copied verbatim from
 	     ashoka-himiko-alt DLC's config/config.xml <Mementos> block.

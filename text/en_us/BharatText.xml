@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Bharat civilization strings. STAGED, not yet wired: this file is NOT in
-     netaji-bose.modinfo yet because the Bharat civ (config rows, ability,
-     units) doesn't exist. It loads once the Bharat build (DESIGN.md milestone)
-     adds it to an ActionGroup. Text drafted in the Claude Chat project
-     (Fable 5), deliverable 1.
-     TODO on build: check FULLNAME article usage against the Mughal FULLNAME
-     row in age-modern (the Chat draft flagged this). -->
+<!-- Bharat civilization strings. WIRED as of the Stage 1 loadable-skeleton
+     build: loaded via UpdateText in both the game and shell ActionGroups in
+     netaji-bose.modinfo, alongside data/bharat-civilization.xml (gameplay)
+     and config/bharat-config.xml (shell). Text drafted in the Claude Chat
+     project (Fable 5), deliverable 1.
+     FULLNAME article check (was a TODO): confirmed against
+     Base/modules/base-standard/text/en_us/CivilizationText.xml —
+     LOC_CIVILIZATION_MUGHAL_FULLNAME = "Mughal Empire" (no leading article).
+     "Republic of Bharat" follows the same no-article convention. -->
 <Database>
 	<LocalizedText>
 		<Row Tag="LOC_CIVILIZATION_BHARAT_NAME" Language="en_US">
@@ -33,6 +35,68 @@
 		</Row>
 		<Row Tag="LOC_TRAIT_BHARAT_ABILITY_DESCRIPTION" Language="en_US">
 			<Text>+{X}%[icon:YIELD_PRODUCTION] Production in settlements with a Production building. {Y}% less War Weariness in your settlements. +{Z}[icon:YIELD_HAPPINESS] Happiness in all settlements for each foreign civilization that founded a settlement you control.</Text>
+		</Row>
+
+		<!-- CivilizationItems in config/bharat-config.xml registers this
+		     ability trait under all three age domains (Antiquity/Exploration/
+		     Modern), mirroring Mughal exactly even though Bharat only plays in
+		     Modern. Mughal's own AQ/EX description rows are byte-identical to
+		     its Modern description (no separate scaled-down text), so these
+		     are verbatim copies of LOC_TRAIT_BHARAT_ABILITY_DESCRIPTION above. -->
+		<Row Tag="LOC_TRAIT_BHARAT_ABILITY_AQ_DESCRIPTION" Language="en_US">
+			<Text>+{X}%[icon:YIELD_PRODUCTION] Production in settlements with a Production building. {Y}% less War Weariness in your settlements. +{Z}[icon:YIELD_HAPPINESS] Happiness in all settlements for each foreign civilization that founded a settlement you control.</Text>
+		</Row>
+		<Row Tag="LOC_TRAIT_BHARAT_ABILITY_EX_DESCRIPTION" Language="en_US">
+			<Text>+{X}%[icon:YIELD_PRODUCTION] Production in settlements with a Production building. {Y}% less War Weariness in your settlements. +{Z}[icon:YIELD_HAPPINESS] Happiness in all settlements for each foreign civilization that founded a settlement you control.</Text>
+		</Row>
+
+		<!-- City names (data/bharat-civilization.xml CityNames). Delhi is the
+		     capital (BHARAT1). 15 authentic Indian cities, per DESIGN.md/task
+		     brief. -->
+		<Row Tag="LOC_CITY_NAME_BHARAT1" Language="en_US">
+			<Text>Delhi</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT2" Language="en_US">
+			<Text>Kolkata</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT3" Language="en_US">
+			<Text>Mumbai</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT4" Language="en_US">
+			<Text>Chennai</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT5" Language="en_US">
+			<Text>Bengaluru</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT6" Language="en_US">
+			<Text>Hyderabad</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT7" Language="en_US">
+			<Text>Lucknow</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT8" Language="en_US">
+			<Text>Ahmedabad</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT9" Language="en_US">
+			<Text>Pune</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT10" Language="en_US">
+			<Text>Kanpur</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT11" Language="en_US">
+			<Text>Jaipur</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT12" Language="en_US">
+			<Text>Patna</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT13" Language="en_US">
+			<Text>Nagpur</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT14" Language="en_US">
+			<Text>Bhopal</Text>
+		</Row>
+		<Row Tag="LOC_CITY_NAME_BHARAT15" Language="en_US">
+			<Text>Cuttack</Text>
 		</Row>
 
 		<!-- Unique unit "Azad Hind Fauj" (deliverable 3), replaces Infantry.

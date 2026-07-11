@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat gameplay civilization data (Modern-age add-on civ). Loaded
+     scope="game" from netaji-bose.modinfo.
+
+     STAGE 1 (loadable skeleton, per DESIGN.md "Bharat" milestone): registers
+     the civ, its identity trait, its ability trait shell (no GameEffects
+     modifiers yet), city names, and AI civ priority. NO unique units/
+     buildings and NO ability effects yet — those are later stages.
+
+     Grounded verbatim against:
+       - Base/modules/age-modern/data/civilizations-shared.xml (Mughal) —
+         closest analog: another Modern-only, India-themed FULL_CIV with
+         ApexAge=AGE_MODERN. Civilizations row, Traits, CivilizationTraits,
+         CityNames, LeaderCivPriorities columns copied from Mughal's rows.
+       - Base/modules/base-standard/data/civilizations.xml — confirms every
+         civ (incl. DLC add-ons like Nepal) must self-register its own
+         Types/Traits rows for TRAIT_<CIV>; base-standard only pre-registers
+         base-roster civs, not DLC/mod ones. Bharat must do the same here.
+       - DLC/nepal/modules/data/civilizations-shared.xml — verbatim add-on-civ
+         analog (Nepal is a 3rd-age-domain Modern-only DLC civ exactly like
+         Bharat will be), incl. the defensive <InsertOrIgnore KIND="KIND_TRAIT"/>.
+       - SQL: Base/Assets/schema/gameplay/01_GameplaySchema.sql — Civilizations
+         (6 NOT NULL cols: CivilizationType, Adjective, CapitalName, FullName,
+         Name, StartingCivilizationLevelType — UniqueCultureProgressionTree is
+         nullable, omitted per the civic tree being a later stage), Traits,
+         CivilizationTraits, CityNames, LeaderCivPriorities, Types, Kinds.
+
+     TRAIT_MODERN_CIV note: this is a base-game age-modern trait (see
+     age-modern/data/civilizations-shared.xml line 4 / civilizations-modern.xml
+     TraitModifiers) already wired to ~40 GameEffects modifiers (default
+     yields, advanced-start bonuses, embarkation, etc.) that apply to EVERY
+     Modern civ. Adding the CivilizationTraits row is sufficient — no
+     additional dependency is needed from this mod; age-modern is already a
+     base-game module active whenever a Modern age is in play. -->
+<Database>
+	<Kinds>
+		<InsertOrIgnore KIND="KIND_TRAIT"/>
+	</Kinds>
+	<Types>
+		<Row Type="CIVILIZATION_BHARAT" Kind="KIND_CIVILIZATION"/>
+		<Row Type="TRAIT_BHARAT" Kind="KIND_TRAIT"/>
+		<Row Type="TRAIT_BHARAT_ABILITY" Kind="KIND_TRAIT"/>
+	</Types>
+	<Traits>
+		<!-- Civ identity trait (internal-only, no GameEffects yet). -->
+		<Row TraitType="TRAIT_BHARAT" InternalOnly="true"/>
+		<!-- Civ ability trait shell: "Mother Industries" (deliverable 2,
+		     DESIGN.md). Name/Description LOC already drafted in BharatText.xml.
+		     No TraitModifiers rows yet — no ability effects in Stage 1. -->
+		<Row TraitType="TRAIT_BHARAT_ABILITY" Name="LOC_TRAIT_BHARAT_ABILITY_NAME" Description="LOC_TRAIT_BHARAT_ABILITY_DESCRIPTION" InternalOnly="true"/>
+	</Traits>
+	<Civilizations>
+		<Row CivilizationType="CIVILIZATION_BHARAT" Name="LOC_CIVILIZATION_BHARAT_NAME" FullName="LOC_CIVILIZATION_BHARAT_FULLNAME" Description="LOC_CIVILIZATION_BHARAT_DESCRIPTION" Adjective="LOC_CIVILIZATION_BHARAT_ADJECTIVE" StartingCivilizationLevelType="CIVILIZATION_LEVEL_FULL_CIV" ApexAge="AGE_MODERN" CapitalName="LOC_CITY_NAME_BHARAT1" RandomCityNameDepth="10"/>
+	</Civilizations>
+	<CivilizationTraits>
+		<Row CivilizationType="CIVILIZATION_BHARAT" TraitType="TRAIT_MODERN_CIV"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" TraitType="TRAIT_BHARAT"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" TraitType="TRAIT_BHARAT_ABILITY"/>
+		<!-- Attribute trees matching the civ's identity tags (industry +
+		     military, per DESIGN.md "industry + composite unity"): ECONOMIC
+		     mirrors Mughal's own rows exactly; MILITARISTIC mirrors Meiji's/
+		     Prussia's rows (same 3-row shape: base + TOT_AQ + TOT_EX, no
+		     _WIDE variant — that's only on EXPANSIONIST). -->
+		<Row CivilizationType="CIVILIZATION_BHARAT" TraitType="TRAIT_ATTRIBUTE_ECONOMIC" />
+		<Row CivilizationType="CIVILIZATION_BHARAT" TraitType="TRAIT_ATTRIBUTE_ECONOMIC_TOT_AQ" />
+		<Row CivilizationType="CIVILIZATION_BHARAT" TraitType="TRAIT_ATTRIBUTE_ECONOMIC_TOT_EX" />
+		<Row CivilizationType="CIVILIZATION_BHARAT" TraitType="TRAIT_ATTRIBUTE_MILITARISTIC" />
+		<Row CivilizationType="CIVILIZATION_BHARAT" TraitType="TRAIT_ATTRIBUTE_MILITARISTIC_TOT_AQ" />
+		<Row CivilizationType="CIVILIZATION_BHARAT" TraitType="TRAIT_ATTRIBUTE_MILITARISTIC_TOT_EX" />
+	</CivilizationTraits>
+	<CityNames>
+		<!-- 15 authentic Indian cities; Delhi is CapitalName (BHARAT1) above. -->
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT1"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT2"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT3"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT4"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT5"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT6"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT7"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT8"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT9"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT10"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT11"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT12"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT13"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT14"/>
+		<Row CivilizationType="CIVILIZATION_BHARAT" CityName="LOC_CITY_NAME_BHARAT15"/>
+	</CityNames>
+	<LeaderCivPriorities>
+		<!-- This is the table used for AI; the UI uses LeaderCivilizationBias
+		     in config.xml. Priority=4 matches the highest AI-priority tier
+		     used for a leader's own historical/namesake civ elsewhere in the
+		     base game (e.g. Ben Franklin->America, Catherine->Russia). -->
+		<Row Leader="LEADER_SUBHAS_CHANDRA_BOSE" Civilization="CIVILIZATION_BHARAT" Priority="4"/>
+	</LeaderCivPriorities>
+</Database>
