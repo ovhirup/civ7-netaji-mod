@@ -45,6 +45,22 @@
 		     Icon is an art placeholder (see assets/README.md); falls back
 		     like the leader portrait and civ symbol do. -->
 		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" Type="UNIT_AZAD_HIND_FAUJ" Kind="KIND_UNIT" Name="LOC_UNIT_AZAD_HIND_FAUJ_NAME" Description="LOC_UNIT_AZAD_HIND_FAUJ_DESCRIPTION" Icon="unitflag_azad_hind_fauj.png"/>
+		<!-- Unique quarter: National Planning Commission (Stage 3), = Yojana
+		     Bhavan + Vaidyashala. Kind values mirror Mughal/GB's own
+		     CivilizationItems rows for their unique quarter/buildings exactly
+		     (Base/modules/age-modern/config/config.xml,
+		     DLC/great-britain/modules/config/config.xml): KIND_QUARTER for the
+		     quarter row, KIND_BUILDING (NOT KIND_CONSTRUCTIBLE, despite the
+		     Types row itself using KIND_CONSTRUCTIBLE in data/bharat-quarters.xml
+		     — CivilizationItems.Kind is a display/setup-screen classification,
+		     a separate value space from the gameplay Types table) for the
+		     building rows. No Icon attribute — no custom art ships yet (see
+		     assets/README.md); omitted here rather than pointing at a
+		     placeholder filename, matching the ability-trait rows above rather
+		     than the unit row's placeholder-filename convention. -->
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" Type="QUARTER_NATIONAL_PLANNING_COMMISSION" Kind="KIND_QUARTER" Name="LOC_QUARTER_NATIONAL_PLANNING_COMMISSION_NAME" Description="LOC_QUARTER_NATIONAL_PLANNING_COMMISSION_DESCRIPTION"/>
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" Type="BUILDING_YOJANA_BHAVAN" Kind="KIND_BUILDING" Name="LOC_BUILDING_YOJANA_BHAVAN_NAME" Description="LOC_BUILDING_YOJANA_BHAVAN_DESCRIPTION"/>
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" Type="BUILDING_VAIDYASHALA" Kind="KIND_BUILDING" Name="LOC_BUILDING_VAIDYASHALA_NAME" Description="LOC_BUILDING_VAIDYASHALA_DESCRIPTION"/>
 	</CivilizationItems>
 	<CivilizationTags>
 		<!-- Industry (Economic) + composite-unity/military identity

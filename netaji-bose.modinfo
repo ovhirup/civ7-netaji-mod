@@ -50,14 +50,19 @@
 				</UpdateText>
 			</Actions>
 		</ActionGroup>
-		<!-- Azad Hind Fauj unique unit (Stage 2) — Modern-age only, mirrors
-		     Nepal's units.xml gating. -->
+		<!-- Azad Hind Fauj unique unit (Stage 2) + National Planning Commission
+		     unique quarter (Stage 3) — both Modern-age only, mirrors Nepal's
+		     units.xml gating. Buildings are Modern-age content, so they load
+		     under the same modern-age criteria as the units, not the
+		     always-on game-netaji-bose group. -->
 		<ActionGroup id="game-bharat-units-modern" scope="game" criteria="modern-age-current">
 			<Actions>
 				<UpdateDatabase>
 					<Item>data/bharat-units.xml</Item>
 					<Item>data/bharat-units-gameeffects.xml</Item>
 					<Item>data/bharat-progression-tech.xml</Item>
+					<Item>data/bharat-quarters.xml</Item>
+					<Item>data/bharat-quarters-gameeffects.xml</Item>
 				</UpdateDatabase>
 			</Actions>
 		</ActionGroup>

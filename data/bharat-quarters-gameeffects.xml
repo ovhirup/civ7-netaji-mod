@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- National Planning Commission quarter bonus: +1 Production for every 3
+     Population in the quarter's own settlement.
+
+     Wiring is mirrored EXACTLY from Great Britain's Financial Centre quarter
+     bonus (DLC/great-britain/modules/data/constructibles-gameeffects.xml,
+     MOD_GREAT_BRITAIN_FINANCIAL_CENTRE_GOLD/_SCIENCE):
+       - collection="COLLECTION_ALL_CITIES" (game-wide collection, matching
+         GB's own comment "Unique Quarter modifiers are game-wide" on the
+         GameModifiers row in data/bharat-quarters.xml)
+       - SubjectRequirements: REQUIREMENT_CITY_HAS_UNIQUE_QUARTER with
+         Argument UniqueQuarterType=<ours>. THIS requirement is what actually
+         scopes the effect to the quarter's own city and no other — a unique
+         quarter can only exist in a Bharat city that has built both
+         constituent buildings in the same district, so filtering
+         COLLECTION_ALL_CITIES down to "has this UniqueQuarterType" is
+         equivalent to (and GB's own chosen method for) "this city only," with
+         no separate per-player/trait gate needed.
+       - Registered exactly like GB: a GameModifiers row (constructibles.xml)
+         + a UniqueQuarterModifiers row linking the ModifierId to the
+         UniqueQuarterType (both in data/bharat-quarters.xml) + the Modifier
+         definition here.
+
+     Effect swapped from GB's EFFECT_CITY_ADJUST_YIELD_PER_CONNECTED_CITY (not
+     applicable — we want a population scaler, not a trade-route scaler) to
+     EFFECT_CITY_ADJUST_YIELD_PER_POPULATION, per the per-population pattern
+     in Base/modules/age-exploration/data/traditions-tot-gameeffects.xml
+     (QUIPU_MOD_URBAN_GOLD/QUIPU_MOD_RURAL_PRODUCTION) and
+     DLC/qajar/modules/data/traditions-gameeffects.xml
+     (SOLEYMANIYEH_PALACE_YIELD_CAPITAL_POP). Argument name="All"=true (not
+     the Quipu Urban/Rural split) is used per the Soleymaniyeh Palace example,
+     since our bonus is meant to scale off total city population, not just
+     the urban or rural portion of it. -->
+<GameEffects xmlns="GameEffects">
+	<Modifier id="BOSE_MOD_NATIONAL_PLANNING_COMMISSION_PRODUCTION" collection="COLLECTION_ALL_CITIES" effect="EFFECT_CITY_ADJUST_YIELD_PER_POPULATION">
+		<SubjectRequirements>
+			<Requirement type="REQUIREMENT_CITY_HAS_UNIQUE_QUARTER">
+				<Argument name="UniqueQuarterType">QUARTER_NATIONAL_PLANNING_COMMISSION</Argument>
+			</Requirement>
+		</SubjectRequirements>
+		<Argument name="YieldType">YIELD_PRODUCTION</Argument>
+		<Argument name="Amount">1</Argument>
+		<Argument name="Divisor">3</Argument>
+		<Argument name="All">true</Argument>
+	</Modifier>
+</GameEffects>

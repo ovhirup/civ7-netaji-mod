@@ -152,7 +152,10 @@
 			<Text>National Planning Commission</Text>
 		</Row>
 		<Row Tag="LOC_QUARTER_NATIONAL_PLANNING_COMMISSION_DESCRIPTION" Language="en_US">
-			<Text>Unique Bharatiya quarter, formed when the Yojana Bhavan and the Vaidyashala share a district. +{X}[icon:YIELD_PRODUCTION] Production for every {Y} Population in this settlement.</Text>
+			<Text>Unique Bharatiya quarter, formed when the Yojana Bhavan and the Vaidyashala share a district. +1[icon:YIELD_PRODUCTION] Production for every 3 Population in this settlement.</Text>
+		</Row>
+		<Row Tag="LOC_QUARTER_NATIONAL_PLANNING_COMMISSION_TOOLTIP" Language="en_US">
+			<Text>+1[icon:YIELD_PRODUCTION] Production for every 3 Population in this settlement.</Text>
 		</Row>
 		<Row Tag="LOC_PEDIA_QUARTER_NATIONAL_PLANNING_COMMISSION_HISTORY_PARA_1" Language="en_US">
 			<Text>At Haripura in 1938, Subhas Chandra Bose declared that the first task of a free national government would be a commission to plan the reconstruction of India — its "mother industries" foremost. That same year, as Congress president, he convened the National Planning Committee: a nation drafting its economic future nine years before it was free. When freedom came, the idea became the Planning Commission of the new republic, and its twin concerns endured — the strength of the nation's industry and the health of its people, the body politic and the body itself, each built by no hand but Bharat's own. Jai Hind!</Text>
@@ -162,7 +165,10 @@
 			<Text>Yojana Bhavan</Text>
 		</Row>
 		<Row Tag="LOC_BUILDING_YOJANA_BHAVAN_DESCRIPTION" Language="en_US">
-			<Text>+{X}[icon:YIELD_PRODUCTION] Production. +{Y}%[icon:YIELD_PRODUCTION] Production toward constructing buildings in this settlement.</Text>
+			<Text>+9[icon:YIELD_PRODUCTION] Production.</Text>
+		</Row>
+		<Row Tag="LOC_BUILDING_YOJANA_BHAVAN_TOOLTIP" Language="en_US">
+			<Text>+9[icon:YIELD_PRODUCTION] Production.</Text>
 		</Row>
 		<Row Tag="LOC_PEDIA_BUILDING_YOJANA_BHAVAN_HISTORY_PARA_1" Language="en_US">
 			<Text>"Yojana" — the plan. From the blueprints of the 1938 committee to the Five-Year Plans drafted at Yojana Bhavan in Delhi, free India was built by design: steel, dams, and mother industries raised by the nation's own hand.</Text>
@@ -172,7 +178,10 @@
 			<Text>Vaidyashala</Text>
 		</Row>
 		<Row Tag="LOC_BUILDING_VAIDYASHALA_DESCRIPTION" Language="en_US">
-			<Text>+{X}[icon:YIELD_FOOD] Food. +{Y}[icon:YIELD_HAPPINESS] Happiness in this settlement.</Text>
+			<Text>+6[icon:YIELD_FOOD] Food. +3[icon:YIELD_HAPPINESS] Happiness in this settlement.</Text>
+		</Row>
+		<Row Tag="LOC_BUILDING_VAIDYASHALA_TOOLTIP" Language="en_US">
+			<Text>+6[icon:YIELD_FOOD] Food. +3[icon:YIELD_HAPPINESS] Happiness in this settlement.</Text>
 		</Row>
 		<Row Tag="LOC_PEDIA_BUILDING_VAIDYASHALA_HISTORY_PARA_1" Language="en_US">
 			<Text>The hall of the vaidya, the physician — heir to Sushruta's surgery and to the Ayurvedic revival that made indigenous medicine itself an act of self-reliance: a free people healing and growing by its own ancient learning.</Text>

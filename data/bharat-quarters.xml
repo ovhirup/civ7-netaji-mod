@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat unique quarter "National Planning Commission" (STAGE 3, deliverable
+     4): two unique buildings — Yojana Bhavan (planned industry) + Vaidyashala
+     (planned public health) — mirrored row-for-row from Great Britain's
+     Financial Centre (BUILDING_ROYAL_EXCHANGE + BUILDING_MANUFACTORY,
+     QUARTER_FINANCIAL_CENTRE) in
+     DLC/great-britain/modules/data/constructibles.xml, with these deliberate
+     deviations:
+
+       1. Yields: Yojana Bhavan is the Manufactory analog (+9 Production,
+          flat — no adjacency bonuses, no "% Production toward buildings"
+          clause; simplified per DESIGN.md Stage 3 scope). Vaidyashala splits
+          across two yields (+6 Food, +3 Happiness) instead of Royal
+          Exchange's single +9 Gold, to hit the food/health theme while
+          summing to the same +9 total magnitude GB uses per building.
+       2. Constructible_Maintenances mirrors GB's shape verbatim on BOTH
+          buildings (YIELD_GOLD Amount=0, YIELD_HAPPINESS Amount=4) — i.e.
+          Vaidyashala nets only +... Happiness after its own upkeep (see
+          reviewer notes; this is what "mirror GB's maintenance shape exactly"
+          produces, not a balance choice made here).
+       3. Not mirrored (outside the task's explicit scope, so omitted rather
+          than guessed): TypeTags (GOLD/PRODUCTION/UNIQUE/AGELESS),
+          Constructible_Adjacencies/Adjacency_YieldChanges,
+          Constructible_Plunders, Constructible_BuildingCostProgressions,
+          Constructible_Advisories, MetaprogressionModifiers. GB populates all
+          of these for Royal Exchange/Manufactory; none were called for in the
+          Stage 3 brief. CostProgressionParam1/BuildingCostProgressions
+          therefore default to 0%, same numeric outcome as GB's own
+          Manufactory row (Royal Exchange's non-default 5% was not requested).
+
+     Quarter bonus (+1 Production per 3 Population) is wired in
+     data/bharat-quarters-gameeffects.xml and registered below in
+     GameModifiers/UniqueQuarterModifiers, mirroring GB's
+     MOD_GREAT_BRITAIN_FINANCIAL_CENTRE_GOLD/_SCIENCE wiring exactly (see that
+     file's header comment for the scoping detail).
+
+     Loaded scope="game" criteria="modern-age-current" (AgeInUse AGE_MODERN)
+     from netaji-bose.modinfo, alongside data/bharat-units.xml — Modern-age
+     content, same gating as the unique unit. -->
+<Database>
+	<Types>
+		<!-- Civ Unique Buildings + Quarter -->
+		<Row Type="BUILDING_YOJANA_BHAVAN" Kind="KIND_CONSTRUCTIBLE"/>
+		<Row Type="BUILDING_VAIDYASHALA" Kind="KIND_CONSTRUCTIBLE"/>
+		<Row Type="QUARTER_NATIONAL_PLANNING_COMMISSION" Kind="KIND_QUARTER"/>
+	</Types>
+	<Constructibles>
+		<Row ConstructibleType="BUILDING_YOJANA_BHAVAN" Name="LOC_BUILDING_YOJANA_BHAVAN_NAME" Description="LOC_BUILDING_YOJANA_BHAVAN_DESCRIPTION" Tooltip="LOC_BUILDING_YOJANA_BHAVAN_TOOLTIP" ConstructibleClass="BUILDING" Cost="600" Population="1" Age="AGE_MODERN" CostProgressionModel="COST_PROGRESSION_PREVIOUS_BUILDINGS_CITY"/>
+		<Row ConstructibleType="BUILDING_VAIDYASHALA" Name="LOC_BUILDING_VAIDYASHALA_NAME" Description="LOC_BUILDING_VAIDYASHALA_DESCRIPTION" Tooltip="LOC_BUILDING_VAIDYASHALA_TOOLTIP" ConstructibleClass="BUILDING" Cost="600" Population="1" Age="AGE_MODERN" CostProgressionModel="COST_PROGRESSION_PREVIOUS_BUILDINGS_CITY"/>
+	</Constructibles>
+	<Buildings>
+		<!-- Civ Unique Buildings -->
+		<Row ConstructibleType="BUILDING_YOJANA_BHAVAN" Movable="false" TraitType="TRAIT_BHARAT"/>
+		<Row ConstructibleType="BUILDING_VAIDYASHALA" Movable="false" TraitType="TRAIT_BHARAT"/>
+	</Buildings>
+	<Constructible_ValidDistricts>
+		<Row ConstructibleType="BUILDING_YOJANA_BHAVAN" DistrictType="DISTRICT_CITY_CENTER"/>
+		<Row ConstructibleType="BUILDING_YOJANA_BHAVAN" DistrictType="DISTRICT_URBAN"/>
+		<Row ConstructibleType="BUILDING_VAIDYASHALA" DistrictType="DISTRICT_CITY_CENTER"/>
+		<Row ConstructibleType="BUILDING_VAIDYASHALA" DistrictType="DISTRICT_URBAN"/>
+	</Constructible_ValidDistricts>
+	<Constructible_YieldChanges>
+		<!-- Yojana Bhavan: the Manufactory analog. -->
+		<Row ConstructibleType="BUILDING_YOJANA_BHAVAN" YieldType="YIELD_PRODUCTION" YieldChange="9"/>
+		<!-- Vaidyashala: split across Food + Happiness (health/wellbeing theme),
+		     summing to GB's single +9 magnitude split across two yields. -->
+		<Row ConstructibleType="BUILDING_VAIDYASHALA" YieldType="YIELD_FOOD" YieldChange="6"/>
+		<Row ConstructibleType="BUILDING_VAIDYASHALA" YieldType="YIELD_HAPPINESS" YieldChange="3"/>
+	</Constructible_YieldChanges>
+	<Constructible_Maintenances>
+		<!-- GB's maintenance shape, verbatim, on both buildings. -->
+		<Row ConstructibleType="BUILDING_YOJANA_BHAVAN" YieldType="YIELD_GOLD" Amount="0"/>
+		<Row ConstructibleType="BUILDING_YOJANA_BHAVAN" YieldType="YIELD_HAPPINESS" Amount="4"/>
+		<Row ConstructibleType="BUILDING_VAIDYASHALA" YieldType="YIELD_GOLD" Amount="0"/>
+		<Row ConstructibleType="BUILDING_VAIDYASHALA" YieldType="YIELD_HAPPINESS" Amount="0"/>
+	</Constructible_Maintenances>
+	<GameModifiers>
+		<!-- Unique Quarter modifiers are game-wide (mirrors GB's own comment
+		     verbatim: constructibles.xml's GameModifiers block). -->
+		<Row ModifierId="BOSE_MOD_NATIONAL_PLANNING_COMMISSION_PRODUCTION"/>
+	</GameModifiers>
+	<UniqueQuarters>
+		<Row UniqueQuarterType="QUARTER_NATIONAL_PLANNING_COMMISSION" BuildingType1="BUILDING_YOJANA_BHAVAN" BuildingType2="BUILDING_VAIDYASHALA" Name="LOC_QUARTER_NATIONAL_PLANNING_COMMISSION_NAME" Description="LOC_QUARTER_NATIONAL_PLANNING_COMMISSION_DESCRIPTION" Tooltip="LOC_QUARTER_NATIONAL_PLANNING_COMMISSION_TOOLTIP" TraitType="TRAIT_BHARAT"/>
+	</UniqueQuarters>
+	<!-- These are listed here so the AI can evaluate Unique Quarters. They do
+	     not have any effect on the game for human players (comment mirrored
+	     verbatim from GB's constructibles.xml). -->
+	<UniqueQuarterModifiers>
+		<Row UniqueQuarterType="QUARTER_NATIONAL_PLANNING_COMMISSION" ModifierId="BOSE_MOD_NATIONAL_PLANNING_COMMISSION_PRODUCTION"/>
+	</UniqueQuarterModifiers>
+</Database>
