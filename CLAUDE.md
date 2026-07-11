@@ -42,6 +42,19 @@ Dilli Chalo). No Axis-alliance mechanics, references, or iconography anywhere
    required columns, not just the one in the log.
 4. Validate XML parse before handing back to the user for in-game testing.
 
+## UI script (the one non-data component)
+
+`ui/bose-memento-unlock.js`, loaded via `<UIScripts>` in both scopes, wraps
+`Online.UserProfile.isRewardUnlocked` to return true for our memento IDs.
+Needed because memento *equipping* (not visibility) is gated on the online
+profile's earned-rewards list, which mod XML cannot write to — `Hidden="0"`
+only makes a memento visible, never equippable. This is the mod's ONLY
+non-data file and the only piece with no official template to copy. It's
+patch-fragile: if a game update renames that function or moves the equip gate
+into native code, the patch silently no-ops and mementos stop equipping again.
+Re-verify it after major game patches. If it ever breaks unrecoverably, the
+fallback is to drop mementos and refold their effects into leader/civ traits.
+
 ## Conventions
 
 - Type names: `LEADER_SUBHAS_CHANDRA_BOSE`, `TRAIT_LEADER_BOSE_ABILITY`,

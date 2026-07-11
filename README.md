@@ -50,11 +50,11 @@ Known gaps to expect on first load:
 1. **No leader icon/portrait** — setup screen will show a fallback icon, and
    in-game the leader will use a placeholder 3D model (Civ VII has no custom
    3D-leader pipeline; see assets/README.md for the 2D-portrait workaround).
-2. **Memento availability is unverified.** Hidden="0" should make Springing
-   Tiger and Azad Hind Radio appear unlocked, but the shell picker also
-   consults online metaprogression state and no official content uses
-   Hidden="0". In the memento editor, confirm both tiles are *selectable* —
-   if they show locked, the availability path needs rework.
+2. **Mementos equip via a UI patch.** `Hidden="0"` makes Springing Tiger and
+   Azad Hind Radio *visible*, but equipping is gated on the online profile's
+   earned-rewards list (which mod data can't write). `ui/bose-memento-unlock.js`
+   (loaded via `<UIScripts>`) wraps `isRewardUnlocked` to unlock just our two.
+   This is the mod's only non-data file — re-verify after major game patches.
 3. Balance numbers are first guesses.
 
 ## Ground truth for further work

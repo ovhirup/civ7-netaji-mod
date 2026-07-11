@@ -32,6 +32,11 @@
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>
 				</UpdateText>
+				<!-- In-game (age-transition) memento editor also gates equipping
+				     on isRewardUnlocked, so load the unlock patch in game scope too. -->
+				<UIScripts>
+					<Item>ui/bose-memento-unlock.js</Item>
+				</UIScripts>
 			</Actions>
 		</ActionGroup>
 		<!-- Shell/front-end: game-setup screen registration -->
@@ -43,6 +48,11 @@
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>
 				</UpdateText>
+				<!-- Create-game memento picker lives in the shell; this is the
+				     primary place the unlock patch must run. -->
+				<UIScripts>
+					<Item>ui/bose-memento-unlock.js</Item>
+				</UIScripts>
 			</Actions>
 		</ActionGroup>
 	</ActionGroups>
