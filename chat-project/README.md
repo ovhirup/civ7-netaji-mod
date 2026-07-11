@@ -17,3 +17,11 @@ Round-trip workflow: Chat produces `LocalizedText` rows / briefs / research →
 paste results back to Claude Code to wire into the mod → after each milestone,
 re-upload the changed knowledge files (README.md and LeaderText.xml drift the
 fastest; DESIGN.md rarely changes).
+
+### Bharat civ (next major milestone)
+When working on the Modern Age Bharat civilization, also upload
+`chat-project/BHARAT-CIV-BRIEF.md` to the project knowledge — it defines the
+civ's identity, framing rule, and the exact text deliverables (civ ability,
+unique unit, unique quarter, civics, Civilopedia). Good first prompts there:
+"Write the Bharat civilization identity text and loading intro" or
+"Draft the Azad Hind Fauj unique-unit name, description, and pedia blurb."
