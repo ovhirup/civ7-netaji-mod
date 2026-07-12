@@ -23,7 +23,7 @@
 import LeaderModelManager from '/base-standard/ui/diplomacy/leader-model-manager.js';
 import { Icon } from '/core/ui/utilities/utilities-image.js';
 
-console.warn("[BoseMod] bose-diplo-portrait.js v2 loaded (game scope)");
+console.warn("[BoseMod] bose-diplo-portrait.js v4 loaded (game scope)");
 
 const BOSE = "LEADER_SUBHAS_CHANDRA_BOSE";
 const FALLBACK_ASSET = "LEADER_FALLBACK_GAME_ASSET";
@@ -90,8 +90,12 @@ function showOverlay(side) {
 	}
 }
 
-// wrap(obj, name, {before, after}) — before runs pre-original (may set the
-// suppression flag), after runs post-original; flag always reset in finally.
+// wrap(obj, name, {before, after, managesSuppression}) — before runs
+// pre-original (may set the suppression flag), after runs post-original.
+// v4 BUGFIX: ONLY methods that SET the flag reset it (managesSuppression) —
+// v3 reset it in a universal finally, and since show* internally call the
+// (also-wrapped) clear(), the nested clear reset the flag BEFORE the
+// fallback-add ran. That is why Franklin survived v3.
 function wrap(obj, name, hooks) {
 	const orig = obj[name];
 	if (typeof orig !== "function") {
@@ -99,21 +103,29 @@ function wrap(obj, name, hooks) {
 		return;
 	}
 	obj[name] = function (...args) {
-		try {
-			if (hooks.before) {
+		if (hooks.before) {
+			try {
 				hooks.before(...args);
+			} catch (e) {
+				console.error("[BoseMod] before-hook " + name + " failed: " + e);
 			}
-			const result = orig.apply(this, args);
-			if (hooks.after) {
-				hooks.after(...args);
-			}
-			return result;
-		} catch (e) {
-			console.error("[BoseMod] wrapped " + name + " threw: " + e);
-			return orig.apply(this, args);
-		} finally {
-			suppressFallback = false;
 		}
+		let result;
+		try {
+			result = orig.apply(this, args);
+		} finally {
+			if (hooks.managesSuppression) {
+				suppressFallback = false;
+			}
+		}
+		if (hooks.after) {
+			try {
+				hooks.after(...args);
+			} catch (e) {
+				console.error("[BoseMod] after-hook " + name + " failed: " + e);
+			}
+		}
+		return result;
 	};
 }
 
@@ -143,6 +155,7 @@ try {
 	}
 
 	wrap(proto, "showLeftLeaderModel", {
+		managesSuppression: true,
 		before: (playerID) => {
 			suppressFallback = isBose(playerID);
 			console.warn("[BoseMod] showLeftLeaderModel(" + playerID + ") bose=" + suppressFallback);
@@ -154,6 +167,7 @@ try {
 		},
 	});
 	wrap(proto, "showRightLeaderModel", {
+		managesSuppression: true,
 		before: (playerID) => {
 			suppressFallback = isBose(playerID);
 			console.warn("[BoseMod] showRightLeaderModel(" + playerID + ") bose=" + suppressFallback);
@@ -165,6 +179,7 @@ try {
 		},
 	});
 	wrap(proto, "showLeaderModels", {
+		managesSuppression: true,
 		before: (p1, p2) => {
 			suppressFallback = isBose(p1) || isBose(p2);
 			console.warn("[BoseMod] showLeaderModels(" + p1 + "," + p2 + ") bose=" + suppressFallback);
@@ -200,7 +215,7 @@ try {
 		after: () => removeAllOverlays(),
 	});
 
-	console.warn("[BoseMod] leader-model-manager patched OK (v3)");
+	console.warn("[BoseMod] leader-model-manager patched OK (v4)");
 } catch (e) {
 	console.error("[BoseMod] failed to patch leader-model-manager: " + e);
 }
