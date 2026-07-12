@@ -15,7 +15,7 @@
 "workshopitem"
 {
 	"appid"           "1295660"
-	"publishedfileid" "PASTE_ITEM_ID_HERE"                          // <-- paste the item ID here after first SDK publish; "0" = attempt create
+	"publishedfileid" "3763580219"                          // <-- paste the item ID here after first SDK publish; "0" = attempt create
 	"contentfolder"   "/Users/abhirupbanerjee/dev/civ7-netaji-mod/build/upload"   // e.g. /Users/abhirupbanerjee/dev/civ7-netaji-mod/build/upload
 	"previewfile"     "/Users/abhirupbanerjee/dev/civ7-netaji-mod/art/workshop_banner.png"
 	"visibility"      "0"                           // MUST match your live listing each update: 0=public 1=friends 2=private (an update SETS this)
