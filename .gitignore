@@ -6,3 +6,6 @@ chat-project/knowledge/LeaderText.xml
 # Raw art generations dropped for processing (not source)
 art/incoming/*
 !art/incoming/.gitkeep
+
+# Placeholder TTS voice experiments (not shipped)
+audio-samples/
