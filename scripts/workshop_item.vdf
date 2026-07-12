@@ -15,10 +15,10 @@
 "workshopitem"
 {
 	"appid"           "1295660"
-	"publishedfileid" "0"                          // <-- paste the item ID here after first SDK publish; "0" = attempt create
-	"contentfolder"   "REPLACE_WITH_ABSOLUTE_PATH/build/upload"   // e.g. /Users/abhirupbanerjee/dev/civ7-netaji-mod/build/upload
-	"previewfile"     "REPLACE_WITH_ABSOLUTE_PATH/art/workshop_banner.png"
-	"visibility"      "2"                           // 0=public, 1=friends-only, 2=private (start private, flip to public when ready)
+	"publishedfileid" "PASTE_ITEM_ID_HERE"                          // <-- paste the item ID here after first SDK publish; "0" = attempt create
+	"contentfolder"   "/Users/abhirupbanerjee/dev/civ7-netaji-mod/build/upload"   // e.g. /Users/abhirupbanerjee/dev/civ7-netaji-mod/build/upload
+	"previewfile"     "/Users/abhirupbanerjee/dev/civ7-netaji-mod/art/workshop_banner.png"
+	"visibility"      "0"                           // MUST match your live listing each update: 0=public 1=friends 2=private (an update SETS this)
 	"title"           "Netaji Subhas Chandra Bose & Bharat"
 	"description"     "Adds Netaji Subhas Chandra Bose, hero of India's independence struggle, as a playable leader, plus the Modern-Age civilization Bharat — Azad Hind Fauj & Rani of Jhansi Regiment unique units, the National Planning Commission quarter, a Swadeshi-to-Purna-Swaraj civics tree, and full Ashoka Chakra / Springing Tiger iconography. Unofficial fan tribute; not affiliated with Firaxis or 2K."
 	"changenote"      "Initial release."
