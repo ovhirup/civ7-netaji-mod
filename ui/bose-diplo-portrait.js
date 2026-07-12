@@ -84,7 +84,10 @@ function showOverlay(side) {
 			el.style.right = "0";
 			el.style.backgroundPosition = "right bottom";
 		}
-		el.style.width = "40vw";
+		// 69vh, not vw: the image is 100vh tall x (700/1024) = 68.4vh wide. A
+		// vw width is narrower than that on 16:10-ish screens and clips the
+		// inward feather mid-ramp (visible hard seam).
+		el.style.width = "69vh";
 		el.style.pointerEvents = "none";
 		el.style.backgroundImage = "url('" + PORTRAIT_URLS[side] + "')";
 		el.style.backgroundRepeat = "no-repeat";

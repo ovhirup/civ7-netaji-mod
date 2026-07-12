@@ -120,8 +120,14 @@ try {
 			const origGetIconBLP = UI.getIconBLP.bind(UI);
 			UI.getIconBLP = function (name, context, ...rest) {
 				try {
-					if (typeof name === "string" && name.toUpperCase().indexOf("BHARAT") >= 0 && context === "BACKGROUND_VERT") {
-						return "fs://game/cg_bharat_vert.png";
+					if (typeof name === "string" && name.toUpperCase().indexOf("BHARAT") >= 0) {
+						if (context === "BACKGROUND_VERT") {
+							return "fs://game/cg_bharat_vert.png";
+						}
+						// Civ-select card art (base civs use their lsbg here).
+						if (context === "BACKGROUND") {
+							return "fs://game/lsbg_bharat_1080.png";
+						}
 					}
 				} catch (e) { /* fall through */ }
 				return origGetIconBLP(name, context, ...rest);
@@ -230,11 +236,15 @@ function showOverlay() {
 		el.style.background = "transparent";
 		// Flush to the screen's right edge; the PNG's baked left+top feather
 		// does the blending (no gap, no floating-poster look).
+		// Width is 69vh, NOT a vw value: the image renders 100vh tall at aspect
+		// 700/1024 = 68.4vh wide. A vw-based width is narrower than that on
+		// 16:10-ish screens (MacBook 1.54:1), so the element clipped the
+		// portrait's left feather mid-ramp — the visible "hard seam" bug.
 		const img = document.createElement("div");
 		img.style.position = "absolute";
 		img.style.bottom = "0";
 		img.style.right = "0";
-		img.style.width = "40vw";
+		img.style.width = "69vh";
 		img.style.height = "100vh";
 		img.style.backgroundImage = "url('" + PORTRAIT_URL + "')";
 		img.style.backgroundRepeat = "no-repeat";
@@ -256,16 +266,25 @@ function showOverlay() {
 	}
 }
 
-// --- 1. CSS remap: any element styled with the canonical lsl still ---------
-// (Overview LEADER card and any other blp:lsl_subhas_chandra_bose consumer.)
+// --- 1. CSS remaps: inline background-image is set WITHOUT !important, so a
+// stylesheet rule with !important wins. Redirect every Bharat/Bose blp: art
+// name the create-game screens build to our shipped PNGs:
+//  - lsl_subhas_chandra_bose  : Overview LEADER card + load screen consumers
+//  - bg-panel-bharat          : civ-SELECT card art (civ-card.js:159, hyphens,
+//                               was a dead texture -> the "gloomy" dark card)
+//  - bg_panel_bharat          : create-game-hub small civ card (underscores)
+// All Bharat card slots now show the Lion-Capital/dam scene like base civs.
 try {
+	const CIV_BG = "fs://game/lsbg_bharat_1080.png";
 	const style = document.createElement("style");
 	style.textContent =
-		"[style*='lsl_subhas_chandra_bose'] { background-image: url('" + LSL_URL + "') !important; }";
+		"[style*='lsl_subhas_chandra_bose'] { background-image: url('" + LSL_URL + "') !important; }" +
+		"[style*='bg-panel-bharat'] { background-image: url('" + CIV_BG + "') !important; background-size: cover !important; background-position: center !important; }" +
+		"[style*='bg_panel_bharat'] { background-image: url('" + CIV_BG + "') !important; background-size: cover !important; background-position: center !important; }";
 	document.head.appendChild(style);
-	console.warn("[BoseMod] lsl CSS remap installed");
+	console.warn("[BoseMod] CSS remaps installed (lsl + civ-card bg)");
 } catch (e) {
-	console.error("[BoseMod] lsl CSS remap failed: " + e);
+	console.error("[BoseMod] CSS remap failed: " + e);
 }
 
 // --- 2. ui-next leader-select: poll the shared model registry --------------
