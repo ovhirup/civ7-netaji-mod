@@ -50,7 +50,15 @@
 		<Row TraitType="TRAIT_BHARAT_ABILITY" Name="LOC_TRAIT_BHARAT_ABILITY_NAME" Description="LOC_TRAIT_BHARAT_ABILITY_DESCRIPTION" InternalOnly="true"/>
 	</Traits>
 	<Civilizations>
-		<Row CivilizationType="CIVILIZATION_BHARAT" Name="LOC_CIVILIZATION_BHARAT_NAME" FullName="LOC_CIVILIZATION_BHARAT_FULLNAME" Description="LOC_CIVILIZATION_BHARAT_DESCRIPTION" Adjective="LOC_CIVILIZATION_BHARAT_ADJECTIVE" StartingCivilizationLevelType="CIVILIZATION_LEVEL_FULL_CIV" ApexAge="AGE_MODERN" CapitalName="LOC_CITY_NAME_BHARAT1" RandomCityNameDepth="10"/>
+		<!-- STAGE 4 part B: UniqueCultureProgressionTree wires the civic tree
+		     TREE_CIVICS_MO_BHARAT (data/bharat-progression-trees.xml). Column
+		     is nullable (Base/Assets/schema/gameplay/01_GameplaySchema.sql),
+		     so it was correctly omitted in Stage 1 before the tree existed;
+		     now that the tree is built, this FK is added, matching Mughal's
+		     own Civilizations row (age-modern/data/civilizations-modern.xml /
+		     civilizations-shared.xml, UniqueCultureProgressionTree=
+		     "TREE_CIVICS_MO_MUGHAL"). -->
+		<Row CivilizationType="CIVILIZATION_BHARAT" Name="LOC_CIVILIZATION_BHARAT_NAME" FullName="LOC_CIVILIZATION_BHARAT_FULLNAME" Description="LOC_CIVILIZATION_BHARAT_DESCRIPTION" Adjective="LOC_CIVILIZATION_BHARAT_ADJECTIVE" StartingCivilizationLevelType="CIVILIZATION_LEVEL_FULL_CIV" ApexAge="AGE_MODERN" CapitalName="LOC_CITY_NAME_BHARAT1" RandomCityNameDepth="10" UniqueCultureProgressionTree="TREE_CIVICS_MO_BHARAT"/>
 	</Civilizations>
 	<CivilizationTraits>
 		<Row CivilizationType="CIVILIZATION_BHARAT" TraitType="TRAIT_MODERN_CIV"/>

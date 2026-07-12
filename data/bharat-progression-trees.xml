@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat unique civic tree TREE_CIVICS_MO_BHARAT (STAGE 4, part B).
+     Mirrored row-for-row from Mughal's TREE_CIVICS_MO_MUGHAL in
+     age-modern/data/progression-trees-culture-unique.xml — same Types/
+     ProgressionTrees/ProgressionTreeNodes/ProgressionTreePrereqs/
+     ProgressionTreeNodeUnlocks/ProgressionTree_Advisories table shapes and
+     column names (confirmed against Base/Assets/schema/gameplay/
+     01_GameplaySchema.sql: ProgressionTreeNodes NOT NULL cols are
+     ProgressionTreeNodeType, Cost, Name (default ""), ProgressionTree —
+     all supplied below; ProgressionTreePrereqs cols are Node/PrereqNode,
+     matching Mughal exactly, not e.g. "PrerequisiteNode").
+
+     DEVIATION: the brief asked to set UILayoutColumn/UILayoutRow "like
+     Mughal" for a branch-converge layout, but Mughal's own
+     ProgressionTreeNodes rows do NOT set either column at all (grep
+     confirms zero hits in the base file) — the game evidently derives the
+     visual layout from ProgressionTreePrereqs edges alone. Both columns are
+     nullable with no default, so this file omits them too, matching Mughal
+     literally rather than inventing coordinates Mughal doesn't use.
+
+     IconString also omitted (nullable) rather than pointing at Mughal's own
+     "cult_mughal" icon file, which would be thematically wrong for Bharat's
+     tree and was not asked for.
+
+     The 5 nodes' Name attributes reuse the existing LOC_CIVIC_BHARAT_*_NAME
+     keys already drafted in text/en_us/BharatText.xml. -->
+<Database>
+	<Types>
+		<Row Type="TREE_CIVICS_MO_BHARAT" Kind="KIND_TREE"/>
+		<Row Type="NODE_CIVIC_MO_BHARAT_SWADESHI" Kind="KIND_TREE_NODE"/>
+		<Row Type="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ" Kind="KIND_TREE_NODE"/>
+		<Row Type="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" Kind="KIND_TREE_NODE"/>
+		<Row Type="NODE_CIVIC_MO_BHARAT_AZAD_HIND" Kind="KIND_TREE_NODE"/>
+		<Row Type="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" Kind="KIND_TREE_NODE"/>
+	</Types>
+	<ProgressionTrees>
+		<Row ProgressionTreeType="TREE_CIVICS_MO_BHARAT" AgeType="AGE_MODERN" SystemType="SYSTEM_CULTURE" Name="LOC_TREE_CIVICS_MO_BHARAT_NAME"/>
+	</ProgressionTrees>
+	<ProgressionTreeNodes>
+		<!-- Description = the ratified civic flavor text (LOC_CIVIC_BHARAT_*_
+		     DESCRIPTION in BharatText.xml). The Description column is nullable
+		     (Mughal leaves it unset), but wiring it here surfaces the drafted
+		     flavor on the civic node rather than leaving those LOC rows orphaned;
+		     the separate LOC_TRADITION_* strings carry the mechanical text. -->
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_SWADESHI" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="2000" Name="LOC_CIVIC_BHARAT_SWADESHI_NAME" Description="LOC_CIVIC_BHARAT_SWADESHI_DESCRIPTION"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="2000" Name="LOC_CIVIC_BHARAT_PURNA_SWARAJ_NAME" Description="LOC_CIVIC_BHARAT_PURNA_SWARAJ_DESCRIPTION"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="3000" Name="LOC_CIVIC_BHARAT_FORWARD_BLOC_NAME" Description="LOC_CIVIC_BHARAT_FORWARD_BLOC_DESCRIPTION"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_AZAD_HIND" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="3000" Name="LOC_CIVIC_BHARAT_AZAD_HIND_NAME" Description="LOC_CIVIC_BHARAT_AZAD_HIND_DESCRIPTION"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="4000" Name="LOC_CIVIC_BHARAT_NATIONAL_PLANNING_NAME" Description="LOC_CIVIC_BHARAT_NATIONAL_PLANNING_DESCRIPTION"/>
+	</ProgressionTreeNodes>
+	<ProgressionTreePrereqs>
+		<Row Node="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" PrereqNode="NODE_CIVIC_MO_BHARAT_SWADESHI"/>
+		<Row Node="NODE_CIVIC_MO_BHARAT_AZAD_HIND" PrereqNode="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ"/>
+		<Row Node="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" PrereqNode="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC"/>
+		<Row Node="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" PrereqNode="NODE_CIVIC_MO_BHARAT_AZAD_HIND"/>
+	</ProgressionTreePrereqs>
+	<ProgressionTreeNodeUnlocks>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_SWADESHI" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_SWADESHI" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_PURNA_SWARAJ" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_FORWARD_BLOC" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_AZAD_HIND" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_AZAD_HIND" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_NATIONAL_PLANNING" UnlockDepth="1"/>
+	</ProgressionTreeNodeUnlocks>
+	<ProgressionTree_Advisories>
+		<!-- One advisory per node, matching each tradition's own effect
+		     (Swadeshi = production => ECONOMIC; Purna Swaraj = happiness =>
+		     HAPPINESS; Forward Bloc = combat militancy => MILITARY; Azad Hind
+		     = influence => DIPLOMACY; National Planning = science => SCIENCE). -->
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_SWADESHI" AdvisoryClassType="ADVISORY_CLASS_ECONOMIC"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ" AdvisoryClassType="ADVISORY_CLASS_HAPPINESS"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" AdvisoryClassType="ADVISORY_CLASS_MILITARY"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_AZAD_HIND" AdvisoryClassType="ADVISORY_CLASS_DIPLOMACY"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" AdvisoryClassType="ADVISORY_CLASS_SCIENCE"/>
+	</ProgressionTree_Advisories>
+</Database>

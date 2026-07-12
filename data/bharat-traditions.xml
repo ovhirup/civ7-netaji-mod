@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat's 5 unique traditions (STAGE 4, part B), unlocked one per node of
+     TREE_CIVICS_MO_BHARAT (data/bharat-progression-trees.xml). Mirrored
+     row-for-row from Mughal's own tradition rows in age-modern/data/
+     traditions-tot.xml (TraditionType/Name/Description/TraitType/AgeType/
+     CultureSlotType columns, e.g. TRADITION_GUNPOWDER_EMPIRE), confirmed
+     against Base/Assets/schema/gameplay/01_GameplaySchema.sql: Traditions.
+     CultureSlotType is NOT NULL — set to "TRADITION_CULTURE_SLOT", Mughal's
+     own exact value (verified valid: Mughal's traditions load in the base
+     game). TraitType="TRAIT_BHARAT" links each tradition to Bharat's civ
+     identity trait, matching Mughal's TraitType="TRAIT_MUGHAL" pattern
+     exactly (not TRAIT_BHARAT_ABILITY, which is the separate ability-trait
+     shell already wired in data/bharat-civ-ability.xml). -->
+<Database>
+	<Types>
+		<Row Type="TRADITION_BHARAT_SWADESHI" Kind="KIND_TRADITION"/>
+		<Row Type="TRADITION_BHARAT_PURNA_SWARAJ" Kind="KIND_TRADITION"/>
+		<Row Type="TRADITION_BHARAT_FORWARD_BLOC" Kind="KIND_TRADITION"/>
+		<Row Type="TRADITION_BHARAT_AZAD_HIND" Kind="KIND_TRADITION"/>
+		<Row Type="TRADITION_BHARAT_NATIONAL_PLANNING" Kind="KIND_TRADITION"/>
+	</Types>
+	<Traditions>
+		<Row TraditionType="TRADITION_BHARAT_SWADESHI" Name="LOC_TRADITION_BHARAT_SWADESHI_NAME" Description="LOC_TRADITION_BHARAT_SWADESHI_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+		<Row TraditionType="TRADITION_BHARAT_PURNA_SWARAJ" Name="LOC_TRADITION_BHARAT_PURNA_SWARAJ_NAME" Description="LOC_TRADITION_BHARAT_PURNA_SWARAJ_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+		<Row TraditionType="TRADITION_BHARAT_FORWARD_BLOC" Name="LOC_TRADITION_BHARAT_FORWARD_BLOC_NAME" Description="LOC_TRADITION_BHARAT_FORWARD_BLOC_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+		<Row TraditionType="TRADITION_BHARAT_AZAD_HIND" Name="LOC_TRADITION_BHARAT_AZAD_HIND_NAME" Description="LOC_TRADITION_BHARAT_AZAD_HIND_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+		<Row TraditionType="TRADITION_BHARAT_NATIONAL_PLANNING" Name="LOC_TRADITION_BHARAT_NATIONAL_PLANNING_NAME" Description="LOC_TRADITION_BHARAT_NATIONAL_PLANNING_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+	</Traditions>
+	<TraditionModifiers>
+		<Row TraditionType="TRADITION_BHARAT_SWADESHI" ModifierId="SWADESHI_MOD_PRODUCTION"/>
+		<Row TraditionType="TRADITION_BHARAT_PURNA_SWARAJ" ModifierId="PURNA_SWARAJ_MOD_HAPPINESS"/>
+		<Row TraditionType="TRADITION_BHARAT_FORWARD_BLOC" ModifierId="FORWARD_BLOC_MOD_COMBAT_STRENGTH"/>
+		<Row TraditionType="TRADITION_BHARAT_AZAD_HIND" ModifierId="AZAD_HIND_MOD_INFLUENCE"/>
+		<Row TraditionType="TRADITION_BHARAT_NATIONAL_PLANNING" ModifierId="NATIONAL_PLANNING_MOD_SCIENCE"/>
+	</TraditionModifiers>
+</Database>

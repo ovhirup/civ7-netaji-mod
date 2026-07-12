@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat's 5 tradition Modifier definitions (STAGE 4, part B), linked to
+     their TraditionType rows in data/bharat-traditions.xml. Each is a SIMPLE
+     single-argument modifier, grounded against real base-game tradition
+     examples (age-modern/data/traditions-gameeffects.xml,
+     age-modern/data/traditions-tot-gameeffects.xml):
+
+     1. Swadeshi - +2 Production in cities. EFFECT_CITY_ADJUST_YIELD +
+        Amount pattern verified against age-antiquity/data/
+        civilizations-shared-gameeffects.xml TRAIT_MOD_NINE_PROVINCES-style
+        rows and traditions-gameeffects.xml's own flat-Amount yield rows.
+     2. Purna Swaraj - +2 Happiness in cities. Same effect, YIELD_HAPPINESS.
+     3. Forward Bloc - +2 Combat Strength (small militancy bonus). Mirrors
+        Mughal's own TRADITION_GUNPOWDER_EMPIRE modifier
+        (GUNPOWDER_EMPIRE_MOD_ALL_UNITS_COMBAT_STRENGTH,
+        collection="COLLECTION_PLAYER_COMBAT"
+        effect="EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER", single Argument
+        Amount) verbatim, at half Gunpowder Empire's Amount=3 for a "small"
+        civic-tier bonus vs. that Modern-apex-tier tradition.
+     4. Azad Hind - +3 Influence (YIELD_DIPLOMACY). Mirrors
+        MOD_AMBASSADORS_DIPLOMACY (age-modern/data/traditions-gameeffects.xml,
+        collection="COLLECTION_OWNER" effect="EFFECT_PLAYER_ADJUST_YIELD",
+        Argument Amount) at half its Amount=6 for the same small-tier reason.
+     5. National Planning - +2 Production in cities (brief's explicit
+        "+Production in cities" fallback, since a State-side "Production
+        toward constructing buildings" analog wasn't found as a single-
+        argument SIMPLE effect in the grounding pass). -->
+<GameEffects xmlns="GameEffects">
+	<Modifier id="SWADESHI_MOD_PRODUCTION" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<Argument name="YieldType">YIELD_PRODUCTION</Argument>
+		<Argument name="Amount">2</Argument>
+		<Argument name="Tooltip">LOC_TRADITION_BHARAT_SWADESHI_NAME</Argument>
+		<String context="Description">LOC_TRADITION_BHARAT_SWADESHI_DESCRIPTION</String>
+	</Modifier>
+	<Modifier id="PURNA_SWARAJ_MOD_HAPPINESS" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<Argument name="YieldType">YIELD_HAPPINESS</Argument>
+		<Argument name="Amount">2</Argument>
+		<Argument name="Tooltip">LOC_TRADITION_BHARAT_PURNA_SWARAJ_NAME</Argument>
+		<String context="Description">LOC_TRADITION_BHARAT_PURNA_SWARAJ_DESCRIPTION</String>
+	</Modifier>
+	<!-- Mirrors Mughal's GUNPOWDER_EMPIRE_MOD_ALL_UNITS_COMBAT_STRENGTH shape
+	     exactly (Amount + a single <String context> — NO Argument name="Tooltip",
+	     which no base-game EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER carries; keeping
+	     an unproven arg on this untested effect risks a load rollback). -->
+	<Modifier id="FORWARD_BLOC_MOD_COMBAT_STRENGTH" collection="COLLECTION_PLAYER_COMBAT" effect="EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER">
+		<Argument name="Amount">2</Argument>
+		<String context="Description">LOC_TRADITION_BHARAT_FORWARD_BLOC_DESCRIPTION</String>
+	</Modifier>
+	<Modifier id="AZAD_HIND_MOD_INFLUENCE" collection="COLLECTION_OWNER" effect="EFFECT_PLAYER_ADJUST_YIELD">
+		<Argument name="YieldType">YIELD_DIPLOMACY</Argument>
+		<Argument name="Amount">3</Argument>
+		<Argument name="Tooltip">LOC_TRADITION_BHARAT_AZAD_HIND_NAME</Argument>
+		<String context="Description">LOC_TRADITION_BHARAT_AZAD_HIND_DESCRIPTION</String>
+	</Modifier>
+	<!-- Capstone civic. Re-themed from +2 Production (which was identical to
+	     Swadeshi) to +2 Science: the National Planning Commission drove
+	     Nehru-era scientific-industrial modernisation ("temples of modern
+	     India" — dams, steel, the IITs/CSIR), so Science both fits the
+	     planned-modernisation theme and diversifies the tree's yields
+	     (Production/Happiness/Combat/Influence/Science across the 5 civics). -->
+	<Modifier id="NATIONAL_PLANNING_MOD_SCIENCE" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<Argument name="YieldType">YIELD_SCIENCE</Argument>
+		<Argument name="Amount">2</Argument>
+		<Argument name="Tooltip">LOC_TRADITION_BHARAT_NATIONAL_PLANNING_NAME</Argument>
+		<String context="Description">LOC_TRADITION_BHARAT_NATIONAL_PLANNING_DESCRIPTION</String>
+	</Modifier>
+</GameEffects>

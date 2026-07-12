@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat civ ability "Mother Industries" (STAGE 4, part A): the 3 Modifier
+     definitions linked to TRAIT_BHARAT_ABILITY in data/bharat-civ-ability.xml.
+     Text (data/../text/en_us/BharatText.xml, LOC_TRAIT_BHARAT_ABILITY_*
+     _DESCRIPTION) was rewritten to match these effects exactly (no more
+     {X}/{Y}/{Z} placeholders).
+
+     1. +5 Production in settlements with a Factory. Requirement/Argument
+        shape (REQUIREMENT_CITY_HAS_BUILDING + BuildingType) verified
+        verbatim against age-antiquity/data/civilizations-shared-gameeffects.xml
+        TRAIT_MOD_NINE_PROVINCES_CAPITAL (Han). BUILDING_FACTORY confirmed as
+        a real Modern-age constructible type (grep hit in
+        age-modern/ui/tutorial/tutorial-items-modern.ts:
+        GameInfo.Constructibles.lookup("BUILDING_FACTORY")) — this is the
+        actual production-multiplier building of the Modern age, so no
+        substitution was needed.
+
+     2. +3 War Support in wars you did not start (IsAggressor=false).
+        EFFECT_ADJUST_WAR_SUPPORT_BONUS + Amount/IsAggressor arguments
+        verified verbatim against base-standard/data/mementos-gameeffects.xml
+        MEMENTO_TRUNG_ANKUS_MODIFIER_1 (Amount=1, IsAggressor=false) and
+        age-modern/data/golden-ages-gameeffects.xml
+        MOD_GOLDEN_AGE_AUTHORITARIANISM_WAR_SUPPORT (IsAggressor=true).
+        collection="COLLECTION_OWNER" matches both examples.
+
+     3. +1 Culture in ALL settlements (composite national culture). This
+        was re-themed off the earlier "settlements you did not found"
+        (REQUIREMENT_CITY_IS_ORIGINAL_OWNER inverse) trigger: that condition
+        is byte-identical to the LEADER's BOSE_MOD_CAPTURED_SETTLEMENT_
+        HAPPINESS and stacks with BOSE_MOD_CULTURE_PER_CONQUERED_SETTLEMENT,
+        so a Bose-plays-Bharat player triple-dipped on conquest. A flat
+        per-settlement Culture bonus keeps the "civilizational knowledge
+        binds the whole nation" theme while staying distinct from the
+        leader's conquest kit. Plain EFFECT_CITY_ADJUST_YIELD over
+        COLLECTION_PLAYER_CITIES with no requirement (same shape as the
+        leader's yield modifiers, minus the SubjectRequirements block). -->
+<GameEffects xmlns="GameEffects">
+	<Modifier id="BHARAT_MOD_FACTORY_PRODUCTION" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<SubjectRequirements>
+			<Requirement type="REQUIREMENT_CITY_HAS_BUILDING">
+				<Argument name="BuildingType">BUILDING_FACTORY</Argument>
+			</Requirement>
+		</SubjectRequirements>
+		<Argument name="YieldType">YIELD_PRODUCTION</Argument>
+		<Argument name="Amount">5</Argument>
+		<Argument name="Tooltip">LOC_TRAIT_BHARAT_ABILITY_NAME</Argument>
+	</Modifier>
+	<Modifier id="BHARAT_MOD_WAR_SUPPORT_DEFENSE" collection="COLLECTION_OWNER" effect="EFFECT_ADJUST_WAR_SUPPORT_BONUS">
+		<Argument name="Amount">3</Argument>
+		<Argument name="IsAggressor">false</Argument>
+	</Modifier>
+	<Modifier id="BHARAT_MOD_NATIONAL_CULTURE" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<Argument name="YieldType">YIELD_CULTURE</Argument>
+		<Argument name="Amount">1</Argument>
+		<Argument name="Tooltip">LOC_TRAIT_BHARAT_ABILITY_NAME</Argument>
+	</Modifier>
+</GameEffects>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat civ ability "Mother Industries" (STAGE 4, part A): links the
+     empty TRAIT_BHARAT_ABILITY shell (data/bharat-civilization.xml) to its 3
+     GameEffects modifiers (data/bharat-civ-ability-gameeffects.xml).
+
+     Pattern mirrors data/leaders.xml's own <TraitModifiers> block exactly
+     (TraitType + ModifierId rows, one per effect) and the base-game civ
+     ability wiring in age-modern/data/civilizations-modern.xml
+     (TRAIT_MUGHAL_ABILITY -> 6 ModifierId rows). -->
+<Database>
+	<TraitModifiers>
+		<Row TraitType="TRAIT_BHARAT_ABILITY" ModifierId="BHARAT_MOD_FACTORY_PRODUCTION"/>
+		<Row TraitType="TRAIT_BHARAT_ABILITY" ModifierId="BHARAT_MOD_WAR_SUPPORT_DEFENSE"/>
+		<Row TraitType="TRAIT_BHARAT_ABILITY" ModifierId="BHARAT_MOD_NATIONAL_CULTURE"/>
+	</TraitModifiers>
+</Database>

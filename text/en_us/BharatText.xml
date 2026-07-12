@@ -26,15 +26,16 @@
 			<Text>The Maurya carved their edicts in stone; the Chola sent their bronzes across the southern seas; through every age of conquest, the learning of the subcontinent endured — its astronomers, its surgeons, its masters of steel. Now that inheritance passes to a free people. Bharat rises — one nation of many faiths and many tongues, its ranks unbroken, its forges lit, its future planned by no hand but its own. Jai Hind!</Text>
 		</Row>
 
-		<!-- Civ ability "Mother Industries" (deliverable 2). {X}/{Y}/{Z} are
-		     placeholders for the Code side; suggested official-magnitude
-		     defaults 10 / 25 / +2. TODO on build: verify [icon:YIELD_PRODUCTION]
-		     renders (unconfirmed key — cf. the COMBAT_MELEE trap). -->
+		<!-- Civ ability "Mother Industries" (STAGE 4, part A): real effects
+		     wired in data/bharat-civ-ability.xml + data/bharat-civ-ability-
+		     gameeffects.xml (BHARAT_MOD_FACTORY_PRODUCTION,
+		     BHARAT_MOD_WAR_SUPPORT_DEFENSE, BHARAT_MOD_CULTURE_NOT_FOUNDED).
+		     {X}/{Y}/{Z} placeholders replaced with the real, final numbers. -->
 		<Row Tag="LOC_TRAIT_BHARAT_ABILITY_NAME" Language="en_US">
 			<Text>Mother Industries</Text>
 		</Row>
 		<Row Tag="LOC_TRAIT_BHARAT_ABILITY_DESCRIPTION" Language="en_US">
-			<Text>+{X}%[icon:YIELD_PRODUCTION] Production in settlements with a Production building. {Y}% less War Weariness in your settlements. +{Z}[icon:YIELD_HAPPINESS] Happiness in all settlements for each foreign civilization that founded a settlement you control.</Text>
+			<Text>+5[icon:YIELD_PRODUCTION] Production in settlements with a Factory. +3 War Support in wars you did not start. +1[icon:YIELD_CULTURE] Culture in all your settlements.</Text>
 		</Row>
 
 		<!-- CivilizationItems in config/bharat-config.xml registers this
@@ -44,10 +45,10 @@
 		     its Modern description (no separate scaled-down text), so these
 		     are verbatim copies of LOC_TRAIT_BHARAT_ABILITY_DESCRIPTION above. -->
 		<Row Tag="LOC_TRAIT_BHARAT_ABILITY_AQ_DESCRIPTION" Language="en_US">
-			<Text>+{X}%[icon:YIELD_PRODUCTION] Production in settlements with a Production building. {Y}% less War Weariness in your settlements. +{Z}[icon:YIELD_HAPPINESS] Happiness in all settlements for each foreign civilization that founded a settlement you control.</Text>
+			<Text>+5[icon:YIELD_PRODUCTION] Production in settlements with a Factory. +3 War Support in wars you did not start. +1[icon:YIELD_CULTURE] Culture in all your settlements.</Text>
 		</Row>
 		<Row Tag="LOC_TRAIT_BHARAT_ABILITY_EX_DESCRIPTION" Language="en_US">
-			<Text>+{X}%[icon:YIELD_PRODUCTION] Production in settlements with a Production building. {Y}% less War Weariness in your settlements. +{Z}[icon:YIELD_HAPPINESS] Happiness in all settlements for each foreign civilization that founded a settlement you control.</Text>
+			<Text>+5[icon:YIELD_PRODUCTION] Production in settlements with a Factory. +3 War Support in wars you did not start. +1[icon:YIELD_CULTURE] Culture in all your settlements.</Text>
 		</Row>
 
 		<!-- City names (data/bharat-civilization.xml CityNames). Delhi is the
@@ -217,6 +218,49 @@
 		</Row>
 		<Row Tag="LOC_CIVIC_BHARAT_NATIONAL_PLANNING_DESCRIPTION" Language="en_US">
 			<Text>An economy drafted before freedom itself: mother industries, raised by the nation's own hand.</Text>
+		</Row>
+
+		<!-- STAGE 4 part B: civic tree TREE_CIVICS_MO_BHARAT name, and the 5
+		     unique traditions the tree's nodes unlock (data/bharat-traditions.xml
+		     + data/bharat-progression-trees.xml). Tradition NAMEs reuse the
+		     civic names above by theme but are distinct LOC keys (the tree
+		     node and the tradition it unlocks are two separate game objects,
+		     exactly as with Mughal's NODE_CIVIC_MO_MUGHAL_ZABT unlocking
+		     TRADITION_JINSI_KAMIL — different key namespaces even where the
+		     in-fiction name matches). Descriptions state the real modifier
+		     effect wired in data/bharat-traditions-gameeffects.xml. -->
+		<Row Tag="LOC_TREE_CIVICS_MO_BHARAT_NAME" Language="en_US">
+			<Text>Bharat</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_SWADESHI_NAME" Language="en_US">
+			<Text>Swadeshi</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_SWADESHI_DESCRIPTION" Language="en_US">
+			<Text>+2[icon:YIELD_PRODUCTION] Production in all settlements.</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_PURNA_SWARAJ_NAME" Language="en_US">
+			<Text>Purna Swaraj</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_PURNA_SWARAJ_DESCRIPTION" Language="en_US">
+			<Text>+2[icon:YIELD_HAPPINESS] Happiness in all settlements.</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_FORWARD_BLOC_NAME" Language="en_US">
+			<Text>Forward Bloc</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_FORWARD_BLOC_DESCRIPTION" Language="en_US">
+			<Text>+2 [icon:NAR_REW_COMBAT] Combat Strength for all units.</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_AZAD_HIND_NAME" Language="en_US">
+			<Text>Azad Hind</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_AZAD_HIND_DESCRIPTION" Language="en_US">
+			<Text>+3[icon:YIELD_DIPLOMACY] Influence per turn.</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_NATIONAL_PLANNING_NAME" Language="en_US">
+			<Text>National Planning</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_NATIONAL_PLANNING_DESCRIPTION" Language="en_US">
+			<Text>+2[icon:YIELD_SCIENCE] Science in all settlements.</Text>
 		</Row>
 
 		<!-- (6) Civilopedia entry -->

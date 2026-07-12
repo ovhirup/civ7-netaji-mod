@@ -69,6 +69,15 @@
 					<Item>data/bharat-progression-tech.xml</Item>
 					<Item>data/bharat-quarters.xml</Item>
 					<Item>data/bharat-quarters-gameeffects.xml</Item>
+					<!-- STAGE 4: Mother Industries civ-ability effects + the
+					     5-node unique civic tree/traditions. Modern-age
+					     content, loaded in this same criteria as the other
+					     Bharat gameplay data (all Modern-only). -->
+					<Item>data/bharat-civ-ability.xml</Item>
+					<Item>data/bharat-civ-ability-gameeffects.xml</Item>
+					<Item>data/bharat-progression-trees.xml</Item>
+					<Item>data/bharat-traditions.xml</Item>
+					<Item>data/bharat-traditions-gameeffects.xml</Item>
 				</UpdateDatabase>
 			</Actions>
 		</ActionGroup>
