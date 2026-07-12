@@ -41,6 +41,17 @@ const LIGHTING_ASSET = "LEADER_LIGHTING_SCENE_CHAR_SELECT_GAME_ASSET";
 function isBoseAsset(name) {
 	return typeof name === "string" && name.toUpperCase().indexOf("SUBHAS") >= 0;
 }
+// The create-game "diorama" also composites a stone PEDESTAL the leader stands
+// on and the civ's 3D BANNER. With Bose's leader model invisible, those props
+// show as stray geometry (the "strange metallic shape at the chest" on the
+// Game Setup screen). Hide them — but ONLY inside a group that actually holds
+// Bose's model, and restore them whenever the group is showing another leader,
+// so base leaders' dioramas are untouched.
+function isSceneProp(name) {
+	if (typeof name !== "string") { return false; }
+	const u = name.toUpperCase();
+	return u.indexOf("PEDESTAL") >= 0 || u.indexOf("BANNER") >= 0;
+}
 try {
 	if (typeof WorldUI === "object" && WorldUI && typeof WorldUI.createModelGroup === "function" && !WorldUI.__boseWrapped) {
 		const origCreate = WorldUI.createModelGroup;
@@ -48,22 +59,44 @@ try {
 			const grp = origCreate.call(this, name);
 			try {
 				if (grp && typeof grp.addModel === "function") {
+					grp.__boseProps = [];       // pedestal/banner models in this group
+					grp.__boseActive = false;   // is this group currently showing Bose?
+					const applyProps = function () {
+						grp.__boseProps.forEach(function (m) {
+							try { m.setAlpha && m.setAlpha(grp.__boseActive ? 0 : 1); } catch (e) { /* host */ }
+						});
+					};
+					const setBose = function (on, model) {
+						grp.__boseActive = on;
+						applyProps();
+						try { model && model.setAlpha && model.setAlpha(on ? 0 : 1); } catch (e) { /* host */ }
+					};
 					const origAdd = grp.addModel;
 					grp.addModel = function (assetName, ...rest) {
 						const bose = isBoseAsset(assetName);
 						const model = origAdd.call(this, bose ? LIGHTING_ASSET : assetName, ...rest);
-						if (model && typeof model.setAssetName === "function" && !model.__boseWrapped) {
-							const origSet = model.setAssetName.bind(model);
-							model.setAssetName = function (newName) {
-								if (isBoseAsset(newName)) {
-									console.warn("[BoseMod] neutralized leader model for Bose (mesh+VO)");
-									try { model.setAlpha && model.setAlpha(0); } catch (e) { /* host */ }
-									return origSet(LIGHTING_ASSET);
-								}
-								try { model.setAlpha && model.setAlpha(1); } catch (e) { /* host */ }
-								return origSet(newName);
-							};
-							model.__boseWrapped = true;
+						if (model) {
+							if (isSceneProp(assetName)) {
+								grp.__boseProps.push(model);
+								if (grp.__boseActive) { try { model.setAlpha && model.setAlpha(0); } catch (e) { /* host */ } }
+							}
+							if (typeof model.setAssetName === "function" && !model.__boseWrapped) {
+								const origSet = model.setAssetName.bind(model);
+								model.setAssetName = function (newName) {
+									if (isBoseAsset(newName)) {
+										console.warn("[BoseMod] neutralized leader model + diorama props for Bose");
+										setBose(true, model);
+										return origSet(LIGHTING_ASSET);
+									}
+									setBose(false, model);
+									return origSet(newName);
+								};
+								model.__boseWrapped = true;
+							}
+							if (bose) {
+								console.warn("[BoseMod] neutralized leader model + diorama props for Bose (add)");
+								setBose(true, model);
+							}
 						}
 						return model;
 					};
@@ -74,7 +107,7 @@ try {
 			return grp;
 		};
 		WorldUI.__boseWrapped = true;
-		console.warn("[BoseMod] WorldUI.createModelGroup wrapped OK");
+		console.warn("[BoseMod] WorldUI.createModelGroup wrapped OK (leader + diorama props)");
 	} else {
 		console.warn("[BoseMod] WorldUI.createModelGroup not wrappable (already wrapped or absent)");
 	}
