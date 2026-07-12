@@ -1,15 +1,21 @@
-# Art assets needed
+# Art assets
 
-Nothing in this folder ships yet. Required before release:
+Nothing in this folder ships yet. **See [../ASSET-MANIFEST.md](../ASSET-MANIFEST.md)**
+for the full spec: every asset, its exact filename, format, dimensions, the
+icon-definition row, and whether it's confirmed-makeable or needs the in-game
+feasibility test.
 
-| Asset | Notes |
-|---|---|
-| Leader icon (circular portrait) | Multiple resolutions; check sizes used by base-standard leader icons |
-| Diplomacy-screen portrait | 2D fallback — Civ VII has no custom 3D-leader pipeline. Community-standard approach is a UI mod that swaps in a 2D portrait, or mapping to an existing 3D model via the "Leader Model Changer" addon on CivFanatics |
-| Loading-screen background | Optional |
+Quick summary:
+- **Makeable now (raw PNG):** Bharat civ symbol, building icons (Yojana Bhavan,
+  Vaidyashala, quarter) — these use `fs://game/` references.
+- **Needs a feasibility test first:** leader portrait, unit flag, loading
+  backgrounds — the base game ships these as compiled `blp:` archives (no
+  modder tool); referencing our own `fs://` PNG is the presumed workaround,
+  unconfirmed until tested in game.
+- **Not achievable:** a custom animated 3D diplomacy leader (engine limit).
 
-Constraints:
-- Do **not** use period photographs directly (rights unclear). Commission or
-  generate an original stylized portrait in the Civ VII art style.
-- Iconography: INA Springing Tiger and the Azad Hind tricolour are the
-  appropriate visual language. No Axis-related imagery (see DESIGN.md framing).
+Style rules (also in STYLE-CANON / DESIGN.md):
+- Original artwork only — never reproduce period photographs.
+- Netaji: INA uniform + peaked cap or sherwani; round spectacles. Iconography
+  limited to the INA Springing Tiger and the Azad Hind tricolour. No Axis imagery.
+- Civ symbol: clean monochrome silhouette, Civ VII style.
