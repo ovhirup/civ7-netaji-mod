@@ -82,6 +82,17 @@
 				<UpdateIcons>
 					<Item>data/icons/bharat-icons.xml</Item>
 				</UpdateIcons>
+				<!-- FEASIBILITY TEST: import a raw placeholder PNG so the game
+				     can resolve fs://game/civ_sym_bharat (referenced in
+				     bharat-icons.xml) to it. Hypothesis: ImportFiles lands the
+				     file in the VFS at fs://game/<basename>, making the civ
+				     symbol on the civ-select screen show the magenta swatch.
+				     If it does, the raw-PNG art path + this folder are proven
+				     and we extend to leader/unit/building art. If not, UI.log
+				     reveals the path the game looked for and we adjust. -->
+				<ImportFiles>
+					<Item>art/civ_sym_bharat.png</Item>
+				</ImportFiles>
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>
 					<Item>text/en_us/BharatText.xml</Item>
