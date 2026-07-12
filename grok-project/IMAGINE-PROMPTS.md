@@ -82,3 +82,58 @@ Process (keeps background; game masks to hex/circle):
 Grok Imagine → download the image → drop in `art/incoming/` → run the matching
 `process_art.py` command → restart Civ VII. The output filenames are already
 wired into the mod (`netaji-bose.modinfo` + `data/icons/bharat-icons.xml`).
+
+---
+
+## Ratified visual-identity additions (STYLE-CANON ruling, user-approved 2026-07-12)
+
+Iconography split: LEADER/INA = tiger + Azad Hind tricolour ONLY; CIVILIZATION =
+Republic symbols allowed (chakra tricolour, Sarnath Lion Capital). Timeline rule:
+never put post-1947 symbols IN Bose's scenes/hands — background emblems only.
+
+### 7. Civ symbol — Ashoka Chakra ✅ DONE PROGRAMMATICALLY (do not generate)
+The 24-spoke chakra is drawn mathematically (image models cannot count spokes) —
+already shipped as civ_sym_bharat.png + cult_bharat.png. If a painterly-texture
+variant is ever wanted, generate texture only and re-cut to the exact geometry.
+
+### 8. Quarter icon — Lion Capital of Sarnath — `commission` → `buildicon_national_planning_commission.png`
+> A single monochrome emblem for a strategy-game building icon: the ancient Lion
+> Capital of Sarnath as weathered Mauryan sculpture — three visible lion heads
+> back-to-back atop a circular abacus band with a small carved wheel, resting on
+> a bell-shaped inverted lotus base. Flat ivory-white silhouette with painterly
+> interior shading, centered on a flat solid dark charcoal background. Simplified
+> monumental forms, no plinth, no motto, no text or lettering of any kind, no
+> national-emblem framing, legible at 64 pixels. Style of Civilization VII
+> official iconography.
+(NEVER the official State Emblem lockup / "Satyameva Jayate" — State Emblem Act
+2005; ancient sculpture only.)
+
+### 9. Bharat loading still (full-screen, replaces/upgrades lsl art later)
+> Painterly widescreen scene in the style of Civilization VII loading-screen art
+> — realist oil-painting technique, confident visible brushwork, dramatic warm
+> light. Dawn breaks over an independent modern nation: the colossal Lion
+> Capital of Sarnath stands as an ancient sandstone monument in the middle
+> distance catching first light; behind it a rising skyline of dams, steel
+> mills, and factory chimneys under construction; in the foreground a flagstaff
+> flies the Indian tricolour — saffron, white, and green horizontal bands with a
+> navy-blue 24-spoke wheel at center — lifting in the wind. Palette anchored in
+> saffron dawn sky shading toward green-tinged fields, ivory stone, navy
+> accents. No faces in close-up, no religious architecture as focal point, no
+> text or lettering anywhere, upper third kept as calm open sky.
+POST: composite भारत (real Devanagari typography — macOS Devanagari fonts /
+Noto Serif Devanagari; NEVER model-generated glyphs) across the reserved sky,
+Latin "BHARAT" beneath.
+
+### 10. Workshop banner (wide)
+> Painterly widescreen key art in the style of Civilization VII marketing
+> illustration. Foreground left: an original painted likeness of Subhas Chandra
+> Bose in olive INA field uniform and peaked cap, round wire spectacles,
+> resolute three-quarter pose. Sweeping behind and above him to the right, as
+> emblematic backdrop rather than objects in his scene: the saffron-white-green
+> tricolour with navy chakra unfurling into a dawn sky, the faint monumental
+> silhouette of the Sarnath Lion Capital, and an industrial skyline in morning
+> haze. Warm heroic light, dignified and hopeful, no other figures, no foreign
+> flags or insignia of any kind, no text; clean band reserved along the right
+> third.
+POST: composite भारत / BHARAT — Republic of Bharat + tagline; जय हिन्द small
+beneath. Timeline rule: emblems BEHIND him, never in his hands.

@@ -54,6 +54,9 @@
 				<!-- Icon definitions (fs://game/ PNG refs; missing files fall
 				     back harmlessly). Loaded in both scopes so setup-screen
 				     (leader/civ) and in-game (unit/building) icons resolve. -->
+				<UpdateColors>
+					<Item>data/playercolors.xml</Item>
+				</UpdateColors>
 				<UpdateIcons>
 					<Item>data/icons/bharat-icons.xml</Item>
 				</UpdateIcons>
@@ -150,6 +153,9 @@
 					     config/civics-traditions.xml pattern). -->
 					<Item>config/bharat-civics-traditions.xml</Item>
 				</UpdateDatabase>
+				<UpdateColors>
+					<Item>data/playercolors.xml</Item>
+				</UpdateColors>
 				<UpdateIcons>
 					<Item>data/icons/bharat-icons.xml</Item>
 				</UpdateIcons>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Bharat tricolour player colors (STYLE-CANON visual-identity ruling,
+     user-ratified 2026-07-12). Flag-derived palette only, incl. chakra navy.
+     Default: saffron field / navy symbol (~7.5:1 contrast — the chakra on the
+     saffron band). Saffron-on-green was explicitly REJECTED (~2:1, unreadable
+     at map zoom). Custom RGB rows in the Colors table (base pattern:
+     base-standard/data/colors/playerstandardcolors.xml — Color for UI tint,
+     Color3D for team color on models); assignment keyed by LEADER, Usage
+     Unique, mirroring the ashoka-himiko-alt template's playercolors.xml. -->
+<Database>
+	<Colors>
+		<Row>
+			<Type>COLOR_BHARAT_SAFFRON</Type>
+			<Color>255,153,51,255</Color>
+			<Color3D>255,153,51,255</Color3D>
+		</Row>
+		<Row>
+			<Type>COLOR_BHARAT_NAVY</Type>
+			<Color>0,0,128,255</Color>
+			<Color3D>0,0,128,255</Color3D>
+		</Row>
+		<Row>
+			<Type>COLOR_BHARAT_GREEN</Type>
+			<Color>19,136,8,255</Color>
+			<Color3D>19,136,8,255</Color3D>
+		</Row>
+		<Row>
+			<Type>COLOR_BHARAT_WHITE</Type>
+			<Color>255,255,255,255</Color>
+			<Color3D>255,255,255,255</Color3D>
+		</Row>
+	</Colors>
+	<PlayerColors>
+		<Row>
+			<Type>LEADER_SUBHAS_CHANDRA_BOSE</Type>
+			<Usage>Unique</Usage>
+			<PrimaryColor>COLOR_BHARAT_SAFFRON</PrimaryColor>
+			<SecondaryColor>COLOR_BHARAT_NAVY</SecondaryColor>
+			<Alt1PrimaryColor>COLOR_BHARAT_GREEN</Alt1PrimaryColor>
+			<Alt1SecondaryColor>COLOR_BHARAT_WHITE</Alt1SecondaryColor>
+			<Alt2PrimaryColor>COLOR_BHARAT_WHITE</Alt2PrimaryColor>
+			<Alt2SecondaryColor>COLOR_BHARAT_NAVY</Alt2SecondaryColor>
+			<Alt3PrimaryColor>COLOR_BHARAT_NAVY</Alt3PrimaryColor>
+			<Alt3SecondaryColor>COLOR_BHARAT_SAFFRON</Alt3SecondaryColor>
+		</Row>
+	</PlayerColors>
+</Database>
