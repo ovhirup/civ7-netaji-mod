@@ -53,11 +53,19 @@ Deliver as WAV masters (48 kHz/24-bit ideal); Code side converts to Vorbis.
 ## Technical delivery (Code side)
 
 Engine truth: `<audio>` does not exist in cohtml; `Audio.playSound` = Wwise
-event names only (mods can't add Wwise banks). The ONE candidate path is
-Vorbis audio muxed into a WebM played via an HTML `<video>` element (the UI
-demuxer advertises V_VP9 + Vorbis support; all shipped webms are silent, so
-whether the audio callback is actually wired = 50/50 UNVERIFIED). The repo
-ships a placeholder-VO test webm + playback probe in the leader-select UI
-script; UI.log beacons report play/error. If the loophole fails, fallback is
-video-with-sound in slots that support fxs-movie, or no in-game audio (art
-assets only, audio shipped as a bonus track on the Workshop page).
+event names only (mods can't add Wwise banks). The ONE candidate path was
+Vorbis/Opus audio muxed into a WebM played via an HTML `<video>` element.
+
+**VERDICT (2026-07-12): in-game WebM audio is DEAD.** Tested both codecs with
+real ElevenLabs VO muxed in. UI.log reports `VO probe PLAYING (vorbis)` AND
+`VO probe PLAYING (opus)` — the `<video>` element demuxes and decodes the
+audio track and fires the `playing` event — but produces NO audible sound.
+The cohtml video pipeline renders frames but never wires the audio callback to
+an output sink, and mods cannot add Wwise banks. This is a hard engine limit,
+not a mod bug. The probe is disabled (bose-leader-select-portrait.js).
+
+**Shipping decision:** the ElevenLabs VO (3 takes) + "The Dawn March" (15s cue)
++ "The Dawn of Freedom" (2:45 theme) ship as **Workshop-page media** — an
+embedded video/audio preview on the mod's Steam Workshop listing, credited as a
+tribute rendition (never claimed as Bose's real voice). The muxed webms stay in
+`audio/` in case a future engine patch exposes an audio sink. No in-game audio.

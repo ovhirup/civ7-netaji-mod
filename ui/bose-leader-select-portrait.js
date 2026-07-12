@@ -237,7 +237,14 @@ function showOverlay() {
 		el.appendChild(img);
 		document.body.insertBefore(el, document.body.firstChild);
 		console.warn("[BoseMod] leader-select portrait overlay shown (ui-next)");
-		probeVoiceOver();
+		// AUDIO LOOPHOLE = CONFIRMED DEAD (2026-07-12): both vorbis and opus
+		// WebM tracks report the "playing" event in UI.log but produce NO
+		// audible sound — the cohtml <video> demuxes/decodes audio but the
+		// engine never wires the audio callback. Mods cannot add Wwise banks.
+		// The probe is disabled; the ElevenLabs VO + march ship as Workshop
+		// media instead. Leaving probeVoiceOver() defined but unwired in case a
+		// future patch exposes an audio sink.
+		// probeVoiceOver();
 	} catch (e) {
 		console.error("[BoseMod] leader-select showOverlay failed: " + e);
 	}
