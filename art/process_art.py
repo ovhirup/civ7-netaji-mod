@@ -58,6 +58,9 @@ ASSETS = {
     "leader":      ("portrait",   [("lp_hex_bose_256.png", 256), ("lp_hex_bose_128.png", 128),
                                     ("lp_circ_bose_256.png", 256), ("lp_circ_bose_140.png", 140)]),
     "unitflag":    ("silhouette", [("unitflag_azad_hind_fauj.png", 256)]),
+    "rani":        ("silhouette", [("unitflag_rani_of_jhansi.png", 256)]),
+    "nausena":     ("silhouette", [("unitflag_nau_sena.png", 256)]),
+    "bahadur":     ("silhouette", [("unitflag_bahadur.png", 256)]),
 }
 MASTER = 512  # build a hi-res master, then downscale to each target for crisp small icons
 
