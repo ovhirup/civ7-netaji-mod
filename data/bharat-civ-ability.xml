@@ -12,5 +12,9 @@
 		<Row TraitType="TRAIT_BHARAT_ABILITY" ModifierId="BHARAT_MOD_FACTORY_PRODUCTION"/>
 		<Row TraitType="TRAIT_BHARAT_ABILITY" ModifierId="BHARAT_MOD_WAR_SUPPORT_DEFENSE"/>
 		<Row TraitType="TRAIT_BHARAT_ABILITY" ModifierId="BHARAT_MOD_NATIONAL_CULTURE"/>
+		<!-- Reveals TREE_CIVICS_MO_BHARAT so it shows as a tab on the in-game
+		     Civic Trees screen (mirrors TRAIT_MUGHAL_ABILITY ->
+		     MOD_REVEAL_CIV_CULTURE_TREE_MUGHAL in civilizations-modern.xml). -->
+		<Row TraitType="TRAIT_BHARAT_ABILITY" ModifierId="BHARAT_MOD_REVEAL_CULTURE_TREE"/>
 	</TraitModifiers>
 </Database>

@@ -54,4 +54,22 @@
 		<Argument name="Amount">1</Argument>
 		<Argument name="Tooltip">LOC_TRAIT_BHARAT_ABILITY_NAME</Argument>
 	</Modifier>
+	<!-- REVEAL the unique civic tree to the player. This is what makes
+	     TREE_CIVICS_MO_BHARAT appear as a tab on the in-game Civic Trees screen
+	     (player.Culture.getAvailableTrees() only returns REVEALED trees).
+	     Setting UniqueCultureProgressionTree on the Civilizations row declares
+	     the tree but does NOT reveal it — every base civ pairs that column with
+	     this modifier. Copied verbatim from age-modern/data/
+	     civilizations-gameeffects.xml MOD_REVEAL_CIV_CULTURE_TREE_MUGHAL (which
+	     is attached to TRAIT_MUGHAL_ABILITY and gated on TRAIT_MUGHAL); ours is
+	     attached to TRAIT_BHARAT_ABILITY (see bharat-civ-ability.xml) and gated
+	     on the identity trait TRAIT_BHARAT. -->
+	<Modifier id="BHARAT_MOD_REVEAL_CULTURE_TREE" collection="COLLECTION_OWNER" effect="EFFECT_PLAYER_REVEAL_CULTURE_TREE">
+		<SubjectRequirements>
+			<Requirement type="REQUIREMENT_PLAYER_HAS_CIVILIZATION_OR_LEADER_TRAIT">
+				<Argument name="TraitType">TRAIT_BHARAT</Argument>
+			</Requirement>
+		</SubjectRequirements>
+		<Argument name="ProgressionTreeType">TREE_CIVICS_MO_BHARAT</Argument>
+	</Modifier>
 </GameEffects>
