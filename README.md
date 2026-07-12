@@ -1,5 +1,7 @@
 # Netaji Subhas Chandra Bose & Bharat — Civilization VII Mod
 
+**▶ [Play it on the Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3763580219)**
+
 Adds **Netaji Subhas Chandra Bose**, hero of India's independence struggle, as a
 playable leader, together with the Modern-Age civilization **Bharat**. Data-only
 plus UI scripting — no core game files are replaced.
