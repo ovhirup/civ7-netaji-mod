@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat unique units, wave 2 (Chat-project alternate-history design,
+     ranked shortlist): Rani of Jhansi Regiment (ranged), Azad Hind Nau Sena
+     (naval), Bahadur Group (recon-style supplemental). Same wiring pattern as
+     the Stage-2 Azad Hind Fauj in data/bharat-units.xml (Types + Units +
+     Stats/Costs + UnitReplaces + class-tag -> UnitClass_Abilities ->
+     UnitAbilityModifiers one-hop ability grant; modifiers live in
+     data/bharat-units-2-gameeffects.xml).
+
+     RANI OF JHANSI REGIMENT — replaces UNIT_MORTAR (the Modern tier-1 ranged
+     land line; stats 40/35/55 range 2, cost 260 mirrored exactly from
+     age-modern/data/units.xml). ONE deliberate deviation: UNIT_MOVEMENT_CLASS_
+     FOOT instead of Mortar's WHEELED — this is a rifle regiment, not a towed
+     piece. Design's "+5 when defending" had no engine requirement (no
+     REQUIREMENT_UNIT_IS_DEFENDER exists); per the design's own fallback note
+     the effect maps to the PROVEN home-ground condition at Cossack's exact
+     magnitude: +4 Combat Strength in friendly territory
+     (COSSACK_MOD_COMBAT_STRENGTH_IN_FRIENDLY_TERRITORY pattern verbatim).
+     The thematic mirror of the Fauj: the Fauj liberates abroad (+1 outside),
+     the Regiment guards home.
+
+     AZAD HIND NAU SENA — replaces UNIT_DESTROYER (Tier 3 naval escort; stats
+     55/30/30 range 1, cost 400 mirrored exactly). +3 Combat Strength in
+     friendly territory (same proven requirement set, design's number).
+
+     BAHADUR GROUP — SUPPLEMENTAL light recon infantry (no Modern recon line
+     exists to replace — UNIT_EXPLORER is civilian — so no UnitReplaces row,
+     per the design's fallback). Light, fast, far-seeing: Combat 35, Moves 3,
+     Sight 3, cost 200, exerts no ZOC itself and IGNORES enemy ZOC
+     (EFFECT_ADJUST_UNIT_IGNORE_ZOC — SWIFT_MOD_UNIT_IGNORE_ZOC pattern
+     verbatim, base-standard/data/units-gameeffects.xml:128). -->
+<Database>
+	<Types>
+		<Row Type="UNIT_RANI_OF_JHANSI_REGIMENT" Kind="KIND_UNIT"/>
+		<Row Type="UNIT_AZAD_HIND_NAU_SENA" Kind="KIND_UNIT"/>
+		<Row Type="UNIT_BAHADUR_GROUP" Kind="KIND_UNIT"/>
+		<Row Type="ABILITY_RANI_OF_JHANSI_REGIMENT" Kind="KIND_ABILITY"/>
+		<Row Type="ABILITY_AZAD_HIND_NAU_SENA" Kind="KIND_ABILITY"/>
+		<Row Type="ABILITY_BAHADUR_GROUP" Kind="KIND_ABILITY"/>
+	</Types>
+	<Units>
+		<Row UnitType="UNIT_RANI_OF_JHANSI_REGIMENT" Name="LOC_UNIT_RANI_OF_JHANSI_REGIMENT_NAME" Description="LOC_UNIT_RANI_OF_JHANSI_REGIMENT_DESCRIPTION" Tier="1" Maintenance="6" BaseMoves="2" BaseSightRange="2" ZoneOfControl="true" Domain="DOMAIN_LAND" UnitMovementClass="UNIT_MOVEMENT_CLASS_FOOT" CoreClass="CORE_CLASS_MILITARY" FormationClass="FORMATION_CLASS_LAND_COMBAT" TraitType="TRAIT_BHARAT"/>
+		<Row UnitType="UNIT_AZAD_HIND_NAU_SENA" Name="LOC_UNIT_AZAD_HIND_NAU_SENA_NAME" Description="LOC_UNIT_AZAD_HIND_NAU_SENA_DESCRIPTION" Tier="3" Maintenance="12" BaseMoves="4" BaseSightRange="3" ZoneOfControl="true" Domain="DOMAIN_SEA" UnitMovementClass="UNIT_MOVEMENT_CLASS_NAVAL" CoreClass="CORE_CLASS_MILITARY" FormationClass="FORMATION_CLASS_NAVAL" TraitType="TRAIT_BHARAT"/>
+		<Row UnitType="UNIT_BAHADUR_GROUP" Name="LOC_UNIT_BAHADUR_GROUP_NAME" Description="LOC_UNIT_BAHADUR_GROUP_DESCRIPTION" Tier="1" Maintenance="3" BaseMoves="3" BaseSightRange="3" ZoneOfControl="false" Domain="DOMAIN_LAND" UnitMovementClass="UNIT_MOVEMENT_CLASS_FOOT" CoreClass="CORE_CLASS_MILITARY" FormationClass="FORMATION_CLASS_LAND_COMBAT" TraitType="TRAIT_BHARAT"/>
+	</Units>
+	<Unit_Stats>
+		<!-- Rani mirrors UNIT_MORTAR exactly; Nau Sena mirrors UNIT_DESTROYER
+		     exactly; Bahadur is a light scout (no ranged). -->
+		<Row UnitType="UNIT_RANI_OF_JHANSI_REGIMENT" Combat="40" RangedCombat="35" Bombard="55" Range="2"/>
+		<Row UnitType="UNIT_AZAD_HIND_NAU_SENA" Combat="55" RangedCombat="30" Bombard="30" Range="1"/>
+		<Row UnitType="UNIT_BAHADUR_GROUP" Combat="35"/>
+	</Unit_Stats>
+	<Unit_Costs>
+		<Row UnitType="UNIT_RANI_OF_JHANSI_REGIMENT" YieldType="YIELD_PRODUCTION" Cost="260"/>
+		<Row UnitType="UNIT_AZAD_HIND_NAU_SENA" YieldType="YIELD_PRODUCTION" Cost="400"/>
+		<Row UnitType="UNIT_BAHADUR_GROUP" YieldType="YIELD_PRODUCTION" Cost="200"/>
+	</Unit_Costs>
+	<UnitReplaces>
+		<Row CivUniqueUnitType="UNIT_RANI_OF_JHANSI_REGIMENT" ReplacesUnitType="UNIT_MORTAR"/>
+		<Row CivUniqueUnitType="UNIT_AZAD_HIND_NAU_SENA" ReplacesUnitType="UNIT_DESTROYER"/>
+		<!-- Bahadur Group is supplemental — no replacement row. -->
+	</UnitReplaces>
+	<Tags>
+		<Row Tag="UNIT_CLASS_RANI_OF_JHANSI" Category="UNIT_CLASS"/>
+		<Row Tag="UNIT_CLASS_NAU_SENA" Category="UNIT_CLASS"/>
+		<Row Tag="UNIT_CLASS_BAHADUR" Category="UNIT_CLASS"/>
+	</Tags>
+	<TypeTags>
+		<!-- Rani mirrors Mortar's tag (UNIT_CLASS_SIEGE — the ranged-bombard
+		     slot it replaces) + the standard combat/unique set. -->
+		<Row Type="UNIT_RANI_OF_JHANSI_REGIMENT" Tag="UNIT_CLASS_COMBAT"/>
+		<Row Type="UNIT_RANI_OF_JHANSI_REGIMENT" Tag="UNIT_CLASS_SIEGE"/>
+		<Row Type="UNIT_RANI_OF_JHANSI_REGIMENT" Tag="UNIT_CLASS_RANI_OF_JHANSI"/>
+		<Row Type="UNIT_RANI_OF_JHANSI_REGIMENT" Tag="UNIT_CLASS_UNIQUE"/>
+		<Row Type="UNIT_AZAD_HIND_NAU_SENA" Tag="UNIT_CLASS_COMBAT"/>
+		<Row Type="UNIT_AZAD_HIND_NAU_SENA" Tag="UNIT_CLASS_NAU_SENA"/>
+		<Row Type="UNIT_AZAD_HIND_NAU_SENA" Tag="UNIT_CLASS_UNIQUE"/>
+		<Row Type="UNIT_BAHADUR_GROUP" Tag="UNIT_CLASS_COMBAT"/>
+		<Row Type="UNIT_BAHADUR_GROUP" Tag="UNIT_CLASS_MELEE"/>
+		<Row Type="UNIT_BAHADUR_GROUP" Tag="UNIT_CLASS_INFANTRY"/>
+		<Row Type="UNIT_BAHADUR_GROUP" Tag="UNIT_CLASS_BAHADUR"/>
+		<Row Type="UNIT_BAHADUR_GROUP" Tag="UNIT_CLASS_UNIQUE"/>
+	</TypeTags>
+	<UnitClass_Abilities>
+		<Row UnitAbilityType="ABILITY_RANI_OF_JHANSI_REGIMENT" UnitClassType="UNIT_CLASS_RANI_OF_JHANSI"/>
+		<Row UnitAbilityType="ABILITY_AZAD_HIND_NAU_SENA" UnitClassType="UNIT_CLASS_NAU_SENA"/>
+		<Row UnitAbilityType="ABILITY_BAHADUR_GROUP" UnitClassType="UNIT_CLASS_BAHADUR"/>
+	</UnitClass_Abilities>
+	<UnitAbilities>
+		<Row UnitAbilityType="ABILITY_RANI_OF_JHANSI_REGIMENT" Name="LOC_UNIT_RANI_OF_JHANSI_REGIMENT_NAME" Description="LOC_ABILITY_RANI_OF_JHANSI_PREVIEW"/>
+		<Row UnitAbilityType="ABILITY_AZAD_HIND_NAU_SENA" Name="LOC_UNIT_AZAD_HIND_NAU_SENA_NAME" Description="LOC_ABILITY_NAU_SENA_PREVIEW"/>
+		<Row UnitAbilityType="ABILITY_BAHADUR_GROUP" Name="LOC_UNIT_BAHADUR_GROUP_NAME" Description="LOC_ABILITY_BAHADUR_PREVIEW"/>
+	</UnitAbilities>
+	<UnitAbilityModifiers>
+		<Row UnitAbilityType="ABILITY_RANI_OF_JHANSI_REGIMENT" ModifierId="RANI_OF_JHANSI_MOD_COMBAT_STRENGTH_IN_FRIENDLY_TERRITORY"/>
+		<Row UnitAbilityType="ABILITY_AZAD_HIND_NAU_SENA" ModifierId="NAU_SENA_MOD_COMBAT_STRENGTH_IN_FRIENDLY_TERRITORY"/>
+		<Row UnitAbilityType="ABILITY_BAHADUR_GROUP" ModifierId="BAHADUR_MOD_IGNORE_ZOC"/>
+	</UnitAbilityModifiers>
+	<Unit_Advisories>
+		<Row UnitType="UNIT_RANI_OF_JHANSI_REGIMENT" AdvisoryClassType="ADVISORY_CLASS_MILITARY"/>
+		<Row UnitType="UNIT_AZAD_HIND_NAU_SENA" AdvisoryClassType="ADVISORY_CLASS_MILITARY"/>
+		<Row UnitType="UNIT_BAHADUR_GROUP" AdvisoryClassType="ADVISORY_CLASS_MILITARY"/>
+	</Unit_Advisories>
+</Database>

@@ -115,6 +115,8 @@
 				<UpdateDatabase>
 					<Item>data/bharat-units.xml</Item>
 					<Item>data/bharat-units-gameeffects.xml</Item>
+					<Item>data/bharat-units-2.xml</Item>
+					<Item>data/bharat-units-2-gameeffects.xml</Item>
 					<Item>data/bharat-progression-tech.xml</Item>
 					<Item>data/bharat-quarters.xml</Item>
 					<Item>data/bharat-quarters-gameeffects.xml</Item>

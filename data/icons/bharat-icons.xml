@@ -40,5 +40,9 @@
 		<Row><ID>UNIT_AZAD_HIND_FAUJ</ID><Path>fs://game/unitflag_azad_hind_fauj.png</Path></Row>
 		<Row><ID>UNIT_AZAD_HIND_FAUJ_2</ID><Path>fs://game/unitflag_azad_hind_fauj.png</Path></Row>
 		<Row><ID>UNIT_AZAD_HIND_FAUJ_3</ID><Path>fs://game/unitflag_azad_hind_fauj.png</Path></Row>
+		<!-- Wave-2 unit flags (art pending — rows fall back harmlessly). -->
+		<Row><ID>UNIT_RANI_OF_JHANSI_REGIMENT</ID><Path>fs://game/unitflag_rani_of_jhansi.png</Path></Row>
+		<Row><ID>UNIT_AZAD_HIND_NAU_SENA</ID><Path>fs://game/unitflag_nau_sena.png</Path></Row>
+		<Row><ID>UNIT_BAHADUR_GROUP</ID><Path>fs://game/unitflag_bahadur.png</Path></Row>
 	</IconDefinitions>
 </Database>

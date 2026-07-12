@@ -284,5 +284,45 @@
 		<Row Tag="LOC_UNLOCK_PLAY_AS_CHOLA_BHARAT_TOOLTIP" Language="en_US">
 			<Text>The Chola carried the subcontinent's craft across the seas; Bharat gathers that inheritance into one self-reliant nation.</Text>
 		</Row>
+	
+		<!-- Wave-2 unique units (Chat-project alternate-history design,
+		     2026-07-12): Rani of Jhansi Regiment, Azad Hind Nau Sena,
+		     Bahadur Group. Numbers match data/bharat-units-2-gameeffects.xml. -->
+		<Row Tag="LOC_UNIT_RANI_OF_JHANSI_REGIMENT_NAME" Language="en_US">
+			<Text>Rani of Jhansi Regiment</Text>
+		</Row>
+		<Row Tag="LOC_UNIT_RANI_OF_JHANSI_REGIMENT_DESCRIPTION" Language="en_US">
+			<Text>Unique Bharatiya ranged unit that replaces the Mortar. +4[icon:NAR_REW_COMBAT] Combat Strength when fighting in friendly territory.</Text>
+		</Row>
+		<Row Tag="LOC_ABILITY_RANI_OF_JHANSI_PREVIEW" Language="en_US">
+			<Text>+4[icon:NAR_REW_COMBAT] Combat Strength when fighting in friendly territory.</Text>
+		</Row>
+		<Row Tag="LOC_PEDIA_UNIT_RANI_OF_JHANSI_REGIMENT_PARA_1" Language="en_US">
+			<Text>When Netaji called the daughters of India to arms in 1943, thousands answered — students, nurses, the children of estate laborers — and under Captain Lakshmi they drilled and bore rifles as the Rani of Jhansi Regiment, named for the queen who fell fighting empire in the rising of 1857. In the Republic they stood as a permanent guard, living proof that the nation's freedom belonged to every hand raised in its defense. Their cadence still opens the Republic's parades: Jai Hind!</Text>
+		</Row>
+		<Row Tag="LOC_UNIT_AZAD_HIND_NAU_SENA_NAME" Language="en_US">
+			<Text>Azad Hind Nau Sena</Text>
+		</Row>
+		<Row Tag="LOC_UNIT_AZAD_HIND_NAU_SENA_DESCRIPTION" Language="en_US">
+			<Text>Unique Bharatiya naval unit that replaces the Destroyer. +3[icon:NAR_REW_COMBAT] Combat Strength when fighting in friendly territory.</Text>
+		</Row>
+		<Row Tag="LOC_ABILITY_NAU_SENA_PREVIEW" Language="en_US">
+			<Text>+3[icon:NAR_REW_COMBAT] Combat Strength when fighting in friendly territory.</Text>
+		</Row>
+		<Row Tag="LOC_PEDIA_UNIT_AZAD_HIND_NAU_SENA_PARA_1" Language="en_US">
+			<Text>In December 1943 the Provisional Government raised the tricolour over islands it named Shaheed and Swaraj — Martyr and Self-Rule — the first soil claimed for a free India; within a few years, twenty thousand ratings of the colonial fleet struck their ensigns, hoisted the flags of a united people, and sailed their ships home. From those island anchorages grew the Azad Hind Nau Sena, a fleet that chose its nation before its nation could build it, keeping watch over the coasts of Bharat. Jai Hind!</Text>
+		</Row>
+		<Row Tag="LOC_UNIT_BAHADUR_GROUP_NAME" Language="en_US">
+			<Text>Bahadur Group</Text>
+		</Row>
+		<Row Tag="LOC_UNIT_BAHADUR_GROUP_DESCRIPTION" Language="en_US">
+			<Text>Unique Bharatiya reconnaissance unit. Ignores Zone of Control.</Text>
+		</Row>
+		<Row Tag="LOC_ABILITY_BAHADUR_PREVIEW" Language="en_US">
+			<Text>Ignores Zone of Control.</Text>
+		</Row>
+		<Row Tag="LOC_PEDIA_UNIT_BAHADUR_GROUP_PARA_1" Language="en_US">
+			<Text>Ahead of every column moved the Bahadur Groups — "the brave" — scouts who slipped through wire and jungle to map the road home, and who carried to Indian soldiers in imperial service a single quiet question: whom do you fight for? In the Republic's army they endured as the pathfinder corps, first through every gap and first to raise the cry of Jai Hind on ground not yet free.</Text>
+		</Row>
 	</LocalizedText>
 </Database>

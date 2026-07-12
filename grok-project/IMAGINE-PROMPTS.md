@@ -137,3 +137,29 @@ Latin "BHARAT" beneath.
 > third.
 POST: composite भारत / BHARAT — Republic of Bharat + tagline; जय हिन्द small
 beneath. Timeline rule: emblems BEHIND him, never in his hands.
+
+### 11. Unit flag — Rani of Jhansi Regiment → `unitflag_rani_of_jhansi.png`
+> A single flat white silhouette on a pure black background, no text, no
+> border, vector-flat with no gradients or shading, centered and readable at
+> 64 pixels. Subject: a young woman soldier in side profile, standing at
+> attention with a bolt-action rifle shouldered; military field cap, a single
+> long braid falling down her back (the key identifying cue), fitted tunic,
+> jodhpur-style breeches and puttees, chin lifted. Avoid: sari or civilian
+> dress, facial detail, any insignia, any background element.
+
+### 12. Unit flag — Azad Hind Nau Sena → `unitflag_nau_sena.png`
+> A single flat white emblem silhouette on a pure black background, no text,
+> no border, no gradients, centered and readable at 64 pixels. Subject: a
+> plain naval anchor, upright, with a leaping tiger arcing across the anchor's
+> ring, mid-spring, forepaws extended — one bold combined shape. No rope or
+> chain on the anchor. Avoid: flags, stars, lettering, waves, photorealism.
+> Fallback if the combined emblem muddies at small size: a clean side-profile
+> silhouette of a small warship with a single mast and a bow wave.
+
+### 13. Unit flag — Bahadur Group → `unitflag_bahadur.png`
+> A single flat white silhouette on a pure black background, no text, no
+> border, no gradients, centered and readable at 64 pixels. Subject: a scout
+> crouched low on one knee in side profile, rifle held low in one hand, the
+> other hand raised flat to his brow as if scanning the horizon; side cap,
+> lean alert posture, kit minimal. Avoid: binocular strap clutter, parachutes,
+> any insignia, any terrain.

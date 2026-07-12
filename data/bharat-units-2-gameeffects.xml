@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wave-2 unique-unit modifiers, attached via UnitAbilityModifiers in
+     data/bharat-units-2.xml (Kalia-style one-hop grants scoped by each
+     unit's own class tag).
+
+     - Rani of Jhansi Regiment / Azad Hind Nau Sena: +CS in friendly
+       territory. Requirement set copied VERBATIM from the base Cossack
+       (age-modern/data/traditions-tot... units-gameeffects.xml
+       COSSACK_MOD_COMBAT_STRENGTH_IN_FRIENDLY_TERRITORY:
+       REQUIREMENTSET_TEST_ANY of PLOT_IS_OWNER / PLOT_IS_SUZERAIN_BY_OWNER).
+       Amounts: Rani 4 (Cossack's own magnitude — the home-guard specialist),
+       Nau Sena 3 (design's number for the naval escort).
+     - Bahadur Group: ignores enemy Zone of Control — SWIFT_MOD_UNIT_IGNORE_ZOC
+       pattern verbatim (base-standard/data/units-gameeffects.xml:128,
+       EFFECT_ADJUST_UNIT_IGNORE_ZOC, Argument Ignore=true), scoped by the
+       unit-class tag requirement since the collection is COLLECTION_OWNER. -->
+<GameEffects xmlns="GameEffects">
+	<Modifier id="RANI_OF_JHANSI_MOD_COMBAT_STRENGTH_IN_FRIENDLY_TERRITORY" collection="COLLECTION_UNIT_COMBAT" effect="EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER">
+		<SubjectRequirements type="REQUIREMENTSET_TEST_ANY">
+			<Requirement type="REQUIREMENT_PLOT_IS_OWNER"/>
+			<Requirement type="REQUIREMENT_PLOT_IS_SUZERAIN_BY_OWNER"/>
+		</SubjectRequirements>
+		<Argument name="Amount">4</Argument>
+		<String context="Preview">LOC_ABILITY_RANI_OF_JHANSI_PREVIEW</String>
+	</Modifier>
+	<Modifier id="NAU_SENA_MOD_COMBAT_STRENGTH_IN_FRIENDLY_TERRITORY" collection="COLLECTION_UNIT_COMBAT" effect="EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER">
+		<SubjectRequirements type="REQUIREMENTSET_TEST_ANY">
+			<Requirement type="REQUIREMENT_PLOT_IS_OWNER"/>
+			<Requirement type="REQUIREMENT_PLOT_IS_SUZERAIN_BY_OWNER"/>
+		</SubjectRequirements>
+		<Argument name="Amount">3</Argument>
+		<String context="Preview">LOC_ABILITY_NAU_SENA_PREVIEW</String>
+	</Modifier>
+	<Modifier id="BAHADUR_MOD_IGNORE_ZOC" collection="COLLECTION_OWNER" effect="EFFECT_ADJUST_UNIT_IGNORE_ZOC">
+		<SubjectRequirements>
+			<Requirement type="REQUIREMENT_UNIT_TAG_MATCHES">
+				<Argument name="Tag">UNIT_CLASS_BAHADUR</Argument>
+			</Requirement>
+		</SubjectRequirements>
+		<Argument name="Ignore">true</Argument>
+	</Modifier>
+</GameEffects>

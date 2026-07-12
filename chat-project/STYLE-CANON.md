@@ -97,3 +97,27 @@ a deliverable; nothing is canon until the user says so.
 - **Production note (chakra):** image models cannot count 24 spokes — draw the
   final chakra geometry programmatically; use any generation only as texture
   reference.
+
+## Alternate-history license + wave-2 units (ruling 2026-07-12, user-commissioned)
+
+- **Alt-history license:** every counterfactual element must extrapolate from a
+  named, verifiable kernel (real formation, person, act, or plan); the
+  extrapolation speaks only in the in-world Republic voice, and out-of-world
+  notes state the real record plainly.
+- **Axis firewall in alternate timelines:** the firewall holds even in
+  alt-history — INA-descended units are framed solely as Indian forces under
+  Indian command fighting for Indian soil; no cobelligerent, captor, or
+  benefactor is ever named or implied, in text or in names.
+- **"Azad Hind + service" naming pattern approved** (Fauj, Nau Sena) for the
+  Republic's armed services.
+- **Rejected:** any radio/propaganda unit — the Azad Hind Radio effect already
+  lives in the leader ability; duplicating it as a unit dilutes both.
+- **Benched:** HAL-kernel air unit — the iconic HF-24 Marut was designed by
+  Kurt Tank (ex-Focke-Wulf), which invites exactly the trivia the firewall
+  exists to avoid; revisit post-launch under a name that doesn't touch it.
+- **Wave-2 roster (built):** Rani of Jhansi Regiment (replaces Mortar; +4 CS in
+  friendly territory — the home-guard mirror of the Fauj's liberation bonus),
+  Azad Hind Nau Sena (replaces Destroyer; +3 CS in friendly territory),
+  Bahadur Group (supplemental recon infantry; ignores Zone of Control).
+  Note: the design's "+5 when defending" had no engine requirement; mapped to
+  the proven Cossack home-territory condition at Cossack's own +4.
