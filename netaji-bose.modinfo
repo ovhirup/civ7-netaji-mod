@@ -71,6 +71,11 @@
 					<Item>art/lp_circ_bose_256.png</Item>
 					<Item>art/lp_circ_bose_140.png</Item>
 					<Item>art/diplo_bose.png</Item>
+					<Item>art/lp_hex_subhas_chandra_bose_256.png</Item>
+					<Item>art/lp_hex_subhas_chandra_bose_128.png</Item>
+					<Item>art/lp_circ_subhas_chandra_bose_256.png</Item>
+					<Item>art/lp_circ_subhas_chandra_bose_128.png</Item>
+					<Item>art/lsl_subhas_chandra_bose.png</Item>
 				</ImportFiles>
 			</Actions>
 		</ActionGroup>
@@ -146,6 +151,11 @@
 						<Item>art/lp_hex_bose_128.png</Item>
 						<Item>art/lp_circ_bose_256.png</Item>
 						<Item>art/lp_circ_bose_140.png</Item>
+						<Item>art/lp_hex_subhas_chandra_bose_256.png</Item>
+						<Item>art/lp_hex_subhas_chandra_bose_128.png</Item>
+						<Item>art/lp_circ_subhas_chandra_bose_256.png</Item>
+						<Item>art/lp_circ_subhas_chandra_bose_128.png</Item>
+						<Item>art/lsl_subhas_chandra_bose.png</Item>
 					</ImportFiles>
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>

@@ -20,6 +20,7 @@
  * Beacons use console.warn/error — console.log is NOT captured in UI.log.
  */
 import LeaderModelManager from '/base-standard/ui/diplomacy/leader-model-manager.js';
+import { Icon } from '/core/ui/utilities/utilities-image.js';
 
 console.warn("[BoseMod] bose-diplo-portrait.js loaded (game scope)");
 
@@ -143,4 +144,32 @@ try {
 	console.warn("[BoseMod] leader-model-manager patched OK");
 } catch (e) {
 	console.error("[BoseMod] failed to patch leader-model-manager: " + e);
+}
+
+// --- Fix the .png.png leader-portrait bug for our leader -------------------
+// Icon.getLeaderPortraitIcon (core/ui/utilities/utilities-image.js) builds
+// UI.getIconURL(type,"LEADER") + sizeSuffix + relationshipSuffix + ".png".
+// Our icon-definition Paths already end in .png (required by the fxs-icon
+// consumers, e.g. the leader roster — proven working), so these callers
+// (declare-war popup, call-to-arms, diplomacy-actions header) end up
+// requesting fs://game/lp_hex_bose_256.png.png and fail (seen in UI.log).
+// Wrap it: for Bose, return our real portrait URL; all other leaders pass
+// through untouched. Size/relationship variants intentionally collapse to the
+// one portrait (same face; CSS sizes the image).
+try {
+	const origGetLeaderPortraitIcon = Icon.getLeaderPortraitIcon;
+	Icon.getLeaderPortraitIcon = function (leaderType, size, relationship) {
+		try {
+			const leader = GameInfo.Leaders.lookup(leaderType);
+			if (leader && leader.LeaderType === BOSE) {
+				return "fs://game/lp_hex_bose_256.png";
+			}
+		} catch (e) {
+			console.error("[BoseMod] getLeaderPortraitIcon hook failed: " + e);
+		}
+		return origGetLeaderPortraitIcon.call(this, leaderType, size, relationship);
+	};
+	console.warn("[BoseMod] Icon.getLeaderPortraitIcon patched OK");
+} catch (e) {
+	console.error("[BoseMod] failed to patch Icon.getLeaderPortraitIcon: " + e);
 }
