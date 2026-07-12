@@ -22,15 +22,30 @@ so referencing our own `fs://game/` PNG instead of `blp:` is the presumed
 workaround — but this MUST be confirmed by the in-game test below before
 committing real art to those slots.
 
-## Wiring (how any of these load)
+## Wiring — CONFIRMED WORKING (feasibility test passed 2026-07-12)
 
-Icon rows go in `data/icons/*.xml`, loaded via an `<UpdateIcons>` action in the
-modinfo (shell scope for setup-screen art, game scope for in-game). The
-loading-screen leader image is a `data/loading-info.xml` row. Example row:
-```xml
-<Row><ID>CIVILIZATION_BHARAT</ID><Path>fs://game/civ_sym_bharat</Path></Row>
-```
-PNG file on disk: `<mod>/…/civ_sym_bharat.png`. (Exact folder TBD by the test.)
+The magenta placeholder resolved in game, proving this exact recipe for any
+raw-PNG icon:
+1. **Put the PNG in the mod** (we use `art/<name>.png`).
+2. **`<ImportFiles>` it** in the modinfo (path relative to modinfo; it lands in
+   the VFS at `fs://game/<basename>`). Only import files that EXIST — importing
+   a missing file can break load.
+3. **Reference it in `data/icons/*.xml`** with the extension:
+   ```xml
+   <Row><ID>CIVILIZATION_BHARAT</ID><Path>fs://game/civ_sym_bharat.png</Path></Row>
+   ```
+4. **Load the icon file via `<UpdateIcons>`** (shell scope for setup-screen art
+   like leader/civ; game scope for in-game unit/building).
+
+The earlier failure was solely a missing `.png` extension in the Path.
+
+**This mechanism is the SAME for every icon ID** (leader, unit, building,
+civ) — so the whole 2D icon layer is confirmed moddable, not just the civ
+symbol. (The leader hex/circle *contexts* and the loading-screen backgrounds
+are the same table but individually unverified — confirm each as its art lands.)
+
+To swap the placeholder for real art: just overwrite `art/civ_sym_bharat.png`
+(already imported + referenced) — it drops straight in.
 
 ---
 
@@ -43,7 +58,11 @@ PNG file on disk: `<mod>/…/civ_sym_bharat.png`. (Exact folder TBD by the test.
 | **Vaidyashala icon** | `BUILDING_VAIDYASHALA` | `fs://game/buildicon_vaidyashala` | `buildicon_vaidyashala.png` | ~256² | Building menu + city view. |
 | **National Planning Commission** (quarter) | `QUARTER_NATIONAL_PLANNING_COMMISSION` | `fs://game/buildicon_national_planning_commission` | `…png` | ~256² | Quarter tooltip; may reuse a building icon if a quarter icon slot isn't shown. |
 
-## B. NEEDS IN-GAME TEST (base game uses `blp:`; `fs://` PNG is the presumed workaround)
+## B. Same mechanism — CONFIRMED moddable (icon core proven; contexts/backgrounds verify-as-you-go)
+
+(Base game ships these as `blp:`, but the icon-def Path is ours — `fs://` PNG
+works here just as it does for the civ symbol. Provide each PNG + its
+`<ImportFiles>` line + the `.png` icon-def row already present in bharat-icons.xml.)
 
 | Asset | Game ID | Base-game path style | Sizes (base) | Where it shows |
 |---|---|---|---|---|
