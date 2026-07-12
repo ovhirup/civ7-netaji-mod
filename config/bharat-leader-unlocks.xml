@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Leader "AGE UNLOCKS" panel on the leader-select screen (was empty). The
+     ui-next leader-select reads the frontend LeaderUnlocks table
+     (core/ui-next/screens/create-game/leader-select-model.js:37, grouped by
+     AgeType). Base leaders list the civ they lead to per age (e.g. Ashoka ->
+     Mughal + Siam in Modern). For Bose we surface the whole Maurya -> Chola ->
+     Bharat thread — the same historical arc the "Highlighted Civilizations"
+     row shows — one civ per age. Names/Icons reuse the base civ + our Bharat
+     icon-def (CIVILIZATION_BHARAT). Shell/config scope. -->
+<Database>
+	<LeaderUnlocks>
+		<Row LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" AgeDomain="StandardAges" AgeType="AGE_ANTIQUITY" Type="CIVILIZATION_MAURYA" Kind="KIND_CIVILIZATION" Name="LOC_CIVILIZATION_MAURYA_NAME" Description="LOC_CIVILIZATION_MAURYA_DESCRIPTION" Icon="CIVILIZATION_MAURYA" SortIndex="10"/>
+		<Row LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" AgeDomain="StandardAges" AgeType="AGE_EXPLORATION" Type="CIVILIZATION_CHOLA" Kind="KIND_CIVILIZATION" Name="LOC_CIVILIZATION_CHOLA_NAME" Description="LOC_CIVILIZATION_CHOLA_DESCRIPTION" Icon="CIVILIZATION_CHOLA" SortIndex="20"/>
+		<Row LeaderDomain="StandardLeaders" LeaderType="LEADER_SUBHAS_CHANDRA_BOSE" AgeDomain="StandardAges" AgeType="AGE_MODERN" Type="CIVILIZATION_BHARAT" Kind="KIND_CIVILIZATION" Name="LOC_CIVILIZATION_BHARAT_NAME" Description="LOC_CIVILIZATION_BHARAT_DESCRIPTION" Icon="CIVILIZATION_BHARAT" SortIndex="30"/>
+	</LeaderUnlocks>
+</Database>

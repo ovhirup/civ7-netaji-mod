@@ -153,6 +153,7 @@
 					     setup screens' Traditions page (mirrors age-modern's
 					     config/civics-traditions.xml pattern). -->
 					<Item>config/bharat-civics-traditions.xml</Item>
+					<Item>config/bharat-leader-unlocks.xml</Item>
 				</UpdateDatabase>
 				<UpdateColors>
 					<Item>data/playercolors.xml</Item>
