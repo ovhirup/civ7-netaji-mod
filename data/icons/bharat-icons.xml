@@ -18,6 +18,13 @@
 		<!-- Bharat civ symbol (feasibility test — this one is imported + exists). -->
 		<Row><ID>CIVILIZATION_BHARAT</ID><Path>fs://game/civ_sym_bharat.png</Path></Row>
 
+		<!-- Civic-tree node icon. Every base civ's unique culture tree sets a
+		     per-civ IconString on its nodes (cult_mughal, cult_prussia, ...);
+		     TREE_CIVICS_MO_BHARAT's 5 nodes use cult_bharat. Placeholder PNG
+		     (a copy of the civ symbol) until real art lands. Imported in the
+		     game scope (the culture tree is in-game). -->
+		<Row><ID>cult_bharat</ID><Path>fs://game/cult_bharat.png</Path></Row>
+
 		<!-- Building / quarter icons (art pending). -->
 		<Row><ID>BUILDING_YOJANA_BHAVAN</ID><Path>fs://game/buildicon_yojana_bhavan.png</Path></Row>
 		<Row><ID>BUILDING_VAIDYASHALA</ID><Path>fs://game/buildicon_vaidyashala.png</Path></Row>

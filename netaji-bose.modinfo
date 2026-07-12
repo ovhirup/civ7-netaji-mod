@@ -54,6 +54,17 @@
 				<UpdateIcons>
 					<Item>data/icons/bharat-icons.xml</Item>
 				</UpdateIcons>
+				<!-- Import the raw PNGs into the GAME-scope VFS too. The Stage-1
+				     import was shell-only, so fs://game/civ_sym_bharat.png
+				     resolved on the setup screen but FAILED in-game (city
+				     banners, diplomacy, culture tree) — Logs/UI.log showed
+				     "Failed to open file /civ_sym_bharat.png". Only import
+				     files that exist. cult_bharat.png is the civic-tree node
+				     icon (every base civ sets one, e.g. cult_mughal). -->
+				<ImportFiles>
+					<Item>art/civ_sym_bharat.png</Item>
+					<Item>art/cult_bharat.png</Item>
+				</ImportFiles>
 			</Actions>
 		</ActionGroup>
 		<!-- Azad Hind Fauj unique unit (Stage 2) + National Planning Commission

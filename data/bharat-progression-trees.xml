@@ -42,11 +42,11 @@
 		     (Mughal leaves it unset), but wiring it here surfaces the drafted
 		     flavor on the civic node rather than leaving those LOC rows orphaned;
 		     the separate LOC_TRADITION_* strings carry the mechanical text. -->
-		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_SWADESHI" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="2000" Name="LOC_CIVIC_BHARAT_SWADESHI_NAME" Description="LOC_CIVIC_BHARAT_SWADESHI_DESCRIPTION"/>
-		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="2000" Name="LOC_CIVIC_BHARAT_PURNA_SWARAJ_NAME" Description="LOC_CIVIC_BHARAT_PURNA_SWARAJ_DESCRIPTION"/>
-		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="3000" Name="LOC_CIVIC_BHARAT_FORWARD_BLOC_NAME" Description="LOC_CIVIC_BHARAT_FORWARD_BLOC_DESCRIPTION"/>
-		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_AZAD_HIND" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="3000" Name="LOC_CIVIC_BHARAT_AZAD_HIND_NAME" Description="LOC_CIVIC_BHARAT_AZAD_HIND_DESCRIPTION"/>
-		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="4000" Name="LOC_CIVIC_BHARAT_NATIONAL_PLANNING_NAME" Description="LOC_CIVIC_BHARAT_NATIONAL_PLANNING_DESCRIPTION"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_SWADESHI" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="2000" Name="LOC_CIVIC_BHARAT_SWADESHI_NAME" Description="LOC_CIVIC_BHARAT_SWADESHI_DESCRIPTION" IconString="cult_bharat"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="2000" Name="LOC_CIVIC_BHARAT_PURNA_SWARAJ_NAME" Description="LOC_CIVIC_BHARAT_PURNA_SWARAJ_DESCRIPTION" IconString="cult_bharat"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="3000" Name="LOC_CIVIC_BHARAT_FORWARD_BLOC_NAME" Description="LOC_CIVIC_BHARAT_FORWARD_BLOC_DESCRIPTION" IconString="cult_bharat"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_AZAD_HIND" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="3000" Name="LOC_CIVIC_BHARAT_AZAD_HIND_NAME" Description="LOC_CIVIC_BHARAT_AZAD_HIND_DESCRIPTION" IconString="cult_bharat"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="4000" Name="LOC_CIVIC_BHARAT_NATIONAL_PLANNING_NAME" Description="LOC_CIVIC_BHARAT_NATIONAL_PLANNING_DESCRIPTION" IconString="cult_bharat"/>
 	</ProgressionTreeNodes>
 	<ProgressionTreePrereqs>
 		<Row Node="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" PrereqNode="NODE_CIVIC_MO_BHARAT_SWADESHI"/>
