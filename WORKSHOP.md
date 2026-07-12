@@ -3,13 +3,12 @@
 Everything needed to publish — title, description, tags, preview, screenshots.
 This file is the source copy to paste in once the upload path is set up.
 
-> **UPLOAD PATH — TBD (verify against current official docs).** Civ VII has NO
-> in-game "publish/upload mod" button (the in-game Mods screen only enables/
-> disables mods and opens the Steam Workshop to *browse*; verified in the game
-> files). Publishing a Civ VII mod to Steam Workshop requires one of: a Firaxis/
-> 2K modding SDK/tool, mod.io, or a SteamCMD Workshop upload. Confirm the CURRENT
-> method from the official 2K Civ VII Third-Party Mods FAQ / Firaxis modding
-> docs before uploading — do not run a blind SteamCMD publish.
+> **UPLOAD PATH (confirmed).** Civ VII has NO in-game publish button. Publishing
+> uses the **Sid Meier's Civilization VII Development Tools** (Modding SDK, built-in
+> uploader), added in Update 1.2.2 — **Windows-only**. On macOS: do the *first*
+> publish from Windows (VM/Boot Camp/another PC), then **SteamCMD** on macOS can
+> push *content updates* to the existing item. Steam app id = **1295660**. See
+> "Upload procedure" at the bottom.
 
 ---
 
@@ -92,3 +91,39 @@ In-game custom audio is not possible (engine limitation — see
 and the two march themes (`audio/bose_theme_*`) are intended as **Workshop-page
 media** (e.g. a short linked video), clearly credited as a tribute rendition —
 never as Bose's real voice.
+
+---
+
+## Upload procedure
+
+First, build the clean upload folder (excludes dev files, keeps only what the
+game loads — ~9 MB):
+
+```sh
+./scripts/package-workshop.sh      # -> build/upload/
+```
+
+### Path A — first publish (Windows SDK) — REQUIRED for a new item
+1. On a Windows machine with Civ VII: Steam → **Library → filter "Tools"** →
+   install **Sid Meier's Civilization VII Development Tools**.
+2. Copy `build/upload/` (from the packager) to the Windows machine.
+3. Launch the SDK → its **mod uploader**; point it at the `upload` folder.
+4. Set **Title** ("Netaji Subhas Chandra Bose & Bharat"), paste the
+   **Description** (above), set the **preview** to `art/workshop_banner.png`,
+   choose **visibility** (start *Private*, flip to *Public* when happy).
+5. Accept Steam's Workshop Legal Agreement (your click) and **Upload**.
+6. **Copy the resulting Workshop item ID** — you need it for macOS updates.
+
+### Path B — updates from macOS (SteamCMD) — after the item exists
+1. Edit `scripts/workshop_item.vdf`: set `publishedfileid` to your item ID, and
+   replace both `REPLACE_WITH_ABSOLUTE_PATH` with the repo's absolute path.
+2. Re-run `./scripts/package-workshop.sh` to refresh `build/upload/`.
+3. Publish the update (you enter your Steam login / Steam Guard):
+   ```sh
+   steamcmd +login <your_steam_account> \
+            +workshop_build_item "$(pwd)/scripts/workshop_item.vdf" +quit
+   ```
+   (Install SteamCMD via `brew install --cask steamcmd` if needed.)
+
+Note: `publishedfileid "0"` *attempts* to create a new item via SteamCMD, but
+the supported first-publish is the Windows SDK. Do not run a blind create.
