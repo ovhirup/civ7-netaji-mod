@@ -46,14 +46,24 @@ Dilli Chalo). No Axis-alliance mechanics, references, or iconography anywhere
 
 Custom mementos are a DEAD END and were removed. They load and display, but
 cannot be made *equippable*: the equip gate reads online-profile reward state
-(`Online.UserProfile.isRewardUnlocked`) that mod data can't write, and a
-`<UIScripts>` monkeypatch silently never executed (confirmed: zero `[BoseMod]`
-lines in `~/Library/Application Support/Civilization VII/Logs/UI.log`, where JS
-console output lands). The only working method is `<ImportFiles>`-replacing the
-core UI model files — version-fragile, conflicts with other UI mods. Rejected.
-The two memento effects are refolded into the leader ability. Don't re-attempt
-custom mementos without a new engine capability. (Aside: `<UIScripts>` in a mod
-modinfo did NOT run for us — treat mod UI-JS as unproven here.)
+(`Online.UserProfile.isRewardUnlocked`) that mod data can't write. The memento
+effects are refolded into the leader ability. Don't re-attempt custom mementos
+without a new engine capability.
+
+## Mod UI-JS: PROVEN (2026-07-12 recon — supersedes the old "unproven" note)
+
+`<UIScripts>` in game scope, criteria `always`, DOES execute mod JS — the exact
+wiring is used by 7 installed Workshop mods (F1rstDan Cool UI, bz-map-trix,
+etc.). The earlier "our memento UIScript never ran" conclusion was based on bad
+evidence: **`console.log` is NOT captured in `Logs/UI.log`** — only
+`console.warn` / `console.error` are. Always beacon mod JS with `console.warn`.
+Facts: mod JS = ES modules; import base modules by absolute path
+(`/base-standard/ui/...`, `/core/ui/...`) — you get the same cached singleton
+the game uses; a mod's own extra JS files are ImportFiles'd and importable at
+`/<mod-id>/<path>`; `Controls.decorate('<tag>', ...)` and singleton
+prototype-wrapping are the two proven patch patterns; the UI runtime (cohtml)
+plays HTML5 `<video>` (VP9 .webm, e.g. via `fs://game/` URLs); `<audio>` does
+not exist and Wwise event names are the only supported sound path.
 
 ## Conventions
 

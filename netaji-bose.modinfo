@@ -70,7 +70,27 @@
 					<Item>art/lp_hex_bose_128.png</Item>
 					<Item>art/lp_circ_bose_256.png</Item>
 					<Item>art/lp_circ_bose_140.png</Item>
+					<Item>art/diplo_bose.png</Item>
 				</ImportFiles>
+			</Actions>
+		</ActionGroup>
+		<!-- Diplomacy 2D-portrait patch (UI JS). Covers the Franklin/FPO 3D
+		     fallback with Netaji's painted portrait — leaders without a real
+		     3D asset fall back via a pure JS null-check in base-standard's
+		     leader-model-manager.js, so this is the only way to change what
+		     diplomacy shows. <UIScripts> in game scope, criteria always,
+		     LoadOrder 1000 — the exact wiring proven by 7 installed Workshop
+		     mods (F1rstDan Cool UI, bz-map-trix, etc.). NOTE: console.log is
+		     NOT captured in Logs/UI.log — the script's [BoseMod] beacons use
+		     console.warn/error; grep UI.log for "[BoseMod]" to verify load. -->
+		<ActionGroup id="game-netaji-bose-ui" scope="game" criteria="always">
+			<Properties>
+				<LoadOrder>1000</LoadOrder>
+			</Properties>
+			<Actions>
+				<UIScripts>
+					<Item>ui/bose-diplo-portrait.js</Item>
+				</UIScripts>
 			</Actions>
 		</ActionGroup>
 		<!-- Azad Hind Fauj unique unit (Stage 2) + National Planning Commission
