@@ -5,8 +5,8 @@
 	<Properties>
 		<!-- Plain text (not LOC keys) so the Additional Content list shows a
 		     readable name — user mods don't get the DLC text bootstrap. -->
-		<Name>Netaji Subhas Chandra Bose — Leader</Name>
-		<Description>Adds Netaji Subhas Chandra Bose, hero of the Indian independence movement, as a playable leader.</Description>
+		<Name>Netaji Subhas Chandra Bose &amp; Bharat</Name>
+		<Description>Adds Netaji Subhas Chandra Bose, hero of India's independence struggle, as a playable leader, plus the Modern-Age civilization Bharat — with the Azad Hind Fauj and Rani of Jhansi Regiment unique units, the National Planning Commission unique quarter, a Swadeshi-to-Purna-Swaraj civics tree, and full Ashoka Chakra / Springing Tiger iconography.</Description>
 		<Authors>Abhirup Banerjee</Authors>
 		<Package>Mod</Package>
 		<AffectsSavedGames>1</AffectsSavedGames>
