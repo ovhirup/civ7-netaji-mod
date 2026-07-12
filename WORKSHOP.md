@@ -1,7 +1,15 @@
 # Steam Workshop listing — copy & upload checklist
 
-Everything needed to publish. The actual upload happens **in-game** via the mod
-uploader (Steam auth) — this file is the source copy to paste in.
+Everything needed to publish — title, description, tags, preview, screenshots.
+This file is the source copy to paste in once the upload path is set up.
+
+> **UPLOAD PATH — TBD (verify against current official docs).** Civ VII has NO
+> in-game "publish/upload mod" button (the in-game Mods screen only enables/
+> disables mods and opens the Steam Workshop to *browse*; verified in the game
+> files). Publishing a Civ VII mod to Steam Workshop requires one of: a Firaxis/
+> 2K modding SDK/tool, mod.io, or a SteamCMD Workshop upload. Confirm the CURRENT
+> method from the official 2K Civ VII Third-Party Mods FAQ / Firaxis modding
+> docs before uploading — do not run a blind SteamCMD publish.
 
 ---
 
@@ -23,7 +31,7 @@ Modern-Age civilization Bharat.
 > playable leader, together with the Modern-Age civilization **Bharat**.
 >
 > **Leader — Netaji Subhas Chandra Bose** (Militaristic · Diplomatic)
-> • **Azad Hind Fauj:** +5 Combat Strength for units in friendly territory; +5
+> • **Azad Hind Fauj:** +3 Combat Strength for units in friendly territory; +3
 >   Happiness in settlements you did not found; +2 Culture per conquered
 >   settlement; +1 Combat Strength for all units while at war; +1 Influence per
 >   turn, rising each Age.
@@ -73,8 +81,8 @@ and Sarnath Lion Capital behind him.
 - [ ] `.modinfo` metadata is current (Name/Description/Authors) — done.
 - [ ] README + LICENSE present — done.
 - [ ] Decide visibility: **Public / Friends-only / Private** (your call).
-- [ ] Upload via the in-game mod uploader; attach `workshop_banner.png` as the
-      preview and the screenshots above to the gallery.
+- [ ] Upload via the confirmed path (see note at top); attach
+      `workshop_banner.png` as the preview and the screenshots to the gallery.
 - [ ] (Optional) Add the tribute voice/theme as a linked video on the listing.
 
 ## Audio note

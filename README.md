@@ -17,8 +17,8 @@ comparators but will evolve with playtesting.
 ## What it adds
 
 **Leader — Netaji Subhas Chandra Bose** (Militaristic + Diplomatic)
-- **Azad Hind Fauj** (leader ability): +5 Combat Strength for units in friendly
-  territory; +5 Happiness in settlements you did not found; +2 Culture per
+- **Azad Hind Fauj** (leader ability): +3 Combat Strength for units in friendly
+  territory; +3 Happiness in settlements you did not found; +2 Culture per
   conquered settlement; +1 Combat Strength for all units while at war; +1
   Influence per turn, increasing each Age.
 - **Purna Swaraj** (agenda): favours civilizations that rule only what they
@@ -83,4 +83,4 @@ UI scripts. This is the same approach used by other 2D-leader mods.
 - Netaji Subhas Chandra Bose is a revered historical figure; this mod is an
   admiring tribute made in good faith.
 
-Published to the Steam Workshop via the in-game mod uploader.
+Intended for the Steam Workshop. Note: Civ VII has no in-game publish button; confirm the current upload method (Firaxis/2K modding SDK, mod.io, or SteamCMD) from the official Civ VII mods documentation.
