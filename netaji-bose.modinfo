@@ -63,14 +63,13 @@
 				<!-- Import every raw PNG that EXISTS into the GAME-scope VFS so
 				     fs://game/<name>.png resolves in-game (banners, diplomacy,
 				     culture tree, building menu, unit flags). Import only files
-				     that exist — buildicon_national_planning_commission.png is
-				     intentionally omitted (not yet made; its icon-def row falls
-				     back harmlessly). All these are real Grok-generated art. -->
+				     that exist. All these are real Grok-generated art. -->
 				<ImportFiles>
 					<Item>art/civ_sym_bharat.png</Item>
 					<Item>art/cult_bharat.png</Item>
 					<Item>art/buildicon_yojana_bhavan.png</Item>
 					<Item>art/buildicon_vaidyashala.png</Item>
+					<Item>art/buildicon_national_planning_commission.png</Item>
 					<Item>art/unitflag_azad_hind_fauj.png</Item>
 					<Item>art/lp_hex_bose_256.png</Item>
 					<Item>art/lp_hex_bose_128.png</Item>
@@ -82,6 +81,8 @@
 					<Item>art/lp_circ_subhas_chandra_bose_256.png</Item>
 					<Item>art/lp_circ_subhas_chandra_bose_128.png</Item>
 					<Item>art/lsl_subhas_chandra_bose.png</Item>
+					<Item>art/lsbg_bharat_1080.png</Item>
+					<Item>art/lsbg_bharat_720.png</Item>
 				</ImportFiles>
 			</Actions>
 		</ActionGroup>
@@ -172,6 +173,7 @@
 						<Item>art/cult_bharat.png</Item>
 						<Item>art/buildicon_yojana_bhavan.png</Item>
 						<Item>art/buildicon_vaidyashala.png</Item>
+						<Item>art/buildicon_national_planning_commission.png</Item>
 						<Item>art/unitflag_azad_hind_fauj.png</Item>
 						<Item>art/lp_hex_bose_256.png</Item>
 						<Item>art/lp_hex_bose_128.png</Item>
@@ -182,6 +184,8 @@
 						<Item>art/lp_circ_subhas_chandra_bose_256.png</Item>
 						<Item>art/lp_circ_subhas_chandra_bose_128.png</Item>
 						<Item>art/lsl_subhas_chandra_bose.png</Item>
+						<Item>art/lsbg_bharat_1080.png</Item>
+						<Item>art/lsbg_bharat_720.png</Item>
 						<Item>art/diplo_bose.png</Item>
 					</ImportFiles>
 				<UpdateText>
