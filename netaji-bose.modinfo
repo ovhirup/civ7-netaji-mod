@@ -83,6 +83,8 @@
 					<Item>art/lsl_subhas_chandra_bose.png</Item>
 					<Item>art/lsbg_bharat_1080.png</Item>
 					<Item>art/lsbg_bharat_720.png</Item>
+					<Item>audio/bose_vo_test.webm</Item>
+					<Item>audio/bose_vo_test_opus.webm</Item>
 				</ImportFiles>
 			</Actions>
 		</ActionGroup>
@@ -189,6 +191,8 @@
 						<Item>art/lsl_subhas_chandra_bose.png</Item>
 						<Item>art/lsbg_bharat_1080.png</Item>
 						<Item>art/lsbg_bharat_720.png</Item>
+						<Item>audio/bose_vo_test.webm</Item>
+						<Item>audio/bose_vo_test_opus.webm</Item>
 						<Item>art/diplo_bose.png</Item>
 					</ImportFiles>
 				<UpdateText>

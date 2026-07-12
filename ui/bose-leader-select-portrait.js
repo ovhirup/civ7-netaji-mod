@@ -100,6 +100,58 @@ function removeOverlay() {
 	}
 }
 
+// --- AUDIO LOOPHOLE PROBE (one-shot) ----------------------------------------
+// <audio> doesn't exist in cohtml and Wwise is closed to mods; the ONE
+// candidate path for custom audio is a Vorbis/Opus track muxed into a WebM
+// played via <video> (the demuxer advertises support; whether the audio
+// callback is wired is UNVERIFIED — this probe settles it). Plays the
+// placeholder VO once on first Bose selection; tries vorbis, then opus.
+// Swap in the real ElevenLabs line later — same filenames.
+let voProbeDone = false;
+function probeVoiceOver() {
+	if (voProbeDone) {
+		return;
+	}
+	voProbeDone = true;
+	const tryPlay = (url, label, onFail) => {
+		try {
+			const v = document.createElement("video");
+			v.style.position = "fixed";
+			v.style.left = "-9999px";
+			v.style.top = "0";
+			v.style.width = "8px";
+			v.style.height = "8px";
+			v.src = url;
+			v.volume = 0.7;
+			v.addEventListener("error", () => {
+				console.warn("[BoseMod] VO probe FAILED (" + label + "): media error");
+				if (v.parentNode) { v.parentNode.removeChild(v); }
+				if (onFail) { onFail(); }
+			});
+			v.addEventListener("playing", () => {
+				console.warn("[BoseMod] VO probe PLAYING (" + label + ") — audio loophole " + label + " decode OK (listen for sound!)");
+			});
+			v.addEventListener("ended", () => {
+				if (v.parentNode) { v.parentNode.removeChild(v); }
+			});
+			document.body.appendChild(v);
+			const p = v.play();
+			if (p && p.catch) {
+				p.catch((e) => {
+					console.warn("[BoseMod] VO probe play() rejected (" + label + "): " + e);
+					if (onFail) { onFail(); }
+				});
+			}
+		} catch (e) {
+			console.error("[BoseMod] VO probe threw (" + label + "): " + e);
+			if (onFail) { onFail(); }
+		}
+	};
+	tryPlay("fs://game/bose_vo_test.webm", "vorbis", () => {
+		tryPlay("fs://game/bose_vo_test_opus.webm", "opus", null);
+	});
+}
+
 function showOverlay() {
 	try {
 		if (document.getElementById(OVERLAY_ID)) {
@@ -130,6 +182,7 @@ function showOverlay() {
 		el.appendChild(img);
 		document.body.insertBefore(el, document.body.firstChild);
 		console.warn("[BoseMod] leader-select portrait overlay shown (ui-next)");
+		probeVoiceOver();
 	} catch (e) {
 		console.error("[BoseMod] leader-select showOverlay failed: " + e);
 	}
