@@ -43,6 +43,9 @@
 					<Item>data/leaders.xml</Item>
 					<Item>data/leaders-gameeffects.xml</Item>
 					<Item>data/bharat-civilization.xml</Item>
+					<!-- After bharat-civilization.xml: LoadingInfo_Civilizations
+					     FK-references the Civilizations row. -->
+					<Item>data/loading-info.xml</Item>
 				</UpdateDatabase>
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>

@@ -120,35 +120,32 @@ function wrap(obj, name, hooks) {
 try {
 	const proto = Object.getPrototypeOf(LeaderModelManager);
 
-	// Intercept the model group's addModel: only while a static Bose show-call
-	// is in flight, and only for the fallback asset. Engine host object —
-	// property assignment may not stick; verify and beacon either way.
-	try {
-		const grp = LeaderModelManager.leaderModelGroup;
-		if (grp && typeof grp.addModel === "function") {
-			const origAdd = grp.addModel;
-			grp.addModel = function (assetName, ...rest) {
-				if (suppressFallback && assetName === FALLBACK_ASSET) {
-					console.warn("[BoseMod] suppressed fallback 3D model");
-					return null;
-				}
-				return origAdd.call(this, assetName, ...rest);
-			};
-			if (grp.addModel !== origAdd) {
-				console.warn("[BoseMod] leaderModelGroup.addModel intercepted OK");
-			} else {
-				console.warn("[BoseMod] addModel interception did NOT stick (host object) — Franklin will be covered, not removed");
+	// PRIMARY suppression seam (v3): getFallbackAssetName is a plain class
+	// method called at every fallback-add site (this.leaderModelGroup.addModel(
+	// this.getFallbackAssetName(), ...)). While a static Bose show-call is in
+	// flight, return a nonexistent asset name — addModel then returns null and
+	// the null-safe static paths simply show nothing. Unlike patching the
+	// model-group instance (v2 — "intercepted OK" but never fired; the group
+	// object appears to be recreated/replaced between scenes), a prototype
+	// method wrap survives everything.
+	const origGetFallback = proto.getFallbackAssetName;
+	if (typeof origGetFallback === "function") {
+		proto.getFallbackAssetName = function (...args) {
+			if (suppressFallback) {
+				console.warn("[BoseMod] suppressed fallback 3D model (asset-name seam)");
+				return "BOSE_SUPPRESSED_NO_ASSET";
 			}
-		} else {
-			console.warn("[BoseMod] leaderModelGroup.addModel not found — cover-only mode");
-		}
-	} catch (e) {
-		console.error("[BoseMod] addModel interception failed: " + e + " — cover-only mode");
+			return origGetFallback.apply(this, args);
+		};
+		console.warn("[BoseMod] getFallbackAssetName wrapped OK");
+	} else {
+		console.warn("[BoseMod] getFallbackAssetName not found — cover-only mode");
 	}
 
 	wrap(proto, "showLeftLeaderModel", {
 		before: (playerID) => {
 			suppressFallback = isBose(playerID);
+			console.warn("[BoseMod] showLeftLeaderModel(" + playerID + ") bose=" + suppressFallback);
 		},
 		after: (playerID) => {
 			if (isBose(playerID)) {
@@ -159,6 +156,7 @@ try {
 	wrap(proto, "showRightLeaderModel", {
 		before: (playerID) => {
 			suppressFallback = isBose(playerID);
+			console.warn("[BoseMod] showRightLeaderModel(" + playerID + ") bose=" + suppressFallback);
 		},
 		after: (playerID) => {
 			if (isBose(playerID)) {
@@ -169,6 +167,7 @@ try {
 	wrap(proto, "showLeaderModels", {
 		before: (p1, p2) => {
 			suppressFallback = isBose(p1) || isBose(p2);
+			console.warn("[BoseMod] showLeaderModels(" + p1 + "," + p2 + ") bose=" + suppressFallback);
 		},
 		after: (p1, p2) => {
 			if (isBose(p1)) {
@@ -180,8 +179,11 @@ try {
 		},
 	});
 	// Sequences: NO suppression — the fallback's animation triggers gate
-	// MEET/WAR advancement. Overlay only.
+	// MEET/WAR advancement. Overlay only. (Diagnostic beacon logs the path.)
 	wrap(proto, "showLeaderSequence", {
+		before: (params) => {
+			console.warn("[BoseMod] showLeaderSequence p1=" + (params && params.player1) + " p2=" + (params && params.player2));
+		},
 		after: (params) => {
 			if (params && isBose(params.player1)) {
 				showOverlay("left");
@@ -198,7 +200,7 @@ try {
 		after: () => removeAllOverlays(),
 	});
 
-	console.warn("[BoseMod] leader-model-manager patched OK (v2)");
+	console.warn("[BoseMod] leader-model-manager patched OK (v3)");
 } catch (e) {
 	console.error("[BoseMod] failed to patch leader-model-manager: " + e);
 }

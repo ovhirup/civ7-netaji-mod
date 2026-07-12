@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Loading-screen content (STAGE 5 polish). Mirrors the ashoka-himiko-alt
+     template (data/loading-info.xml -> LoadingInfo_Leaders row wired in the
+     game-scope UpdateDatabase). All columns except the key are nullable
+     (01_GameplaySchema.sql 2563-2600). LeaderImage uses our proven
+     fs://game/<name>.png raw-PNG pattern (the template uses blp:, which mods
+     can't author); lsl_subhas_chandra_bose.png is the engine-canonical 2D
+     leader still name (the engine already derives + requests this stem) and
+     is ImportFiles'd in both scopes. Audio omitted — no Wwise events for
+     mods. The LOC keys were drafted in the Chat-project text backlog and
+     already live in LeaderText.xml / BharatText.xml. -->
+<Database>
+	<LoadingInfo_Leaders>
+		<Row LeaderType="LEADER_SUBHAS_CHANDRA_BOSE"
+		     LeaderText="LOC_LOADING_LEADER_INTRO_TEXT_BOSE"
+		     LeaderImage="fs://game/lsl_subhas_chandra_bose.png"/>
+	</LoadingInfo_Leaders>
+	<LoadingInfo_Civilizations>
+		<Row CivilizationType="CIVILIZATION_BHARAT"
+		     CivilizationText="LOC_LOADING_CIV_INTRO_TEXT_BHARAT"/>
+	</LoadingInfo_Civilizations>
+</Database>
