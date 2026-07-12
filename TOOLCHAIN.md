@@ -76,11 +76,28 @@ Installed/needed on the Mac (Apple Silicon, brew + Python/uv already set up):
 
 | Need | Recommended | Note |
 |---|---|---|
-| Background removal | `rembg` (via `uv`/pip) | Local, scriptable; great for portraits/buildings. Claude Code runs it. |
-| Resize / format / silhouette keying | **ImageMagick** (`brew install imagemagick`) + Pillow | Batch downscale, threshold silhouettes, alpha. Claude Code runs it. |
+| **The whole art pipeline** | `art/process_art.py` (self-contained `uv` script) | **INSTALLED + TESTED.** One command turns a Grok image into the correctly-named/sized/transparent PNG(s). See below. |
+| Resize / format / general image ops | **ImageMagick** (`magick`) | INSTALLED (7.1.2). General-purpose fallback for anything the script doesn't cover. |
+| Background removal (AI) | `rembg` | NOT working — its deps don't resolve on this machine's Python. Not needed: the script's colour-key handles flat backgrounds, which is how we generate. Prefer regenerating on a flat backdrop over AI matting. |
 | Manual icon touch-up (optional) | **Photopea** (free, browser) or **Pixelmator Pro** (Mac-native, cheap) | For hand-cleaning a silhouette edge or mask when scripting isn't enough. |
 | Workshop packaging | Official Civ VII mod tools / Creator workflow | Research via Grok agent; confirm the current path before ship. |
 | Backup | Push the repo to **GitHub** (still private) | Do this before the big art drop — protects the hand-built XML. |
+
+### The art pipeline — one command per asset
+
+```
+uv run art/process_art.py <asset> art/incoming/<yourfile>
+```
+`<asset>` is one of: `civ`, `yojana`, `vaidyashala`, `commission`, `leader`, `unitflag`
+(run `uv run art/process_art.py --list` to see sizes). It keys out the solid
+background, trims + centres, flattens silhouettes to white, and writes the exact
+`art/<name>.png` the modinfo already imports — so after running, just restart the
+game. Drop raw Grok generations in `art/incoming/` (gitignored — not committed).
+
+**The one rule that makes this clean:** tell Grok Imagine to put the subject on a
+**flat, solid background** (icons/silhouettes) so the colour-key is crisp. For the
+leader portrait the painted background is kept (the game masks it to hex/circle),
+so a dark neutral backdrop is fine there.
 
 **Deliberately NOT recommended yet:**
 - **Custom audio / leader VO** (e.g. ElevenLabs for a "Jai Hind" line): the

@@ -2,3 +2,7 @@
 chat-project/knowledge/DESIGN.md
 chat-project/knowledge/MOD-STATUS.md
 chat-project/knowledge/LeaderText.xml
+
+# Raw art generations dropped for processing (not source)
+art/incoming/*
+!art/incoming/.gitkeep
