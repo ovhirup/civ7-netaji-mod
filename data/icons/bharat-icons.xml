@@ -17,6 +17,10 @@
 	<IconDefinitions>
 		<!-- Bharat civ symbol (feasibility test — this one is imported + exists). -->
 		<Row><ID>CIVILIZATION_BHARAT</ID><Path>fs://game/civ_sym_bharat.png</Path></Row>
+		<!-- Overview CIVILIZATION card rich art layer (create-game-hub reads
+		     UI.getIconBLP(civID, "BACKGROUND_VERT"); base civs = CG_<name>_VERT).
+		     Belt & braces with the shell JS getIconBLP wrap. -->
+		<Row><ID>CIVILIZATION_BHARAT</ID><Path>fs://game/cg_bharat_vert.png</Path><Context>BACKGROUND_VERT</Context></Row>
 
 		<!-- Civic-tree node icon. Every base civ's unique culture tree sets a
 		     per-civ IconString on its nodes (cult_mughal, cult_prussia, ...);
@@ -34,7 +38,9 @@
 		<Row><ID>LEADER_SUBHAS_CHANDRA_BOSE</ID><Path>fs://game/lp_hex_bose_256.png</Path><IconSize>256</IconSize></Row>
 		<Row><ID>LEADER_SUBHAS_CHANDRA_BOSE</ID><Path>fs://game/lp_hex_bose_128.png</Path><IconSize>128</IconSize></Row>
 		<Row><ID>LEADER_SUBHAS_CHANDRA_BOSE</ID><Path>fs://game/lp_circ_bose_256.png</Path><Context>CIRCLE_MASK</Context><IconSize>256</IconSize></Row>
-		<Row><ID>LEADER_SUBHAS_CHANDRA_BOSE</ID><Path>fs://game/lp_circ_bose_140.png</Path><Context>PORTRAIT_MASK</Context><IconSize>140</IconSize></Row>
+		<!-- Grid tile (leader-select left panel): padded circle — base tiles keep
+		     an inner margin; a full-bleed circle reads oversized in the frame. -->
+		<Row><ID>LEADER_SUBHAS_CHANDRA_BOSE</ID><Path>fs://game/lp_circ_bose_grid.png</Path><Context>PORTRAIT_MASK</Context><IconSize>140</IconSize></Row>
 
 		<!-- Azad Hind Fauj unit flag (art pending). All 3 tiers share one flag. -->
 		<Row><ID>UNIT_AZAD_HIND_FAUJ</ID><Path>fs://game/unitflag_azad_hind_fauj.png</Path></Row>

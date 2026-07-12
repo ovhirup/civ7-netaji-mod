@@ -82,9 +82,59 @@ try {
 	console.error("[BoseMod] WorldUI wrap failed: " + e);
 }
 
-const PORTRAIT_URL = "fs://game/diplo_bose.png";
+const PORTRAIT_URL = "fs://game/diplo_bose_right.png"; // flush right edge, feathered left+top
 const LSL_URL = "fs://game/lsl_subhas_chandra_bose.png";
 const OVERLAY_ID = "bose-leader-select-portrait";
+
+// --- 0.5 Engine icon seams (recon-proven) -----------------------------------
+// The ui-next leader GRID TILE (leader-select-button.js LeaderPortrait) gets
+// its image from UI.getIconCSS(leaderID, "PORTRAIT_MASK") — NOT from
+// Icon.getLeaderPortraitIcon and NOT from an lsl_ inline style. Our icon-DB
+// PORTRAIT_MASK row was being outranked by the default (hex) row, so the tile
+// showed the full-bleed hex. Wrap the engine call: Bose + circle contexts get
+// the padded circle (base tiles have inner margin; full-bleed reads oversized).
+// The Overview CIVILIZATION card's rich art layer is UI.getIconBLP(civID,
+// "BACKGROUND_VERT") — base civs have CG_<name>_VERT art, Bharat had none
+// (hence the bare rectangle). Point it at our Lion Capital vertical art.
+try {
+	if (typeof UI === "object" && UI) {
+		if (typeof UI.getIconCSS === "function" && !UI.__boseIconCssWrapped) {
+			const origGetIconCSS = UI.getIconCSS.bind(UI);
+			UI.getIconCSS = function (name, context, ...rest) {
+				try {
+					if (typeof name === "string" && name.toUpperCase().indexOf("SUBHAS") >= 0) {
+						if (context === "PORTRAIT_MASK") {
+							return "url('fs://game/lp_circ_bose_grid.png')";
+						}
+						if (context === "CIRCLE_MASK") {
+							return "url('fs://game/lp_circ_bose_256.png')";
+						}
+					}
+				} catch (e) { /* fall through */ }
+				return origGetIconCSS(name, context, ...rest);
+			};
+			UI.__boseIconCssWrapped = true;
+			console.warn("[BoseMod] UI.getIconCSS wrapped OK (grid tile seam)");
+		}
+		if (typeof UI.getIconBLP === "function" && !UI.__boseIconBlpWrapped) {
+			const origGetIconBLP = UI.getIconBLP.bind(UI);
+			UI.getIconBLP = function (name, context, ...rest) {
+				try {
+					if (typeof name === "string" && name.toUpperCase().indexOf("BHARAT") >= 0 && context === "BACKGROUND_VERT") {
+						return "fs://game/cg_bharat_vert.png";
+					}
+				} catch (e) { /* fall through */ }
+				return origGetIconBLP(name, context, ...rest);
+			};
+			UI.__boseIconBlpWrapped = true;
+			console.warn("[BoseMod] UI.getIconBLP wrapped OK (civ card seam)");
+		}
+	} else {
+		console.warn("[BoseMod] UI global not available for icon seams");
+	}
+} catch (e) {
+	console.error("[BoseMod] icon seam wrap failed: " + e);
+}
 
 let suppressFallback = false;
 let currentIsBose = false;
@@ -147,8 +197,11 @@ function probeVoiceOver() {
 			if (onFail) { onFail(); }
 		}
 	};
-	tryPlay("fs://game/bose_vo_test.webm", "vorbis", () => {
-		tryPlay("fs://game/bose_vo_test_opus.webm", "opus", null);
+	// Opus FIRST now: the vorbis probe reported PLAYING but produced no audible
+	// sound (decode OK, audio callback likely unwired). Opus is the one codec
+	// left to rule out before declaring in-game audio dead.
+	tryPlay("fs://game/bose_vo_test_opus.webm", "opus", () => {
+		tryPlay("fs://game/bose_vo_test.webm", "vorbis", null);
 	});
 }
 
@@ -169,16 +222,18 @@ function showOverlay() {
 		// portrait (the engine keeps the previous leader's model on stage
 		// when an asset is missing); only the left edge feathers out.
 		el.style.background = "linear-gradient(to left, rgb(9,11,15) 78%, rgba(9,11,15,0) 100%)";
+		// Flush to the screen's right edge; the PNG's baked left+top feather
+		// does the blending (no gap, no floating-poster look).
 		const img = document.createElement("div");
 		img.style.position = "absolute";
 		img.style.bottom = "0";
-		img.style.right = "6vw";
-		img.style.width = "34vw";
-		img.style.height = "88vh";
+		img.style.right = "0";
+		img.style.width = "40vw";
+		img.style.height = "100vh";
 		img.style.backgroundImage = "url('" + PORTRAIT_URL + "')";
 		img.style.backgroundRepeat = "no-repeat";
-		img.style.backgroundSize = "contain";
-		img.style.backgroundPosition = "bottom center";
+		img.style.backgroundSize = "auto 100vh";
+		img.style.backgroundPosition = "bottom right";
 		el.appendChild(img);
 		document.body.insertBefore(el, document.body.firstChild);
 		console.warn("[BoseMod] leader-select portrait overlay shown (ui-next)");

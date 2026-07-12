@@ -27,7 +27,13 @@ console.warn("[BoseMod] bose-diplo-portrait.js v4 loaded (game scope)");
 
 const BOSE = "LEADER_SUBHAS_CHANDRA_BOSE";
 const FALLBACK_ASSET = "LEADER_FALLBACK_GAME_ASSET";
-const PORTRAIT_URL = "fs://game/diplo_bose.png";
+// Directional variants: each is FLUSH against its screen edge and bottom
+// (opaque there) with a wide feather on the inward edge + top, so the portrait
+// melts into the 3D scene instead of floating as a soft-cornered poster.
+const PORTRAIT_URLS = {
+	left: "fs://game/diplo_bose_left.png",
+	right: "fs://game/diplo_bose_right.png",
+};
 const IDS = { left: "bose-portrait-left", right: "bose-portrait-right" };
 
 // While true, addModel calls for the fallback asset return null (static
@@ -78,11 +84,11 @@ function showOverlay(side) {
 			el.style.right = "0";
 			el.style.backgroundPosition = "right bottom";
 		}
-		el.style.width = "38vw";
+		el.style.width = "40vw";
 		el.style.pointerEvents = "none";
-		el.style.backgroundImage = "url('" + PORTRAIT_URL + "')";
+		el.style.backgroundImage = "url('" + PORTRAIT_URLS[side] + "')";
 		el.style.backgroundRepeat = "no-repeat";
-		el.style.backgroundSize = "auto 96vh";
+		el.style.backgroundSize = "auto 100vh";
 		// First body child: above the engine-composited 3D, below UI panels.
 		document.body.insertBefore(el, document.body.firstChild);
 		console.warn("[BoseMod] portrait overlay shown (" + side + ")");

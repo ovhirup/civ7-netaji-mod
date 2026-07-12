@@ -75,7 +75,11 @@
 					<Item>art/lp_hex_bose_128.png</Item>
 					<Item>art/lp_circ_bose_256.png</Item>
 					<Item>art/lp_circ_bose_140.png</Item>
+					<Item>art/lp_circ_bose_grid.png</Item>
+					<Item>art/cg_bharat_vert.png</Item>
 					<Item>art/diplo_bose.png</Item>
+					<Item>art/diplo_bose_left.png</Item>
+					<Item>art/diplo_bose_right.png</Item>
 					<Item>art/lp_hex_subhas_chandra_bose_256.png</Item>
 					<Item>art/lp_hex_subhas_chandra_bose_128.png</Item>
 					<Item>art/lp_circ_subhas_chandra_bose_256.png</Item>
@@ -184,6 +188,8 @@
 						<Item>art/lp_hex_bose_128.png</Item>
 						<Item>art/lp_circ_bose_256.png</Item>
 						<Item>art/lp_circ_bose_140.png</Item>
+					<Item>art/lp_circ_bose_grid.png</Item>
+					<Item>art/cg_bharat_vert.png</Item>
 						<Item>art/lp_hex_subhas_chandra_bose_256.png</Item>
 						<Item>art/lp_hex_subhas_chandra_bose_128.png</Item>
 						<Item>art/lp_circ_subhas_chandra_bose_256.png</Item>
@@ -194,6 +200,8 @@
 						<Item>audio/bose_vo_test.webm</Item>
 						<Item>audio/bose_vo_test_opus.webm</Item>
 						<Item>art/diplo_bose.png</Item>
+						<Item>art/diplo_bose_left.png</Item>
+						<Item>art/diplo_bose_right.png</Item>
 					</ImportFiles>
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>
