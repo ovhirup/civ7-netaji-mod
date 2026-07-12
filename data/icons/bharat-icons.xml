@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Icon definitions for the Netaji/Bharat mod. Maps game IDs to art paths.
+     Loaded via <UpdateIcons> in netaji-bose.modinfo.
+
+     ALL paths use fs://game/<name> (a raw PNG the mod ships, referenced WITHOUT
+     the .png extension) rather than the base game's blp:<name> (compiled BLP
+     archives, which need Firaxis's art pipeline / no modder tool). See
+     ASSET-MANIFEST.md.
+
+     STATUS: the civ symbol + building icons are the CONFIRMED-moddable path
+     (base game itself uses fs://game/ for these). The leader portrait + unit
+     flag rows are the EXPERIMENT — base game ships those as blp:, so whether
+     fs://game/ PNG works for them is the open question the feasibility test
+     answers. Missing PNGs simply fall back (no load error), so this file is
+     safe to ship before the art exists. -->
+<Database>
+	<IconDefinitions>
+		<!-- Bharat civ symbol (CONFIRMED path). -->
+		<Row><ID>CIVILIZATION_BHARAT</ID><Path>fs://game/civ_sym_bharat</Path></Row>
+
+		<!-- Building / quarter icons (CONFIRMED path). -->
+		<Row><ID>BUILDING_YOJANA_BHAVAN</ID><Path>fs://game/buildicon_yojana_bhavan</Path></Row>
+		<Row><ID>BUILDING_VAIDYASHALA</ID><Path>fs://game/buildicon_vaidyashala</Path></Row>
+		<Row><ID>QUARTER_NATIONAL_PLANNING_COMMISSION</ID><Path>fs://game/buildicon_national_planning_commission</Path></Row>
+
+		<!-- Leader portrait (EXPERIMENT — see status note). Hex + circle, a
+		     couple of sizes; add happy/angry variants once the base path is
+		     confirmed working. -->
+		<Row><ID>LEADER_SUBHAS_CHANDRA_BOSE</ID><Path>fs://game/lp_hex_bose_256</Path><IconSize>256</IconSize></Row>
+		<Row><ID>LEADER_SUBHAS_CHANDRA_BOSE</ID><Path>fs://game/lp_hex_bose_128</Path><IconSize>128</IconSize></Row>
+		<Row><ID>LEADER_SUBHAS_CHANDRA_BOSE</ID><Path>fs://game/lp_circ_bose_256</Path><Context>CIRCLE_MASK</Context><IconSize>256</IconSize></Row>
+		<Row><ID>LEADER_SUBHAS_CHANDRA_BOSE</ID><Path>fs://game/lp_circ_bose_140</Path><Context>PORTRAIT_MASK</Context><IconSize>140</IconSize></Row>
+
+		<!-- Azad Hind Fauj unit flag (EXPERIMENT). All 3 tiers share one flag. -->
+		<Row><ID>UNIT_AZAD_HIND_FAUJ</ID><Path>fs://game/unitflag_azad_hind_fauj</Path></Row>
+		<Row><ID>UNIT_AZAD_HIND_FAUJ_2</ID><Path>fs://game/unitflag_azad_hind_fauj</Path></Row>
+		<Row><ID>UNIT_AZAD_HIND_FAUJ_3</ID><Path>fs://game/unitflag_azad_hind_fauj</Path></Row>
+	</IconDefinitions>
+</Database>

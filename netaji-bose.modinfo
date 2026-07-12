@@ -48,6 +48,12 @@
 					<Item>text/en_us/LeaderText.xml</Item>
 					<Item>text/en_us/BharatText.xml</Item>
 				</UpdateText>
+				<!-- Icon definitions (fs://game/ PNG refs; missing files fall
+				     back harmlessly). Loaded in both scopes so setup-screen
+				     (leader/civ) and in-game (unit/building) icons resolve. -->
+				<UpdateIcons>
+					<Item>data/icons/bharat-icons.xml</Item>
+				</UpdateIcons>
 			</Actions>
 		</ActionGroup>
 		<!-- Azad Hind Fauj unique unit (Stage 2) + National Planning Commission
@@ -73,6 +79,9 @@
 					<Item>config/config.xml</Item>
 					<Item>config/bharat-config.xml</Item>
 				</UpdateDatabase>
+				<UpdateIcons>
+					<Item>data/icons/bharat-icons.xml</Item>
+				</UpdateIcons>
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>
 					<Item>text/en_us/BharatText.xml</Item>
