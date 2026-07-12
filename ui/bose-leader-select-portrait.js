@@ -26,7 +26,61 @@ import LeaderSelectModelManager from '/core/ui/shell/leader-select/leader-select
 import { LeaderSelectModel } from '/core/ui-next/screens/create-game/leader-select-model.js';
 import { Icon } from '/core/ui/utilities/utilities-image.js';
 
-console.warn("[BoseMod] bose-leader-select-portrait.js v3 loaded (shell scope)");
+console.warn("[BoseMod] bose-leader-select-portrait.js v4 loaded (shell scope)");
+
+// --- 0. Stop the previous leader's mesh + AUDIO persisting behind Netaji -----
+// scene-3d.js Model3d creates ONE model object per slot on mount, then only
+// calls model.setAssetName(name) on leader change. For Bose the asset doesn't
+// exist, so the swap silently no-ops and the PREVIOUS leader's mesh keeps
+// animating + playing VO (the "sound running behind" bug). Fix at the factory:
+// wrap WorldUI.createModelGroup so every group's addModel returns a model whose
+// setAssetName, when handed a Bose/missing asset, swaps to the character-less
+// lighting asset (clears mesh + silences VO) and hides it. Factory-wrap
+// survives the group recreation that defeated the earlier instance patch.
+const LIGHTING_ASSET = "LEADER_LIGHTING_SCENE_CHAR_SELECT_GAME_ASSET";
+function isBoseAsset(name) {
+	return typeof name === "string" && name.toUpperCase().indexOf("SUBHAS") >= 0;
+}
+try {
+	if (typeof WorldUI === "object" && WorldUI && typeof WorldUI.createModelGroup === "function" && !WorldUI.__boseWrapped) {
+		const origCreate = WorldUI.createModelGroup;
+		WorldUI.createModelGroup = function (name) {
+			const grp = origCreate.call(this, name);
+			try {
+				if (grp && typeof grp.addModel === "function") {
+					const origAdd = grp.addModel;
+					grp.addModel = function (assetName, ...rest) {
+						const bose = isBoseAsset(assetName);
+						const model = origAdd.call(this, bose ? LIGHTING_ASSET : assetName, ...rest);
+						if (model && typeof model.setAssetName === "function" && !model.__boseWrapped) {
+							const origSet = model.setAssetName.bind(model);
+							model.setAssetName = function (newName) {
+								if (isBoseAsset(newName)) {
+									console.warn("[BoseMod] neutralized leader model for Bose (mesh+VO)");
+									try { model.setAlpha && model.setAlpha(0); } catch (e) { /* host */ }
+									return origSet(LIGHTING_ASSET);
+								}
+								try { model.setAlpha && model.setAlpha(1); } catch (e) { /* host */ }
+								return origSet(newName);
+							};
+							model.__boseWrapped = true;
+						}
+						return model;
+					};
+				}
+			} catch (e) {
+				console.error("[BoseMod] model-group wrap failed: " + e);
+			}
+			return grp;
+		};
+		WorldUI.__boseWrapped = true;
+		console.warn("[BoseMod] WorldUI.createModelGroup wrapped OK");
+	} else {
+		console.warn("[BoseMod] WorldUI.createModelGroup not wrappable (already wrapped or absent)");
+	}
+} catch (e) {
+	console.error("[BoseMod] WorldUI wrap failed: " + e);
+}
 
 const PORTRAIT_URL = "fs://game/diplo_bose.png";
 const LSL_URL = "fs://game/lsl_subhas_chandra_bose.png";

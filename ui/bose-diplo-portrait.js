@@ -70,18 +70,19 @@ function showOverlay(side) {
 		el.id = IDS[side];
 		el.style.position = "fixed";
 		el.style.bottom = "0";
+		el.style.top = "0";
 		if (side === "left") {
-			el.style.left = "3vw";
+			el.style.left = "0";
+			el.style.backgroundPosition = "left bottom";
 		} else {
-			el.style.right = "3vw";
+			el.style.right = "0";
+			el.style.backgroundPosition = "right bottom";
 		}
-		el.style.width = "34vw";
-		el.style.height = "92vh";
+		el.style.width = "38vw";
 		el.style.pointerEvents = "none";
 		el.style.backgroundImage = "url('" + PORTRAIT_URL + "')";
 		el.style.backgroundRepeat = "no-repeat";
-		el.style.backgroundSize = "contain";
-		el.style.backgroundPosition = "bottom center";
+		el.style.backgroundSize = "auto 96vh";
 		// First body child: above the engine-composited 3D, below UI panels.
 		document.body.insertBefore(el, document.body.firstChild);
 		console.warn("[BoseMod] portrait overlay shown (" + side + ")");
