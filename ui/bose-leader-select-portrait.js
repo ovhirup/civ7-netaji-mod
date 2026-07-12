@@ -142,6 +142,54 @@ try {
 	console.error("[BoseMod] icon seam wrap failed: " + e);
 }
 
+// --- 0.6 Legend-Path level so the grid tile gets its XP ring + number badge --
+// leader-select-button.js only renders the LeaderXpRing (the ring around the
+// portrait + the level number bubble) when leaderInfo.level > 0. That level =
+// legendData.currentLevel, where legendData comes from
+// Online.Metaprogression.getLegendPathsData() keyed by LEGEND_PATH_<leader>.
+// Mod leaders have NO online Legend-Path entry (same profile wall as mementos)
+// -> level 0 -> no ring, no badge -> the tile looks/behaves unlike every base
+// leader. Inject a level-1 Legend-Path row for Bose so his tile renders the
+// identical ring + "1" badge that unplayed base leaders show. Purely cosmetic
+// (client-side); does not touch the real online profile.
+try {
+	if (typeof Online === "object" && Online && Online.Metaprogression &&
+		typeof Online.Metaprogression.getLegendPathsData === "function" &&
+		!Online.Metaprogression.__boseLegendWrapped) {
+		const origGetLegend = Online.Metaprogression.getLegendPathsData.bind(Online.Metaprogression);
+		const BOSE_PATH = "LEGEND_PATH_SUBHAS_CHANDRA_BOSE";
+		Online.Metaprogression.getLegendPathsData = function (...args) {
+			let data;
+			try {
+				data = origGetLegend(...args);
+			} catch (e) {
+				data = [];
+			}
+			try {
+				if (Array.isArray(data) && !data.some((d) => d && d.legendPathName === BOSE_PATH)) {
+					data = data.concat([{
+						legendPathName: BOSE_PATH,
+						currentLevel: 1,
+						currentXp: 0,
+						prevLevelXp: 0,
+						nextLevelXp: 100,
+						rewards: [],
+					}]);
+				}
+			} catch (e) {
+				console.error("[BoseMod] legend inject failed: " + e);
+			}
+			return data;
+		};
+		Online.Metaprogression.__boseLegendWrapped = true;
+		console.warn("[BoseMod] getLegendPathsData wrapped (level-1 XP ring + badge for Bose)");
+	} else {
+		console.warn("[BoseMod] Online.Metaprogression.getLegendPathsData not wrappable");
+	}
+} catch (e) {
+	console.error("[BoseMod] Online.Metaprogression wrap failed: " + e);
+}
+
 let suppressFallback = false;
 let currentIsBose = false;
 
