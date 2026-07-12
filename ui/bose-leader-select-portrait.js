@@ -56,11 +56,13 @@ function showOverlay() {
 		el.style.position = "fixed";
 		el.style.bottom = "0";
 		el.style.right = "0";
-		el.style.width = "46vw";
+		el.style.width = "52vw";
 		el.style.height = "100vh";
 		el.style.pointerEvents = "none";
-		// Opaque-ish backdrop masks any stale 3D model behind the portrait.
-		el.style.background = "linear-gradient(to left, rgba(9,11,15,0.96) 62%, rgba(9,11,15,0) 100%)";
+		// Fully-opaque core masks any stale/lingering 3D model behind the
+		// portrait (the engine keeps the previous leader's model on stage
+		// when an asset is missing); only the left edge feathers out.
+		el.style.background = "linear-gradient(to left, rgb(9,11,15) 78%, rgba(9,11,15,0) 100%)";
 		const img = document.createElement("div");
 		img.style.position = "absolute";
 		img.style.bottom = "0";

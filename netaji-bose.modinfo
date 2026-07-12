@@ -145,6 +145,10 @@
 				<UpdateDatabase>
 					<Item>config/config.xml</Item>
 					<Item>config/bharat-config.xml</Item>
+					<!-- Frontend copy of the civic tree + traditions for the
+					     setup screens' Traditions page (mirrors age-modern's
+					     config/civics-traditions.xml pattern). -->
+					<Item>config/bharat-civics-traditions.xml</Item>
 				</UpdateDatabase>
 				<UpdateIcons>
 					<Item>data/icons/bharat-icons.xml</Item>

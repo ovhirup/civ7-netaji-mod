@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- FRONTEND copy of Bharat's civic-tree + traditions, for the game-SETUP
+     screens (Civilization Details "Traditions" page). The ui-next civ-details
+     page queries the CONFIG database (DatabaseCache("config") in
+     core/ui-next/screens/create-game/civ-select-model.js:10, joining
+     Traditions x ProgressionTreeNodeUnlocks x ProgressionTreeNodes by the
+     civ's TraitType) — gameplay-side data is invisible there. Every base civ
+     ships this frontend copy via config (template:
+     age-modern/config/civics-traditions.xml, loaded in the age-modern-shell
+     ActionGroup); this mirrors our data/bharat-traditions.xml +
+     data/bharat-progression-trees.xml rows in the frontend shape (3 tables
+     only — no Types/ProgressionTrees rows needed frontend-side). -->
+<Database>
+	<Traditions>
+		<Row TraditionType="TRADITION_BHARAT_SWADESHI" Name="LOC_TRADITION_BHARAT_SWADESHI_NAME" Description="LOC_TRADITION_BHARAT_SWADESHI_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+		<Row TraditionType="TRADITION_BHARAT_PURNA_SWARAJ" Name="LOC_TRADITION_BHARAT_PURNA_SWARAJ_NAME" Description="LOC_TRADITION_BHARAT_PURNA_SWARAJ_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+		<Row TraditionType="TRADITION_BHARAT_FORWARD_BLOC" Name="LOC_TRADITION_BHARAT_FORWARD_BLOC_NAME" Description="LOC_TRADITION_BHARAT_FORWARD_BLOC_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+		<Row TraditionType="TRADITION_BHARAT_AZAD_HIND" Name="LOC_TRADITION_BHARAT_AZAD_HIND_NAME" Description="LOC_TRADITION_BHARAT_AZAD_HIND_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+		<Row TraditionType="TRADITION_BHARAT_NATIONAL_PLANNING" Name="LOC_TRADITION_BHARAT_NATIONAL_PLANNING_NAME" Description="LOC_TRADITION_BHARAT_NATIONAL_PLANNING_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+	</Traditions>
+	<ProgressionTreeNodes>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_SWADESHI" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="2000" Name="LOC_CIVIC_BHARAT_SWADESHI_NAME" IconString="cult_bharat"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="2000" Name="LOC_CIVIC_BHARAT_PURNA_SWARAJ_NAME" IconString="cult_bharat"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="3000" Name="LOC_CIVIC_BHARAT_FORWARD_BLOC_NAME" IconString="cult_bharat"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_AZAD_HIND" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="3000" Name="LOC_CIVIC_BHARAT_AZAD_HIND_NAME" IconString="cult_bharat"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" ProgressionTree="TREE_CIVICS_MO_BHARAT" Cost="4000" Name="LOC_CIVIC_BHARAT_NATIONAL_PLANNING_NAME" IconString="cult_bharat"/>
+	</ProgressionTreeNodes>
+	<ProgressionTreeNodeUnlocks>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_SWADESHI" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_SWADESHI" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_PURNA_SWARAJ" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_FORWARD_BLOC" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_AZAD_HIND" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_AZAD_HIND" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_NATIONAL_PLANNING" UnlockDepth="1"/>
+	</ProgressionTreeNodeUnlocks>
+</Database>
