@@ -123,6 +123,19 @@
 				</UpdateDatabase>
 			</Actions>
 		</ActionGroup>
+		<!-- Leader-select 2D-portrait patch (shell UI JS): suppresses the dark
+		     fallback figure and shows the painted portrait when Netaji is
+		     highlighted on the leader-select screen. -->
+		<ActionGroup id="shell-netaji-bose-ui" scope="shell" criteria="always">
+			<Properties>
+				<LoadOrder>1000</LoadOrder>
+			</Properties>
+			<Actions>
+				<UIScripts>
+					<Item>ui/bose-leader-select-portrait.js</Item>
+				</UIScripts>
+			</Actions>
+		</ActionGroup>
 		<!-- Shell/front-end: game-setup screen registration -->
 		<ActionGroup id="shell-netaji-bose" scope="shell" criteria="always">
 			<Actions>
@@ -156,6 +169,7 @@
 						<Item>art/lp_circ_subhas_chandra_bose_256.png</Item>
 						<Item>art/lp_circ_subhas_chandra_bose_128.png</Item>
 						<Item>art/lsl_subhas_chandra_bose.png</Item>
+						<Item>art/diplo_bose.png</Item>
 					</ImportFiles>
 				<UpdateText>
 					<Item>text/en_us/LeaderText.xml</Item>

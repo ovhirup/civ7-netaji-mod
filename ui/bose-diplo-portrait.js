@@ -1,32 +1,38 @@
 /**
  * [BoseMod] bose-diplo-portrait.js — game scope <UIScripts>
  *
- * Shows Netaji's 2D painted portrait in the diplomacy scene instead of the
- * Benjamin Franklin FPO fallback model, for LEADER_SUBHAS_CHANDRA_BOSE only.
+ * Replaces the Benjamin Franklin FPO fallback with Netaji's 2D painted
+ * portrait in the in-game diplomacy scene, for LEADER_SUBHAS_CHANDRA_BOSE.
  *
- * How it works (grounded in base-standard/ui/diplomacy/leader-model-manager.js):
- * - The 3D leader is engine-composited BEHIND the transparent HTML UI; any
- *   opaque DOM pixel covers it. Leaders with no LEADER_<X>_GAME_ASSET fall
- *   back to LEADER_FALLBACK_GAME_ASSET (Franklin + FPO watermark) via a pure
- *   JS null-check — nothing data-side can change that.
- * - We do NOT suppress the fallback model (its animation triggers gate the
- *   MEET/WAR sequence advancement). We COVER it: an overlay div prepended as
- *   document.body's first child paints above the 3D scene but below every
- *   later-sibling UI panel/button.
- * - Patch surface: the LeaderModelManager singleton's prototype (the same
- *   cached module instance the game imports), wrapping the show/exit/clear
- *   methods. Pattern proven by installed Workshop mods (bz-map-trix etc.).
+ * v2 (after first in-game test):
+ * - STATIC contexts (own-leader panel, other-leader panel, hub pair view):
+ *   the fallback 3D model is now SUPPRESSED entirely (no Franklin peeking
+ *   over the portrait, no idle animation, no Franklin audio). Mechanism: the
+ *   show methods only add "LEADER_FALLBACK_GAME_ASSET" after the real leader
+ *   asset returns null, so we intercept leaderModelGroup.addModel and return
+ *   null for the fallback while a Bose show-call is in flight. Static paths
+ *   are null-safe (playLeaderAnimation and trigger handling bail on null).
+ * - SEQUENCE contexts (first meet / declare war / peace): the fallback model
+ *   is KEPT (its animation triggers gate sequence advancement) and only
+ *   covered by the overlay.
+ * - The portrait PNG now has a baked feathered-alpha edge, so it blends into
+ *   the scene instead of floating as a hard rectangle.
  *
  * Beacons use console.warn/error — console.log is NOT captured in UI.log.
  */
 import LeaderModelManager from '/base-standard/ui/diplomacy/leader-model-manager.js';
 import { Icon } from '/core/ui/utilities/utilities-image.js';
 
-console.warn("[BoseMod] bose-diplo-portrait.js loaded (game scope)");
+console.warn("[BoseMod] bose-diplo-portrait.js v2 loaded (game scope)");
 
 const BOSE = "LEADER_SUBHAS_CHANDRA_BOSE";
+const FALLBACK_ASSET = "LEADER_FALLBACK_GAME_ASSET";
 const PORTRAIT_URL = "fs://game/diplo_bose.png";
 const IDS = { left: "bose-portrait-left", right: "bose-portrait-right" };
+
+// While true, addModel calls for the fallback asset return null (static
+// contexts only — never set during showLeaderSequence).
+let suppressFallback = false;
 
 function isBose(playerID) {
 	try {
@@ -65,19 +71,18 @@ function showOverlay(side) {
 		el.style.position = "fixed";
 		el.style.bottom = "0";
 		if (side === "left") {
-			el.style.left = "1vw";
+			el.style.left = "3vw";
 		} else {
-			el.style.right = "1vw";
+			el.style.right = "3vw";
 		}
-		el.style.width = "30vw";
-		el.style.height = "82vh";
+		el.style.width = "34vw";
+		el.style.height = "92vh";
 		el.style.pointerEvents = "none";
 		el.style.backgroundImage = "url('" + PORTRAIT_URL + "')";
 		el.style.backgroundRepeat = "no-repeat";
 		el.style.backgroundSize = "contain";
 		el.style.backgroundPosition = "bottom center";
-		// First body child => painted below all later UI siblings (panels,
-		// buttons) but above the engine-composited 3D scene.
+		// First body child: above the engine-composited 3D, below UI panels.
 		document.body.insertBefore(el, document.body.firstChild);
 		console.warn("[BoseMod] portrait overlay shown (" + side + ")");
 	} catch (e) {
@@ -85,77 +90,124 @@ function showOverlay(side) {
 	}
 }
 
-function wrap(obj, name, after) {
+// wrap(obj, name, {before, after}) — before runs pre-original (may set the
+// suppression flag), after runs post-original; flag always reset in finally.
+function wrap(obj, name, hooks) {
 	const orig = obj[name];
 	if (typeof orig !== "function") {
-		console.warn("[BoseMod] method not found to wrap: " + name + " (game patch changed it?)");
+		console.warn("[BoseMod] method not found to wrap: " + name);
 		return;
 	}
 	obj[name] = function (...args) {
-		const result = orig.apply(this, args);
 		try {
-			after(...args);
+			if (hooks.before) {
+				hooks.before(...args);
+			}
+			const result = orig.apply(this, args);
+			if (hooks.after) {
+				hooks.after(...args);
+			}
+			return result;
 		} catch (e) {
-			console.error("[BoseMod] hook for " + name + " failed: " + e);
+			console.error("[BoseMod] wrapped " + name + " threw: " + e);
+			return orig.apply(this, args);
+		} finally {
+			suppressFallback = false;
 		}
-		return result;
 	};
 }
 
 try {
-	// The default export is the singleton instance; its methods live on the
-	// class prototype. (show* internally call clear() first, so our clear-hook
-	// removes overlays, then the show-hook re-adds for the new leader pair.)
 	const proto = Object.getPrototypeOf(LeaderModelManager);
 
-	wrap(proto, "showLeftLeaderModel", (playerID) => {
-		if (isBose(playerID)) {
-			showOverlay("left");
+	// Intercept the model group's addModel: only while a static Bose show-call
+	// is in flight, and only for the fallback asset. Engine host object —
+	// property assignment may not stick; verify and beacon either way.
+	try {
+		const grp = LeaderModelManager.leaderModelGroup;
+		if (grp && typeof grp.addModel === "function") {
+			const origAdd = grp.addModel;
+			grp.addModel = function (assetName, ...rest) {
+				if (suppressFallback && assetName === FALLBACK_ASSET) {
+					console.warn("[BoseMod] suppressed fallback 3D model");
+					return null;
+				}
+				return origAdd.call(this, assetName, ...rest);
+			};
+			if (grp.addModel !== origAdd) {
+				console.warn("[BoseMod] leaderModelGroup.addModel intercepted OK");
+			} else {
+				console.warn("[BoseMod] addModel interception did NOT stick (host object) — Franklin will be covered, not removed");
+			}
+		} else {
+			console.warn("[BoseMod] leaderModelGroup.addModel not found — cover-only mode");
 		}
+	} catch (e) {
+		console.error("[BoseMod] addModel interception failed: " + e + " — cover-only mode");
+	}
+
+	wrap(proto, "showLeftLeaderModel", {
+		before: (playerID) => {
+			suppressFallback = isBose(playerID);
+		},
+		after: (playerID) => {
+			if (isBose(playerID)) {
+				showOverlay("left");
+			}
+		},
 	});
-	wrap(proto, "showRightLeaderModel", (playerID) => {
-		if (isBose(playerID)) {
-			showOverlay("right");
-		}
+	wrap(proto, "showRightLeaderModel", {
+		before: (playerID) => {
+			suppressFallback = isBose(playerID);
+		},
+		after: (playerID) => {
+			if (isBose(playerID)) {
+				showOverlay("right");
+			}
+		},
 	});
-	wrap(proto, "showLeaderModels", (player1, player2) => {
-		if (isBose(player1)) {
-			showOverlay("left");
-		}
-		if (isBose(player2)) {
-			showOverlay("right");
-		}
+	wrap(proto, "showLeaderModels", {
+		before: (p1, p2) => {
+			suppressFallback = isBose(p1) || isBose(p2);
+		},
+		after: (p1, p2) => {
+			if (isBose(p1)) {
+				showOverlay("left");
+			}
+			if (isBose(p2)) {
+				showOverlay("right");
+			}
+		},
 	});
-	wrap(proto, "showLeaderSequence", (params) => {
-		if (params && isBose(params.player1)) {
-			showOverlay("left");
-		}
-		if (params && isBose(params.player2)) {
-			showOverlay("right");
-		}
+	// Sequences: NO suppression — the fallback's animation triggers gate
+	// MEET/WAR advancement. Overlay only.
+	wrap(proto, "showLeaderSequence", {
+		after: (params) => {
+			if (params && isBose(params.player1)) {
+				showOverlay("left");
+			}
+			if (params && isBose(params.player2)) {
+				showOverlay("right");
+			}
+		},
 	});
-	wrap(proto, "exitLeaderScene", () => {
-		removeAllOverlays();
+	wrap(proto, "exitLeaderScene", {
+		after: () => removeAllOverlays(),
 	});
-	wrap(proto, "clear", () => {
-		removeAllOverlays();
+	wrap(proto, "clear", {
+		after: () => removeAllOverlays(),
 	});
 
-	console.warn("[BoseMod] leader-model-manager patched OK");
+	console.warn("[BoseMod] leader-model-manager patched OK (v2)");
 } catch (e) {
 	console.error("[BoseMod] failed to patch leader-model-manager: " + e);
 }
 
 // --- Fix the .png.png leader-portrait bug for our leader -------------------
-// Icon.getLeaderPortraitIcon (core/ui/utilities/utilities-image.js) builds
-// UI.getIconURL(type,"LEADER") + sizeSuffix + relationshipSuffix + ".png".
-// Our icon-definition Paths already end in .png (required by the fxs-icon
-// consumers, e.g. the leader roster — proven working), so these callers
-// (declare-war popup, call-to-arms, diplomacy-actions header) end up
-// requesting fs://game/lp_hex_bose_256.png.png and fail (seen in UI.log).
-// Wrap it: for Bose, return our real portrait URL; all other leaders pass
-// through untouched. Size/relationship variants intentionally collapse to the
-// one portrait (same face; CSS sizes the image).
+// Icon.getLeaderPortraitIcon appends ".png" to the icon-def Path; ours already
+// ends in .png (required by the fxs-icon consumers, which work), so the
+// declare-war popup / call-to-arms / diplomacy header requested
+// lp_hex_bose_256.png.png and fell back to the unknown-leader portrait.
 try {
 	const origGetLeaderPortraitIcon = Icon.getLeaderPortraitIcon;
 	Icon.getLeaderPortraitIcon = function (leaderType, size, relationship) {
