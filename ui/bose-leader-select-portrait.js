@@ -218,10 +218,16 @@ function showOverlay() {
 		el.style.width = "52vw";
 		el.style.height = "100vh";
 		el.style.pointerEvents = "none";
-		// Fully-opaque core masks any stale/lingering 3D model behind the
-		// portrait (the engine keeps the previous leader's model on stage
-		// when an asset is missing); only the left edge feathers out.
-		el.style.background = "linear-gradient(to left, rgb(9,11,15) 78%, rgba(9,11,15,0) 100%)";
+		// NO opaque backdrop. This overlay serves BOTH the leader-select screen
+		// (dark scene behind) AND the create-game-hub / "Begin Game" screen
+		// (bright Lion-Capital scene behind — recon: the big leader there is a
+		// live WorldUI Model3d of ${leaderID}_GAME_ASSET, which is already
+		// neutralized by our WorldUI.createModelGroup wrap, so there is no stale
+		// 3D model to mask). An opaque dark panel was invisible on the dark
+		// screen but showed as a hard-edged slab over the bright hub scene. With
+		// no backdrop, the portrait PNG's baked left+top feather blends it into
+		// whatever is behind — dark or bright.
+		el.style.background = "transparent";
 		// Flush to the screen's right edge; the PNG's baked left+top feather
 		// does the blending (no gap, no floating-poster look).
 		const img = document.createElement("div");
