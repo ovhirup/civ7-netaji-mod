@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Attaches the base-tech-tree bonus modifiers (data/bharat-tech-bonuses-
+     gameeffects.xml) to Bharat's identity trait TRAIT_BHARAT. The modifiers are
+     self-gating: each only applies once the player has completed the relevant
+     NODE_TECH_MO_* node (OwnerRequirements) in cities with the matching building
+     (SubjectRequirements). Loaded in the modern-age-current ActionGroup; per the
+     proven bharat-civ-ability pattern this link table loads BEFORE its gameeffects
+     file (GameEffects Modifiers resolve in a separate pass, so the ModifierId
+     references here don't need the defs loaded first).
+     TRAIT_BHARAT is always-defined (data/bharat-civilization.xml); these rows are
+     Modern-age-gated content that references it — no always-loaded row references
+     these, so no cross-age FK hazard (unlike the Stage-4 civic-tree fix). -->
+<Database>
+	<TraitModifiers>
+		<Row TraitType="TRAIT_BHARAT" ModifierId="BHARAT_MOD_TECH_STEAM_ENGINE_PROD"/>
+		<Row TraitType="TRAIT_BHARAT" ModifierId="BHARAT_MOD_TECH_STEAM_ENGINE_GOLD"/>
+		<Row TraitType="TRAIT_BHARAT" ModifierId="BHARAT_MOD_TECH_INDUSTRIALIZATION_PROD"/>
+		<Row TraitType="TRAIT_BHARAT" ModifierId="BHARAT_MOD_TECH_MASS_PRODUCTION_GOLD"/>
+		<Row TraitType="TRAIT_BHARAT" ModifierId="BHARAT_MOD_TECH_ELECTRICITY_SCIENCE"/>
+	</TraitModifiers>
+</Database>

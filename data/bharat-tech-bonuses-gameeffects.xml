@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bharat bonuses hooked onto the base shared TECHNOLOGY tree (design via a Grok
+     research project, schema-verified against ground-truth game files 2026-07-13).
+
+     Mechanism (VERIFIED): a persistent trait Modifier gated by whether the player
+     has completed a base tech node. The correct requirement is
+     REQUIREMENT_PLAYER_HAS_COMPLETED_PROGRESSION_TREE_NODE with argument
+     ProgressionTreeNodeType = a NODE_TECH_MO_* node (NOT a non-existent
+     "REQUIREMENT_PLAYER_HAS_TECH", and NOT the TECH_MO_* type — the requirement
+     references the progression-tree NODE form; MinDepth=1). Owner-level requirement
+     = the player; Subject-level requirement = each city (has the relevant building).
+     Precedent: age-antiquity/data/civilizations-common-gameeffects.xml
+     (TRAIT_MOD_CHIEFDOM_UNLOCKS_GOVERNMENT gates a trait modifier on
+     REQUIREMENT_PLAYER_HAS_COMPLETED_PROGRESSION_TREE_NODE). Effect/collection/
+     building strings all confirmed present in the live schema (age-modern):
+     EFFECT_CITY_ADJUST_YIELD, COLLECTION_PLAYER_CITIES, REQUIREMENT_CITY_HAS_BUILDING
+     (arg BuildingType), REQUIREMENTSET_TEST_ANY, BUILDING_IRONWORKS/PORT/RAIL_STATION/
+     FACTORY/LABORATORY, NODE_TECH_MO_STEAM_ENGINE/INDUSTRIALIZATION/MASS_PRODUCTION/
+     ELECTRICITY.
+
+     A coherent "industrial modernisation" arc, all independence-era-safe and each a
+     DISTINCT yield so nothing double-dips the leader/civ kit (Mother Industries =
+     Factory PRODUCTION + defensive War Support + global Culture; these add Gold,
+     rail Production, and Science instead). Attached to TRAIT_BHARAT. -->
+<GameEffects xmlns="GameEffects">
+
+	<!-- 1a. Steam Engine -> +1 Production in settlements with an Ironworks OR Port.
+	        Swadeshi self-reliant domestic industry + port autonomy. -->
+	<Modifier id="BHARAT_MOD_TECH_STEAM_ENGINE_PROD" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<OwnerRequirements>
+			<Requirement type="REQUIREMENT_PLAYER_HAS_COMPLETED_PROGRESSION_TREE_NODE">
+				<Argument name="ProgressionTreeNodeType">NODE_TECH_MO_STEAM_ENGINE</Argument>
+				<Argument name="MinDepth">1</Argument>
+			</Requirement>
+		</OwnerRequirements>
+		<SubjectRequirements type="REQUIREMENTSET_TEST_ANY">
+			<Requirement type="REQUIREMENT_CITY_HAS_BUILDING">
+				<Argument name="BuildingType">BUILDING_IRONWORKS</Argument>
+			</Requirement>
+			<Requirement type="REQUIREMENT_CITY_HAS_BUILDING">
+				<Argument name="BuildingType">BUILDING_PORT</Argument>
+			</Requirement>
+		</SubjectRequirements>
+		<Argument name="YieldType">YIELD_PRODUCTION</Argument>
+		<Argument name="Amount">1</Argument>
+		<String context="Description">LOC_BHARAT_TECH_STEAM_ENGINE_DESCRIPTION</String>
+	</Modifier>
+
+	<!-- 1b. Steam Engine -> +1 Gold in the same settlements. -->
+	<Modifier id="BHARAT_MOD_TECH_STEAM_ENGINE_GOLD" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<OwnerRequirements>
+			<Requirement type="REQUIREMENT_PLAYER_HAS_COMPLETED_PROGRESSION_TREE_NODE">
+				<Argument name="ProgressionTreeNodeType">NODE_TECH_MO_STEAM_ENGINE</Argument>
+				<Argument name="MinDepth">1</Argument>
+			</Requirement>
+		</OwnerRequirements>
+		<SubjectRequirements type="REQUIREMENTSET_TEST_ANY">
+			<Requirement type="REQUIREMENT_CITY_HAS_BUILDING">
+				<Argument name="BuildingType">BUILDING_IRONWORKS</Argument>
+			</Requirement>
+			<Requirement type="REQUIREMENT_CITY_HAS_BUILDING">
+				<Argument name="BuildingType">BUILDING_PORT</Argument>
+			</Requirement>
+		</SubjectRequirements>
+		<Argument name="YieldType">YIELD_GOLD</Argument>
+		<Argument name="Amount">1</Argument>
+		<String context="Description">LOC_BHARAT_TECH_STEAM_ENGINE_DESCRIPTION</String>
+	</Modifier>
+
+	<!-- 2. Industrialization -> +2 Production in settlements with a Rail Station.
+	       Rail mobilisation/logistics (Dilli Chalo) + planned heavy industry. -->
+	<Modifier id="BHARAT_MOD_TECH_INDUSTRIALIZATION_PROD" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<OwnerRequirements>
+			<Requirement type="REQUIREMENT_PLAYER_HAS_COMPLETED_PROGRESSION_TREE_NODE">
+				<Argument name="ProgressionTreeNodeType">NODE_TECH_MO_INDUSTRIALIZATION</Argument>
+				<Argument name="MinDepth">1</Argument>
+			</Requirement>
+		</OwnerRequirements>
+		<SubjectRequirements>
+			<Requirement type="REQUIREMENT_CITY_HAS_BUILDING">
+				<Argument name="BuildingType">BUILDING_RAIL_STATION</Argument>
+			</Requirement>
+		</SubjectRequirements>
+		<Argument name="YieldType">YIELD_PRODUCTION</Argument>
+		<Argument name="Amount">2</Argument>
+		<String context="Description">LOC_BHARAT_TECH_INDUSTRIALIZATION_DESCRIPTION</String>
+	</Modifier>
+
+	<!-- 3. Mass Production -> +2 Gold in settlements with a Factory. Planned
+	       industrial economy / self-reliant output (National Planning Committee,
+	       convened by Bose as Congress president 1938; chaired by Nehru). -->
+	<Modifier id="BHARAT_MOD_TECH_MASS_PRODUCTION_GOLD" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<OwnerRequirements>
+			<Requirement type="REQUIREMENT_PLAYER_HAS_COMPLETED_PROGRESSION_TREE_NODE">
+				<Argument name="ProgressionTreeNodeType">NODE_TECH_MO_MASS_PRODUCTION</Argument>
+				<Argument name="MinDepth">1</Argument>
+			</Requirement>
+		</OwnerRequirements>
+		<SubjectRequirements>
+			<Requirement type="REQUIREMENT_CITY_HAS_BUILDING">
+				<Argument name="BuildingType">BUILDING_FACTORY</Argument>
+			</Requirement>
+		</SubjectRequirements>
+		<Argument name="YieldType">YIELD_GOLD</Argument>
+		<Argument name="Amount">2</Argument>
+		<String context="Description">LOC_BHARAT_TECH_MASS_PRODUCTION_DESCRIPTION</String>
+	</Modifier>
+
+	<!-- 4. Electricity -> +2 Science in settlements with a Laboratory. Swaraj-era
+	       scientific modernisation ("temples of modern India"; CSIR/IIT lineage). -->
+	<Modifier id="BHARAT_MOD_TECH_ELECTRICITY_SCIENCE" collection="COLLECTION_PLAYER_CITIES" effect="EFFECT_CITY_ADJUST_YIELD">
+		<OwnerRequirements>
+			<Requirement type="REQUIREMENT_PLAYER_HAS_COMPLETED_PROGRESSION_TREE_NODE">
+				<Argument name="ProgressionTreeNodeType">NODE_TECH_MO_ELECTRICITY</Argument>
+				<Argument name="MinDepth">1</Argument>
+			</Requirement>
+		</OwnerRequirements>
+		<SubjectRequirements>
+			<Requirement type="REQUIREMENT_CITY_HAS_BUILDING">
+				<Argument name="BuildingType">BUILDING_LABORATORY</Argument>
+			</Requirement>
+		</SubjectRequirements>
+		<Argument name="YieldType">YIELD_SCIENCE</Argument>
+		<Argument name="Amount">2</Argument>
+		<String context="Description">LOC_BHARAT_TECH_ELECTRICITY_DESCRIPTION</String>
+	</Modifier>
+
+</GameEffects>

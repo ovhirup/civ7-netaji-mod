@@ -163,6 +163,12 @@
 					     Bharat gameplay data (all Modern-only). -->
 					<Item>data/bharat-civ-ability.xml</Item>
 					<Item>data/bharat-civ-ability-gameeffects.xml</Item>
+					<!-- Base-tech-tree bonuses (industrial-modernisation hooks):
+					     4 hooks / 5 modifiers gated by REQUIREMENT_PLAYER_HAS_
+					     COMPLETED_PROGRESSION_TREE_NODE on NODE_TECH_MO_* nodes.
+					     Link table before its gameeffects (proven civ-ability order). -->
+					<Item>data/bharat-tech-bonuses.xml</Item>
+					<Item>data/bharat-tech-bonuses-gameeffects.xml</Item>
 				</UpdateDatabase>
 			</Actions>
 		</ActionGroup>

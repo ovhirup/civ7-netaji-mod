@@ -324,5 +324,19 @@
 		<Row Tag="LOC_PEDIA_UNIT_BAHADUR_GROUP_PARA_1" Language="en_US">
 			<Text>Ahead of every column moved the Bahadur Groups — "the brave" — scouts who slipped through wire and jungle to map the road home, and who carried to Indian soldiers in imperial service a single quiet question: whom do you fight for? In the Republic's army they endured as the pathfinder corps, first through every gap and first to raise the cry of Jai Hind on ground not yet free.</Text>
 		</Row>
+		<!-- Base-tech-tree bonuses (Bharat "industrial modernisation" hooks):
+		     each fires once the matching Modern tech node is researched. -->
+		<Row Tag="LOC_BHARAT_TECH_STEAM_ENGINE_DESCRIPTION" Language="en_US">
+			<Text>Swadeshi Industry: +1 Production and +1 Gold in settlements with an Ironworks or a Port. (Requires Steam Engine.)</Text>
+		</Row>
+		<Row Tag="LOC_BHARAT_TECH_INDUSTRIALIZATION_DESCRIPTION" Language="en_US">
+			<Text>+2 Production in settlements with a Rail Station. (Requires Industrialization.)</Text>
+		</Row>
+		<Row Tag="LOC_BHARAT_TECH_MASS_PRODUCTION_DESCRIPTION" Language="en_US">
+			<Text>+2 Gold in settlements with a Factory. (Requires Mass Production.)</Text>
+		</Row>
+		<Row Tag="LOC_BHARAT_TECH_ELECTRICITY_DESCRIPTION" Language="en_US">
+			<Text>+2 Science in settlements with a Laboratory. (Requires Electricity.)</Text>
+		</Row>
 	</LocalizedText>
 </Database>
