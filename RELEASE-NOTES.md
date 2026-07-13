@@ -16,6 +16,8 @@ Newest updates first.
   and his scale now matches the leader across from him.
 - **Bharat's Ashoka Chakra emblem** now appears on the in-game leader banners
   and on the rankings/score comparison screen (previously blank for Bharat).
+- **Netaji's leader icon** now matches the base leaders — framed gold hexagon
+  with his portrait cresting the frame — on the leader ribbon and rankings.
 
 ## Update 2 — 2026-07-13 · Critical load fix
 
