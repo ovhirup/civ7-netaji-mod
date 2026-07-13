@@ -17,9 +17,9 @@
 	"appid"           "1295660"
 	"publishedfileid" "3763580219"                          // <-- paste the item ID here after first SDK publish; "0" = attempt create
 	"contentfolder"   "/Users/abhirupbanerjee/dev/civ7-netaji-mod/build/upload"   // e.g. /Users/abhirupbanerjee/dev/civ7-netaji-mod/build/upload
-	"previewfile"     "/Users/abhirupbanerjee/dev/civ7-netaji-mod/art/workshop_banner.png"
+	"previewfile"     "/Users/abhirupbanerjee/dev/civ7-netaji-mod/art/workshop_banner_preview.jpg"  // <1MB (Steam preview cap); the .png is 1.7MB and gets dropped
 	"visibility"      "0"                           // MUST match your live listing each update: 0=public 1=friends 2=private (an update SETS this)
 	"title"           "Netaji Subhas Chandra Bose & Bharat"
 	"description"     "Adds Netaji Subhas Chandra Bose, hero of India's independence struggle, as a playable leader, plus the Modern-Age civilization Bharat — Azad Hind Fauj & Rani of Jhansi Regiment unique units, the National Planning Commission quarter, a Swadeshi-to-Purna-Swaraj civics tree, and full Ashoka Chakra / Springing Tiger iconography. Unofficial fan tribute; not affiliated with Firaxis or 2K."
-	"changenote"      "Initial release."
+	"changenote"      "Critical fix: mod failed to load for all players (Content Configuration Validation Failed / Civilizations.UniqueCultureProgressionTree FK error) outside the Modern Age. Also adds listing preview image."
 }

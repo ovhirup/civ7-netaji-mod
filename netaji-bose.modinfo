@@ -43,6 +43,26 @@
 					<Item>data/leaders.xml</Item>
 					<Item>data/leaders-gameeffects.xml</Item>
 					<Item>data/bharat-civilization.xml</Item>
+					<!-- STAGE 4 part B civic tree + traditions moved here from the
+					     modern-age-gated group (fix, 2026-07-13): bharat-civilization.xml's
+					     Civilizations row ALWAYS declares UniqueCultureProgressionTree=
+					     TREE_CIVICS_MO_BHARAT (a static schema FK, not itself age-gated),
+					     so the tree/traditions must ALSO always exist in the database —
+					     not only once AgeInUse==AGE_MODERN. Leaving them in the
+					     modern-age-current group caused "Content Configuration Validation
+					     Failed" (Database.log: "[gameplay] ERROR: Invalid Reference on
+					     Civilizations.UniqueCultureProgressionTree - TREE_CIVICS_MO_BHARAT
+					     does not exist in ProgressionTrees") any time validation ran
+					     outside Modern age — i.e. always, for every player, at the main
+					     menu and every fresh game start. The tree's per-node UNLOCK (tab
+					     visibility) still only matters once the player reaches Modern Age
+					     — that's EFFECT_PLAYER_REVEAL_CULTURE_TREE in
+					     bharat-civ-ability-gameeffects.xml, which correctly stays in the
+					     modern-age-current group below. Only the static type/row
+					     definitions needed to always load. -->
+					<Item>data/bharat-progression-trees.xml</Item>
+					<Item>data/bharat-traditions.xml</Item>
+					<Item>data/bharat-traditions-gameeffects.xml</Item>
 					<!-- After bharat-civilization.xml: LoadingInfo_Civilizations
 					     FK-references the Civilizations row. -->
 					<Item>data/loading-info.xml</Item>
@@ -135,9 +155,6 @@
 					     Bharat gameplay data (all Modern-only). -->
 					<Item>data/bharat-civ-ability.xml</Item>
 					<Item>data/bharat-civ-ability-gameeffects.xml</Item>
-					<Item>data/bharat-progression-trees.xml</Item>
-					<Item>data/bharat-traditions.xml</Item>
-					<Item>data/bharat-traditions-gameeffects.xml</Item>
 				</UpdateDatabase>
 			</Actions>
 		</ActionGroup>
