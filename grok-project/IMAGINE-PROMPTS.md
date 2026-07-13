@@ -189,3 +189,28 @@ beneath. Timeline rule: emblems BEHIND him, never in his hands.
 > horizontally mirror (`magick -flop`) → diplo_bose_right.png. One generation
 > yields both sides; if he ends up facing the wrong way in-game, swap which
 > file gets the mirror rather than regenerating.
+
+### 15. Leader hex icon bust (magenta key) — `lp_hex_bose_*.png`
+> Feeds the in-game leader ribbon / rankings hex icon (Icon.getLeaderPortraitIcon
+> → lp_hex_bose_256.png). CONFIRMED IN GAME 2026-07-13: the engine does NOT draw
+> its own hud_diplo_hex-frame for a modded 2D leader (that gold frame is baked
+> into base leaders' portrait BLPs, which are the proprietary CIVBIG format and
+> not extractable). So the frame must be BAKED into our PNG.
+>
+> Generate a head-and-shoulders bust: an Indian independence leader in his
+> forties, round spectacles, olive-green INA field cap (tiger-and-tricolour
+> badge) and uniform with a leather Sam Browne belt, head high in frame,
+> shoulders at the bottom, near-forward with a slight turn. Painterly Civ VII
+> leader style. IMPORTANT: place him on a COMPLETELY FLAT SOLID BRIGHT MAGENTA
+> (#FF00FF) background — no gradient/shading/vignette — so it keys cleanly.
+> (Netaji's olive uniform is too close to a dark bg to key; magenta is not.)
+>
+> Processing (scripted, scratchpad/frame.py + key3.py): (1) key magenta →
+> transparent via border-connected flood on a "blue>green" pink test; neutralise
+> interior through-glass magenta in the spectacle lenses to a dark tone; erode
+> alpha 1px. (2) Bake a pointy-top gold hex FRAME + cream-gold PLATE (tinted to
+> Bose's banner) and composite the bust clipped to the inner hex + a top opening
+> so the cap crests over the frame. Bust scale ≈ 0.95× canvas width = face/hex
+> parity with base leaders (1.20 too big, 1.02 slightly big — 0.95 matched).
+> Transparent hex corners. Output 256 + 128 (+ optional 64). Do NOT bake for the
+> lp_circ_* files — those keep their approved circle framing.
