@@ -15,3 +15,7 @@ build/
 
 # Promo/listing video assets — large blobs, not shipped in the mod
 promo/
+
+# macOS Finder metadata
+.DS_Store
+**/.DS_Store

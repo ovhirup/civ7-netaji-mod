@@ -31,8 +31,11 @@ const FALLBACK_ASSET = "LEADER_FALLBACK_GAME_ASSET";
 // (opaque there) with a wide feather on the inward edge + top, so the portrait
 // melts into the 3D scene instead of floating as a soft-cornered poster.
 const PORTRAIT_URLS = {
-	left: "fs://game/diplo_bose_left.png",
-	right: "fs://game/diplo_bose_right.png",
+	// v2: three-quarter-length, turned to engage the opposing leader (2026-07-13
+	// fix — the old bust art faced the same direction regardless of side,
+	// unlike other leaders' 3D models which turn toward each other).
+	left: "fs://game/diplo_bose_v2_left.png",
+	right: "fs://game/diplo_bose_v2_right.png",
 };
 const IDS = { left: "bose-portrait-left", right: "bose-portrait-right" };
 
@@ -84,14 +87,20 @@ function showOverlay(side) {
 			el.style.right = "0";
 			el.style.backgroundPosition = "right bottom";
 		}
-		// 69vh, not vw: the image is 100vh tall x (700/1024) = 68.4vh wide. A
-		// vw width is narrower than that on 16:10-ish screens and clips the
-		// inward feather mid-ramp (visible hard seam).
-		el.style.width = "69vh";
+		// Portrait rendered at PORTRAIT_H tall, anchored to the bottom of the
+		// screen so the figure is grounded. The v2 art is 700x1250 with baked-in
+		// dark headroom above the cap (cap top ~21.6% down) so the top feather
+		// fades EMPTY space into the scene instead of clipping his head — the
+		// head now reads solid with headroom, like the 3D leaders. Tune
+		// PORTRAIT_H if he sits too tall/short relative to the opponent.
+		const PORTRAIT_H = 93; // vh
+		// Div width tracks the image's rendered width at PORTRAIT_H tall
+		// (aspect 700/1250 = 0.56) so the inward feather isn't clipped.
+		el.style.width = (PORTRAIT_H * 700 / 1250).toFixed(1) + "vh";
 		el.style.pointerEvents = "none";
 		el.style.backgroundImage = "url('" + PORTRAIT_URLS[side] + "')";
 		el.style.backgroundRepeat = "no-repeat";
-		el.style.backgroundSize = "auto 100vh";
+		el.style.backgroundSize = "auto " + PORTRAIT_H + "vh";
 		// First body child: above the engine-composited 3D, below UI panels.
 		document.body.insertBefore(el, document.body.firstChild);
 		console.warn("[BoseMod] portrait overlay shown (" + side + ")");
@@ -251,4 +260,33 @@ try {
 	console.warn("[BoseMod] Icon.getLeaderPortraitIcon patched OK");
 } catch (e) {
 	console.error("[BoseMod] failed to patch Icon.getLeaderPortraitIcon: " + e);
+}
+
+// --- Fix the missing Bharat civ symbol on ribbon/rankings surfaces ----------
+// leader-with-ribbon.js (the in-game leader banners, the Victories/Rankings
+// panel, etc.) calls Icon.getCivSymbolFromCivilizationType(civType), which does
+// NOT consult the IconDefinitions table (our bharat-icons.xml row) at all. It
+// hardcodes: "fs://game/core/ui/civ_sym_" + CivilizationType.slice(13)
+// .toLowerCase()  ->  "fs://game/core/ui/civ_sym_bharat" for Bharat. Our PNG is
+// ImportFiles-flattened to "fs://game/civ_sym_bharat.png" (mod root, no core/ui/
+// prefix, no auto ".png"), so that request 404s and Bharat's banner shows blank
+// while every base civ resolves. Wrap it to return our real path for Bharat
+// only; everything else passes through unchanged.
+const BHARAT = "CIVILIZATION_BHARAT";
+try {
+	const origGetCivSymbol = Icon.getCivSymbolFromCivilizationType;
+	Icon.getCivSymbolFromCivilizationType = function (civilization) {
+		try {
+			const civ = GameInfo.Civilizations.lookup(civilization);
+			if (civ && civ.CivilizationType === BHARAT) {
+				return "fs://game/civ_sym_bharat.png";
+			}
+		} catch (e) {
+			console.error("[BoseMod] getCivSymbol hook failed: " + e);
+		}
+		return origGetCivSymbol.call(this, civilization);
+	};
+	console.warn("[BoseMod] Icon.getCivSymbolFromCivilizationType patched OK");
+} catch (e) {
+	console.error("[BoseMod] failed to patch Icon.getCivSymbolFromCivilizationType: " + e);
 }

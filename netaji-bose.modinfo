@@ -103,6 +103,14 @@
 					<Item>art/diplo_bose.png</Item>
 					<Item>art/diplo_bose_left.png</Item>
 					<Item>art/diplo_bose_right.png</Item>
+					<!-- v2: three-quarter-length, turned-to-engage diplomacy portrait
+					     (fixes uniformity vs other leaders' 3D models turning toward
+					     each other). diplo_bose_left/right.png above stay UNCHANGED —
+					     bose-leader-select-portrait.js (shell scope) also hardcodes
+					     diplo_bose_right.png for the leader-select screen; overwriting
+					     it would have silently broken that already-approved screen. -->
+					<Item>art/diplo_bose_v2_left.png</Item>
+					<Item>art/diplo_bose_v2_right.png</Item>
 					<Item>art/lp_hex_subhas_chandra_bose_256.png</Item>
 					<Item>art/lp_hex_subhas_chandra_bose_128.png</Item>
 					<Item>art/lp_circ_subhas_chandra_bose_256.png</Item>

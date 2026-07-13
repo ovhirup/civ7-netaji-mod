@@ -163,3 +163,29 @@ beneath. Timeline rule: emblems BEHIND him, never in his hands.
 > other hand raised flat to his brow as if scanning the horizon; side cap,
 > lean alert posture, kit minimal. Avoid: binocular strap clutter, parachutes,
 > any insignia, any terrain.
+
+### 14. Diplomacy portrait v2 (three-quarter length, engaged) — `diplo_bose_left/right.png`
+> Fixes a uniformity gap: other leaders' 3D models turn/lean toward the
+> opposing leader in diplomacy scenes; Netaji's bust portrait (item #6) faces
+> forward/away regardless of which side he's placed on. This is a NEW,
+> separate generation — do not replace item #6's grid/hex/circle art, which
+> is already approved and wired.
+>
+> A dignified painted portrait in the style of a Sid Meier's Civilization VII
+> diplomacy leader scene: an original painterly likeness of an Indian
+> independence leader — a resolute man in his forties with round spectacles,
+> wearing an olive-green Indian National Army field uniform, peaked cap with a
+> small tiger-and-tricolour badge, a leather Sam Browne belt across the chest.
+> Three-quarter length (waist to mid-thigh), standing in a confident three-
+> quarter turn, body and gaze angled toward his RIGHT as if addressing someone
+> standing to that side — not facing the viewer straight-on. Calm, resolute
+> expression, warm dramatic lighting, on a dark neutral painted background
+> with generous margin around the figure. Heroic but human, historical,
+> original artwork, not a photograph. No text, no weapons in hand.
+>
+> Processing (custom, not process_art.py's standard modes): feathered-edge
+> vignette blend matching the original diplo_bose.png treatment (alpha
+> extract, shave, blur, CopyOpacity) → save direct as diplo_bose_left.png,
+> horizontally mirror (`magick -flop`) → diplo_bose_right.png. One generation
+> yields both sides; if he ends up facing the wrong way in-game, swap which
+> file gets the mirror rather than regenerating.
