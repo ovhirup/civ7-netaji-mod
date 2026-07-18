@@ -34,18 +34,6 @@
 		<Criteria id="modern-age-current">
 			<AgeInUse>AGE_MODERN</AgeInUse>
 		</Criteria>
-		<!-- Wonder-experiment criteria (2026-07-18), copied verbatim from the
-		     official asia-wonders DLC: an AGELESS Exploration wonder's
-		     constructible rows must PERSIST into Modern (already-built wonders
-		     exist in later-age databases), while its civics-tree unlock loads
-		     only while Exploration is CURRENT. -->
-		<Criteria id="exploration-age-persist" any="true">
-			<AgeInUse>AGE_EXPLORATION</AgeInUse>
-			<AgeInUse>AGE_MODERN</AgeInUse>
-		</Criteria>
-		<Criteria id="exploration-age-current">
-			<AgeInUse>AGE_EXPLORATION</AgeInUse>
-		</Criteria>
 	</ActionCriteria>
 	<ActionGroups>
 		<!-- Gameplay database -->
@@ -198,27 +186,23 @@
 				</UpdateDatabase>
 			</Actions>
 		</ActionGroup>
-		<!-- HERITAGE WONDER EXPERIMENT (2026-07-18): Nalanda, an Exploration-age
-		     wonder, in two isolated groups mirroring asia-wonders' split. If
-		     this experiment fails (load error or blank 3D), delete these two
-		     ActionGroups — nothing else references their content. -->
-		<ActionGroup id="game-bharat-wonders-persist" scope="game" criteria="exploration-age-persist">
-			<Actions>
-				<UpdateDatabase>
-					<Item>data/bharat-wonder-nalanda.xml</Item>
-				</UpdateDatabase>
-				<UpdateVisualRemaps>
-					<Item>data/bharat-visual-remaps.xml</Item>
-				</UpdateVisualRemaps>
-			</Actions>
-		</ActionGroup>
-		<ActionGroup id="game-bharat-wonders-unlock" scope="game" criteria="exploration-age-current">
-			<Actions>
-				<UpdateDatabase>
-					<Item>data/bharat-wonder-nalanda-unlock.xml</Item>
-				</UpdateDatabase>
-			</Actions>
-		</ActionGroup>
+		<!-- HERITAGE WONDER EXPERIMENT — RETRACTED (2026-07-18): "Nalanda" is
+		     already a shipped base-game wonder (age-antiquity/data/
+		     constructibles.xml, Type=WONDER_NALANDA, cost 450, +3 Science,
+		     tags AGELESS/INNOVATION/GREATWORK, its own quote VO). Our
+		     duplicate Types/Constructibles/LocalizedText rows collided on the
+		     exact same identifiers ("UNIQUE constraint failed: LocalizedText.
+		     Language, LocalizedText.Tag" on LOC_WONDER_NALANDA_NAME), which
+		     failed the localization rebuild and reverted the ENTIRE shell
+		     config transaction — silently taking down shell-netaji-bose-ui's
+		     leader-select overlay with it (exposing the stale-model fallback,
+		     e.g. Machiavelli, on the Leader Select screen). Any civ can
+		     already build the real Nalanda; no mod content needed. The
+		     wonder-remap mechanism itself (UpdateVisualRemaps onto an
+		     existing wonder's 3D model) remains UNTESTED and worth trying
+		     again under a genuinely new name (e.g. Konark Sun Temple) in a
+		     future session — see grok-project/HERITAGE-OVERHAUL-RESEARCH-
+		     BRIEF.md. -->
 		<!-- Leader-select 2D-portrait patch (shell UI JS): suppresses the dark
 		     fallback figure and shows the painted portrait when Netaji is
 		     highlighted on the leader-select screen. -->

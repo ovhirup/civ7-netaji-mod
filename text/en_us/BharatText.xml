@@ -421,24 +421,5 @@
 		<Row Tag="LOC_PEDIA_UNIT_ANGRE_GHURAB_PARA_1" Language="en_US">
 			<Text>The ghurab was the fist of the Maratha navy — a shallow-draft gun-ship that could outmaneuver anything it could not outfight. Under Kanhoji Angre and his successors, ghurab squadrons defeated or deterred British, Portuguese, and Dutch expeditions alike, proof that Indian seapower met the colonial age head-on and, for a generation, won.</Text>
 		</Row>
-		<!-- Nalanda wonder -->
-		<Row Tag="LOC_WONDER_NALANDA_NAME" Language="en_US">
-			<Text>Nalanda</Text>
-		</Row>
-		<Row Tag="LOC_WONDER_NALANDA_DESCRIPTION" Language="en_US">
-			<Text>+3 Science, +2 Culture. Contains 1 Great Work slot. The great mahavihara of learning: a residential university whose libraries and entrance examinations drew scholars across all of Asia for seven centuries.</Text>
-		</Row>
-		<Row Tag="LOC_WONDER_NALANDA_TOOLTIP" Language="en_US">
-			<Text>+3 Science, +2 Culture. Contains 1 Great Work slot.</Text>
-		</Row>
-		<Row Tag="LOC_QUOTE_WONDER_NALANDA" Language="en_US">
-			<Text>"The priests, to the number of several thousands, are men of the highest ability and talent... learning and discussing, they find the day too short."</Text>
-		</Row>
-		<Row Tag="LOC_QUOTE_AUTHOR_WONDER_NALANDA" Language="en_US">
-			<Text>Xuanzang</Text>
-		</Row>
-		<Row Tag="LOC_REMAP_WONDER_NALANDA" Language="en_US">
-			<Text>Nalanda</Text>
-		</Row>
 	</LocalizedText>
 </Database>
