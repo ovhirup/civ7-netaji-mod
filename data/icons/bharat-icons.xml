@@ -56,5 +56,9 @@
 		<Row><ID>UNIT_RANI_OF_JHANSI_REGIMENT</ID><Path>fs://game/unitflag_rani_of_jhansi.png</Path></Row>
 		<Row><ID>UNIT_AZAD_HIND_NAU_SENA</ID><Path>fs://game/unitflag_nau_sena.png</Path></Row>
 		<Row><ID>UNIT_BAHADUR_GROUP</ID><Path>fs://game/unitflag_bahadur.png</Path></Row>
+		<!-- Angre line: PLACEHOLDER = nau_sena flag until the dedicated
+		     Grok flag lands (IMAGINE-PROMPTS #16 -> unitflag_angre.png). -->
+		<Row><ID>UNIT_ANGRE_GALBAT</ID><Path>fs://game/unitflag_nau_sena.png</Path></Row>
+		<Row><ID>UNIT_ANGRE_GHURAB</ID><Path>fs://game/unitflag_nau_sena.png</Path></Row>
 	</IconDefinitions>
 </Database>

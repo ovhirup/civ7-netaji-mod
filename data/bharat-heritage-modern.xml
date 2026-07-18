@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HERITAGE OVERHAUL layer 2 (Modern-age-gated): the "Wootz Steel" named
+     unit ability + four heritage Great Works (museum Artifacts).
+
+     WOOTZ STEEL: named, panel-visible passive on the Azad Hind Fauj infantry
+     line — the exact UnitAbilities + UnitClass_Abilities + UnitAbilityModifiers
+     pattern this mod already ships (ABILITY_AZAD_HIND_FAUJ, data/bharat-units.xml)
+     and the base game ships (ABILITY_KALAM). Bound to the existing
+     UNIT_CLASS_AZAD_HIND_FAUJ tag (all 3 tiers). NOT UnitPromotions — that
+     system is commander-XP-only (verified 2026-07-18).
+
+     GREAT WORKS: first-of-its-kind for a Workshop mod (verified: none does
+     this). Modern-age works MUST be GREATWORKOBJECT_ARTIFACT (engine enum:
+     WRITING=0 antiquity, RELIC=1 exploration, ARTIFACT=2 modern — do not
+     invent object types). Row shape mirrors age-modern/data/greatworks.xml:380
+     (GREATWORK_ARTIFACT_1). Framing: Bharat's modern age curating its
+     reclaimed heritage — the epics as Tier-C literary heritage, Aryabhatiya/
+     Sushruta Samhita as Tier-A history of science. Images reuse base art
+     (fs://game/gw_*.png) — zero new files. Granted once each when the
+     matching civic node completes (see -gameeffects + ProgressionTreeNode
+     Unlocks below; MOD_MO_ARTIFACT civic-node precedent). Slots added to our
+     unique buildings so they can be displayed in the National Planning
+     Commission quarter itself (Constructible_GreatWorks; Museum/Palace slots
+     exist in base).
+
+     FK safety: references UNIT_CLASS_AZAD_HIND_FAUJ (bharat-units.xml,
+     modern), BUILDING_YOJANA_BHAVAN/VAIDYASHALA (bharat-quarters.xml, modern),
+     civic nodes (always) — so this file itself is modern-gated; nothing
+     always-loaded references it back. -->
+<Database>
+	<Types>
+		<Row Type="ABILITY_WOOTZ_STEEL" Kind="KIND_ABILITY"/>
+		<Row Type="GREATWORK_BHARAT_RAMAYANA" Kind="KIND_GREATWORK"/>
+		<Row Type="GREATWORK_BHARAT_MAHABHARATA" Kind="KIND_GREATWORK"/>
+		<Row Type="GREATWORK_BHARAT_ARYABHATIYA" Kind="KIND_GREATWORK"/>
+		<Row Type="GREATWORK_BHARAT_SUSHRUTA_SAMHITA" Kind="KIND_GREATWORK"/>
+	</Types>
+
+	<!-- Wootz Steel: crucible steel of southern India ("Damascus" steel). -->
+	<UnitClass_Abilities>
+		<Row UnitAbilityType="ABILITY_WOOTZ_STEEL" UnitClassType="UNIT_CLASS_AZAD_HIND_FAUJ"/>
+	</UnitClass_Abilities>
+	<UnitAbilities>
+		<Row UnitAbilityType="ABILITY_WOOTZ_STEEL" Name="LOC_ABILITY_WOOTZ_STEEL_NAME" Description="LOC_ABILITY_WOOTZ_STEEL_PREVIEW"/>
+	</UnitAbilities>
+	<UnitAbilityModifiers>
+		<Row UnitAbilityType="ABILITY_WOOTZ_STEEL" ModifierId="WOOTZ_STEEL_MOD_COMBAT_STRENGTH"/>
+	</UnitAbilityModifiers>
+
+	<!-- Heritage Great Works (Artifacts). Generic="false" = named works. -->
+	<GreatWorks>
+		<Row GreatWorkType="GREATWORK_BHARAT_RAMAYANA" GreatWorkObjectType="GREATWORKOBJECT_ARTIFACT" Name="LOC_GREATWORK_BHARAT_RAMAYANA_NAME" Description="LOC_GREATWORK_BHARAT_RAMAYANA_DESCRIPTION" Generic="false" GreatWorkSourceType="GREATWORKSOURCE_URBAN" Image="fs://game/gw_horizontalscroll.png"/>
+		<Row GreatWorkType="GREATWORK_BHARAT_MAHABHARATA" GreatWorkObjectType="GREATWORKOBJECT_ARTIFACT" Name="LOC_GREATWORK_BHARAT_MAHABHARATA_NAME" Description="LOC_GREATWORK_BHARAT_MAHABHARATA_DESCRIPTION" Generic="false" GreatWorkSourceType="GREATWORKSOURCE_MILITARY" Image="fs://game/gw_spear.png"/>
+		<Row GreatWorkType="GREATWORK_BHARAT_ARYABHATIYA" GreatWorkObjectType="GREATWORKOBJECT_ARTIFACT" Name="LOC_GREATWORK_BHARAT_ARYABHATIYA_NAME" Description="LOC_GREATWORK_BHARAT_ARYABHATIYA_DESCRIPTION" Generic="false" GreatWorkSourceType="GREATWORKSOURCE_URBAN" Image="fs://game/gw_tablet1.png"/>
+		<Row GreatWorkType="GREATWORK_BHARAT_SUSHRUTA_SAMHITA" GreatWorkObjectType="GREATWORKOBJECT_ARTIFACT" Name="LOC_GREATWORK_BHARAT_SUSHRUTA_SAMHITA_NAME" Description="LOC_GREATWORK_BHARAT_SUSHRUTA_SAMHITA_DESCRIPTION" Generic="false" GreatWorkSourceType="GREATWORKSOURCE_URBAN" Image="fs://game/gw_urn.png"/>
+	</GreatWorks>
+	<GreatWork_YieldChanges>
+		<Row GreatWorkType="GREATWORK_BHARAT_RAMAYANA" YieldType="YIELD_CULTURE" YieldChange="3"/>
+		<Row GreatWorkType="GREATWORK_BHARAT_MAHABHARATA" YieldType="YIELD_CULTURE" YieldChange="3"/>
+		<Row GreatWorkType="GREATWORK_BHARAT_ARYABHATIYA" YieldType="YIELD_SCIENCE" YieldChange="3"/>
+		<Row GreatWorkType="GREATWORK_BHARAT_SUSHRUTA_SAMHITA" YieldType="YIELD_SCIENCE" YieldChange="3"/>
+	</GreatWork_YieldChanges>
+	<!-- Display slots in our own unique quarter (Museum 3x / Palace 1x exist in base). -->
+	<Constructible_GreatWorks>
+		<Row ConstructibleType="BUILDING_YOJANA_BHAVAN" GreatWorkSlotType="GREATWORKSLOT_ARTIFACT" NumSlots="1"/>
+		<Row ConstructibleType="BUILDING_VAIDYASHALA" GreatWorkSlotType="GREATWORKSLOT_ARTIFACT" NumSlots="1"/>
+	</Constructible_GreatWorks>
+
+	<!-- Grants: each civic node's FIRST completion awards one heritage work.
+	     Thematic pairing: Swadeshi (self-reliance) -> Sushruta Samhita;
+	     Purna Swaraj (righteous self-rule, "Ram Rajya") -> Ramayana;
+	     Forward Bloc (the question of duty in war) -> Mahabharata;
+	     National Planning (science) -> Aryabhatiya. -->
+	<ProgressionTreeNodeUnlocks>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_SWADESHI" TargetKind="KIND_MODIFIER" TargetType="BHARAT_MOD_GRANT_GW_SUSHRUTA" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ" TargetKind="KIND_MODIFIER" TargetType="BHARAT_MOD_GRANT_GW_RAMAYANA" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_FORWARD_BLOC" TargetKind="KIND_MODIFIER" TargetType="BHARAT_MOD_GRANT_GW_MAHABHARATA" UnlockDepth="1"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" TargetKind="KIND_MODIFIER" TargetType="BHARAT_MOD_GRANT_GW_ARYABHATIYA" UnlockDepth="1"/>
+	</ProgressionTreeNodeUnlocks>
+</Database>

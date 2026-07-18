@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Angre-line ability modifier: "Sarkhel's Coast" — +3 Combat Strength in
+     friendly territory, the same home-waters identity (and exact Cossack-
+     pattern requirement set) as NAU_SENA_MOD_COMBAT_STRENGTH_IN_FRIENDLY_
+     TERRITORY in bharat-units-2-gameeffects.xml. Angre's fleet dominated its
+     own coast; it did not project across oceans. -->
+<GameEffects xmlns="GameEffects">
+	<Modifier id="ANGRE_MOD_COMBAT_STRENGTH_IN_FRIENDLY_TERRITORY" collection="COLLECTION_UNIT_COMBAT" effect="EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER">
+		<SubjectRequirements type="REQUIREMENTSET_TEST_ANY">
+			<Requirement type="REQUIREMENT_PLOT_IS_OWNER"/>
+			<Requirement type="REQUIREMENT_PLOT_IS_SUZERAIN_BY_OWNER"/>
+		</SubjectRequirements>
+		<Argument name="Amount">3</Argument>
+		<String context="Preview">LOC_ABILITY_ANGRE_SQUADRON_PREVIEW</String>
+	</Modifier>
+</GameEffects>

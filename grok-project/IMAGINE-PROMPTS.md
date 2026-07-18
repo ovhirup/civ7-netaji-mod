@@ -214,3 +214,17 @@ beneath. Timeline rule: emblems BEHIND him, never in his hands.
 > parity with base leaders (1.20 too big, 1.02 slightly big — 0.95 matched).
 > Transparent hex corners. Output 256 + 128 (+ optional 64). Do NOT bake for the
 > lp_circ_* files — those keep their approved circle framing.
+
+### 16. Unit flag — Angre naval line → `unitflag_angre.png`
+> A single flat white silhouette on a pure black background, no text, no
+> border, no gradients, centered and readable at 64 pixels. Subject: a
+> side-profile Maratha ghurab war-vessel — a broad-beamed two-masted sailing
+> ship with a distinctive raked prow, one prominent deck gun, and a small
+> pennant at the mainmast. Strong, simple hull outline; minimal rigging (two
+> or three lines only). Avoid: European frigate silhouettes (no gun-deck
+> rows), waves, sea, sun, lettering.
+>
+> Process: `uv run art/process_art.py unitflag art/incoming/<file>` then save
+> as art/unitflag_angre.png; update the two UNIT_ANGRE_* rows in
+> data/icons/bharat-icons.xml (currently placeholder = unitflag_nau_sena.png)
+> and add ImportFiles rows in both scopes. One flag serves both tiers.

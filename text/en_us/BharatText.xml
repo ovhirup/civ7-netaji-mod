@@ -338,5 +338,107 @@
 		<Row Tag="LOC_BHARAT_TECH_ELECTRICITY_DESCRIPTION" Language="en_US">
 			<Text>+2 Science in settlements with a Laboratory. (Requires Electricity.)</Text>
 		</Row>
+		<!-- ============ HERITAGE OVERHAUL (2026-07-18) ============
+		     Tiered-research grounding: Tier-A history in plain statements;
+		     the epics framed as literary heritage (Tier C), never literal
+		     history. -->
+		<!-- Heritage traditions (depth-2 civic studies) -->
+		<Row Tag="LOC_TRADITION_BHARAT_ARTHASHASTRA_NAME" Language="en_US">
+			<Text>Arthashastra</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_ARTHASHASTRA_DESCRIPTION" Language="en_US">
+			<Text>+2 Gold in all settlements. Kautilya's treatise on statecraft and political economy guided Mauryan administration — taxation, markets, and the treasury as the sinews of the state. The Republic's planners knew their science of prosperity had ancient roots.</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_GANITA_NAME" Language="en_US">
+			<Text>Ganita</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_GANITA_DESCRIPTION" Language="en_US">
+			<Text>+2 Science in all settlements. Zero as a number and the decimal place-value system were perfected in India — Aryabhata computed with them, Brahmagupta wrote their rules. The mathematics of the modern world counts in Indian numerals.</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_ASHTADHYAYI_NAME" Language="en_US">
+			<Text>Ashtadhyayi</Text>
+		</Row>
+		<Row Tag="LOC_TRADITION_BHARAT_ASHTADHYAYI_DESCRIPTION" Language="en_US">
+			<Text>+2 Culture in all settlements. Panini's grammar of Sanskrit — some four thousand ordered rules, recursive and generative — is a formal system two and a half millennia ahead of its time, still studied by linguists and computer scientists.</Text>
+		</Row>
+		<Row Tag="LOC_BHARAT_MOD_HERITAGE_TRADITION_SLOT_DESCRIPTION" Language="en_US">
+			<Text>+1 Tradition slot.</Text>
+		</Row>
+		<!-- Wootz Steel ability (Azad Hind Fauj line) -->
+		<Row Tag="LOC_ABILITY_WOOTZ_STEEL_NAME" Language="en_US">
+			<Text>Wootz Steel</Text>
+		</Row>
+		<Row Tag="LOC_ABILITY_WOOTZ_STEEL_PREVIEW" Language="en_US">
+			<Text>+2 Combat Strength. Crucible steel forged in southern India for over two thousand years — the metal the world learned to call Damascus.</Text>
+		</Row>
+		<!-- Heritage Great Works (museum artifacts) -->
+		<Row Tag="LOC_GREATWORK_BHARAT_RAMAYANA_NAME" Language="en_US">
+			<Text>The Ramayana</Text>
+		</Row>
+		<Row Tag="LOC_GREATWORK_BHARAT_RAMAYANA_DESCRIPTION" Language="en_US">
+			<Text>Valmiki's epic of exile, devotion, and righteous return — the living literary heritage whose ideal of just rule, Ram Rajya, Indians invoked when they imagined freedom.</Text>
+		</Row>
+		<Row Tag="LOC_GREATWORK_BHARAT_MAHABHARATA_NAME" Language="en_US">
+			<Text>The Mahabharata</Text>
+		</Row>
+		<Row Tag="LOC_GREATWORK_BHARAT_MAHABHARATA_DESCRIPTION" Language="en_US">
+			<Text>The great epic of the Bharatas — the longest poem ever composed, whose battlefield question of duty still answers to the very name of this land.</Text>
+		</Row>
+		<Row Tag="LOC_GREATWORK_BHARAT_ARYABHATIYA_NAME" Language="en_US">
+			<Text>The Aryabhatiya</Text>
+		</Row>
+		<Row Tag="LOC_GREATWORK_BHARAT_ARYABHATIYA_DESCRIPTION" Language="en_US">
+			<Text>Aryabhata's treatise of 499 CE — place-value computation, the sine table, a rotating Earth. The mathematics that taught the world to count.</Text>
+		</Row>
+		<Row Tag="LOC_GREATWORK_BHARAT_SUSHRUTA_SAMHITA_NAME" Language="en_US">
+			<Text>The Sushruta Samhita</Text>
+		</Row>
+		<Row Tag="LOC_GREATWORK_BHARAT_SUSHRUTA_SAMHITA_DESCRIPTION" Language="en_US">
+			<Text>The classical compendium of Indian surgery — reconstruction of the nose, couching of cataracts, over one hundred named instruments — compiled centuries before such arts reached the West.</Text>
+		</Row>
+		<!-- Angre naval line -->
+		<Row Tag="LOC_UNIT_ANGRE_GALBAT_NAME" Language="en_US">
+			<Text>Angre Galbat</Text>
+		</Row>
+		<Row Tag="LOC_UNIT_ANGRE_GALBAT_DESCRIPTION" Language="en_US">
+			<Text>Unique Bharatiya naval unit that replaces the Ironclad. +3 Combat Strength when fighting in friendly territory.</Text>
+		</Row>
+		<Row Tag="LOC_UNIT_ANGRE_GHURAB_NAME" Language="en_US">
+			<Text>Angre Ghurab</Text>
+		</Row>
+		<Row Tag="LOC_UNIT_ANGRE_GHURAB_DESCRIPTION" Language="en_US">
+			<Text>Unique Bharatiya naval unit that replaces the Cruiser. +3 Combat Strength when fighting in friendly territory.</Text>
+		</Row>
+		<Row Tag="LOC_ABILITY_ANGRE_SQUADRON_NAME" Language="en_US">
+			<Text>Sarkhel's Coast</Text>
+		</Row>
+		<Row Tag="LOC_ABILITY_ANGRE_SQUADRON_PREVIEW" Language="en_US">
+			<Text>+3 Combat Strength when fighting in friendly territory.</Text>
+		</Row>
+		<Row Tag="LOC_PEDIA_UNIT_ANGRE_GALBAT_PARA_1" Language="en_US">
+			<Text>The light, oared gallivats of Sarkhel Kanhoji Angre's fleet swarmed from the creeks of the Konkan, running down heavier square-riggers becalmed against the coast. For thirty years no European power passed Angre's waters without paying for the privilege — the Company's own records say so. The Republic's navy counts its lineage from that unbought coast.</Text>
+		</Row>
+		<Row Tag="LOC_PEDIA_UNIT_ANGRE_GHURAB_PARA_1" Language="en_US">
+			<Text>The ghurab was the fist of the Maratha navy — a shallow-draft gun-ship that could outmaneuver anything it could not outfight. Under Kanhoji Angre and his successors, ghurab squadrons defeated or deterred British, Portuguese, and Dutch expeditions alike, proof that Indian seapower met the colonial age head-on and, for a generation, won.</Text>
+		</Row>
+		<!-- Nalanda wonder -->
+		<Row Tag="LOC_WONDER_NALANDA_NAME" Language="en_US">
+			<Text>Nalanda</Text>
+		</Row>
+		<Row Tag="LOC_WONDER_NALANDA_DESCRIPTION" Language="en_US">
+			<Text>+3 Science, +2 Culture. Contains 1 Great Work slot. The great mahavihara of learning: a residential university whose libraries and entrance examinations drew scholars across all of Asia for seven centuries.</Text>
+		</Row>
+		<Row Tag="LOC_WONDER_NALANDA_TOOLTIP" Language="en_US">
+			<Text>+3 Science, +2 Culture. Contains 1 Great Work slot.</Text>
+		</Row>
+		<Row Tag="LOC_QUOTE_WONDER_NALANDA" Language="en_US">
+			<Text>"The priests, to the number of several thousands, are men of the highest ability and talent... learning and discussing, they find the day too short."</Text>
+		</Row>
+		<Row Tag="LOC_QUOTE_AUTHOR_WONDER_NALANDA" Language="en_US">
+			<Text>Xuanzang</Text>
+		</Row>
+		<Row Tag="LOC_REMAP_WONDER_NALANDA" Language="en_US">
+			<Text>Nalanda</Text>
+		</Row>
 	</LocalizedText>
 </Database>

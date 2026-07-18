@@ -34,6 +34,18 @@
 		<Criteria id="modern-age-current">
 			<AgeInUse>AGE_MODERN</AgeInUse>
 		</Criteria>
+		<!-- Wonder-experiment criteria (2026-07-18), copied verbatim from the
+		     official asia-wonders DLC: an AGELESS Exploration wonder's
+		     constructible rows must PERSIST into Modern (already-built wonders
+		     exist in later-age databases), while its civics-tree unlock loads
+		     only while Exploration is CURRENT. -->
+		<Criteria id="exploration-age-persist" any="true">
+			<AgeInUse>AGE_EXPLORATION</AgeInUse>
+			<AgeInUse>AGE_MODERN</AgeInUse>
+		</Criteria>
+		<Criteria id="exploration-age-current">
+			<AgeInUse>AGE_EXPLORATION</AgeInUse>
+		</Criteria>
 	</ActionCriteria>
 	<ActionGroups>
 		<!-- Gameplay database -->
@@ -63,6 +75,10 @@
 					<Item>data/bharat-progression-trees.xml</Item>
 					<Item>data/bharat-traditions.xml</Item>
 					<Item>data/bharat-traditions-gameeffects.xml</Item>
+					<!-- Heritage traditions (2026-07-18): same static-tradition
+					     content class as above, so same ALWAYS load rule. -->
+					<Item>data/bharat-heritage-traditions.xml</Item>
+					<Item>data/bharat-heritage-traditions-gameeffects.xml</Item>
 					<!-- After bharat-civilization.xml: LoadingInfo_Civilizations
 					     FK-references the Civilizations row. -->
 					<Item>data/loading-info.xml</Item>
@@ -169,6 +185,37 @@
 					     Link table before its gameeffects (proven civ-ability order). -->
 					<Item>data/bharat-tech-bonuses.xml</Item>
 					<Item>data/bharat-tech-bonuses-gameeffects.xml</Item>
+					<!-- Heritage overhaul, Modern-gated content (2026-07-18):
+					     Angre naval line (wave 3) + Wootz Steel ability +
+					     heritage Great Works. Units file loads before the
+					     heritage file: the heritage ability binds to
+					     UNIT_CLASS_AZAD_HIND_FAUJ and great-work slots FK the
+					     quarter buildings (both defined earlier in this group). -->
+					<Item>data/bharat-units-3.xml</Item>
+					<Item>data/bharat-units-3-gameeffects.xml</Item>
+					<Item>data/bharat-heritage-modern.xml</Item>
+					<Item>data/bharat-heritage-modern-gameeffects.xml</Item>
+				</UpdateDatabase>
+			</Actions>
+		</ActionGroup>
+		<!-- HERITAGE WONDER EXPERIMENT (2026-07-18): Nalanda, an Exploration-age
+		     wonder, in two isolated groups mirroring asia-wonders' split. If
+		     this experiment fails (load error or blank 3D), delete these two
+		     ActionGroups — nothing else references their content. -->
+		<ActionGroup id="game-bharat-wonders-persist" scope="game" criteria="exploration-age-persist">
+			<Actions>
+				<UpdateDatabase>
+					<Item>data/bharat-wonder-nalanda.xml</Item>
+				</UpdateDatabase>
+				<UpdateVisualRemaps>
+					<Item>data/bharat-visual-remaps.xml</Item>
+				</UpdateVisualRemaps>
+			</Actions>
+		</ActionGroup>
+		<ActionGroup id="game-bharat-wonders-unlock" scope="game" criteria="exploration-age-current">
+			<Actions>
+				<UpdateDatabase>
+					<Item>data/bharat-wonder-nalanda-unlock.xml</Item>
 				</UpdateDatabase>
 			</Actions>
 		</ActionGroup>

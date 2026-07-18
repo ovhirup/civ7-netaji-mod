@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HERITAGE OVERHAUL layer 1: three civilizational-heritage Traditions +
+     one extra Tradition slot, grafted onto the EXISTING Bharat civic tree via
+     depth-2 node unlocks (studying the civic a second time). All Tier-A
+     history per the tiered research pass (2026-07-18): Arthashastra
+     (Kautilyan statecraft/economy), Ganita (zero/decimal place-value,
+     Aryabhata/Brahmagupta), Ashtadhyayi (Panini's formal grammar).
+
+     Mechanisms are base-verbatim:
+     - Multi-unlock, multi-DEPTH node: NODE_CIVIC_MO_SIAM_NINE_GEMS grants
+       TRADITION_SAN_LAK_MUEANG_II @ depth 1 and TRADITION_SAKDINA @ depth 2
+       (age-modern/data/progression-trees-culture-unique.xml:272,274). No
+       special node column needed; UnlockDepth on the unlock row is the whole
+       mechanism. PK is (Node,TargetType) so extra rows per node are legal.
+     - Extra tradition slot: MOD_PLANES_POLITICOS_TRADITION_SLOT (Mexico),
+       EFFECT_PLAYER_GRANT_TRADITION_SLOTS (progression-trees-culture-unique-
+       gameeffects.xml). Mexico ships 11 traditions total, so 8 on Bharat is
+       within base envelope.
+
+     LOAD GROUP: ALWAYS (game-netaji-bose), directly after the original
+     tradition files — same class of content, same rule from the 2026-07-13
+     critical fix: static tradition/tree rows must always exist because the
+     always-loaded tree references them.  Depth-2 rows reference nodes defined
+     in data/bharat-progression-trees.xml (always-loaded ✓) and TRAIT_BHARAT
+     (always-loaded ✓). -->
+<Database>
+	<Types>
+		<Row Type="TRADITION_BHARAT_ARTHASHASTRA" Kind="KIND_TRADITION"/>
+		<Row Type="TRADITION_BHARAT_GANITA" Kind="KIND_TRADITION"/>
+		<Row Type="TRADITION_BHARAT_ASHTADHYAYI" Kind="KIND_TRADITION"/>
+	</Types>
+	<Traditions>
+		<Row TraditionType="TRADITION_BHARAT_ARTHASHASTRA" Name="LOC_TRADITION_BHARAT_ARTHASHASTRA_NAME" Description="LOC_TRADITION_BHARAT_ARTHASHASTRA_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+		<Row TraditionType="TRADITION_BHARAT_GANITA" Name="LOC_TRADITION_BHARAT_GANITA_NAME" Description="LOC_TRADITION_BHARAT_GANITA_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+		<Row TraditionType="TRADITION_BHARAT_ASHTADHYAYI" Name="LOC_TRADITION_BHARAT_ASHTADHYAYI_NAME" Description="LOC_TRADITION_BHARAT_ASHTADHYAYI_DESCRIPTION" TraitType="TRAIT_BHARAT" AgeType="AGE_MODERN" CultureSlotType="TRADITION_CULTURE_SLOT"/>
+	</Traditions>
+	<TraditionModifiers>
+		<Row TraditionType="TRADITION_BHARAT_ARTHASHASTRA" ModifierId="ARTHASHASTRA_MOD_GOLD"/>
+		<Row TraditionType="TRADITION_BHARAT_GANITA" ModifierId="GANITA_MOD_SCIENCE"/>
+		<Row TraditionType="TRADITION_BHARAT_ASHTADHYAYI" ModifierId="ASHTADHYAYI_MOD_CULTURE"/>
+	</TraditionModifiers>
+	<ProgressionTreeNodeUnlocks>
+		<!-- Depth 2 = study the civic a second time to reach the civilizational
+		     root beneath the modern idea. Thematic pairing:
+		     Swadeshi (self-reliance)      -> Ganita (indigenous science)
+		     Purna Swaraj (sovereignty)    -> Arthashastra (sovereign statecraft)
+		     National Planning (knowledge) -> Ashtadhyayi (formal systems) -->
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_SWADESHI" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_GANITA" UnlockDepth="2"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_PURNA_SWARAJ" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_ARTHASHASTRA" UnlockDepth="2"/>
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" TargetKind="KIND_TRADITION" TargetType="TRADITION_BHARAT_ASHTADHYAYI" UnlockDepth="2"/>
+		<!-- Capstone also grants +1 tradition slot (depth 1) so the extra
+		     heritage cards are actually slottable — Russia/Mexico precedent
+		     (MOD_TOT_TRADITION_SLOT on NODE_CIVIC_MO_RUSSIA_SAMODERZHAVIYE). -->
+		<Row ProgressionTreeNodeType="NODE_CIVIC_MO_BHARAT_NATIONAL_PLANNING" TargetKind="KIND_MODIFIER" TargetType="BHARAT_MOD_HERITAGE_TRADITION_SLOT" UnlockDepth="1"/>
+	</ProgressionTreeNodeUnlocks>
+</Database>

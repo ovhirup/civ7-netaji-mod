@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modifiers for heritage layer 2: the Wootz Steel combat passive and the
+     four one-shot Great Work grants.
+
+     Wootz modifier mirrors our proven ability-attached shape (RANI/NAU_SENA
+     mods in bharat-units-2-gameeffects.xml): COLLECTION_UNIT_COMBAT +
+     EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER; scoping to the right units comes
+     from the ability->class binding, so no requirements = unconditional +2.
+
+     Grant modifiers mirror 168C_NARRATIVE_MODIFIER (age-antiquity/data/
+     narrative-stories-gameeffects.xml:3097): COLLECTION_OWNER +
+     EFFECT_GRANT_GREAT_WORK + named GreatWork argument — with run-once="true"
+     so each award happens exactly once. KNOWN RISK (accepted): the
+     civic-node -> named-work combination is proven only piecewise in base
+     (civic node -> generic grant at progression-trees-culture-common.xml:135;
+     named grant only from narrative modifiers). If a work fails to appear,
+     fall back to the 100%-proven generic form (ObjectType + Amount). -->
+<GameEffects xmlns="GameEffects">
+	<Modifier id="WOOTZ_STEEL_MOD_COMBAT_STRENGTH" collection="COLLECTION_UNIT_COMBAT" effect="EFFECT_ADJUST_UNIT_STRENGTH_MODIFIER">
+		<Argument name="Amount">2</Argument>
+		<String context="Preview">LOC_ABILITY_WOOTZ_STEEL_PREVIEW</String>
+	</Modifier>
+
+	<Modifier id="BHARAT_MOD_GRANT_GW_SUSHRUTA" collection="COLLECTION_OWNER" effect="EFFECT_GRANT_GREAT_WORK" run-once="true" permanent="true">
+		<Argument name="GreatWork">GREATWORK_BHARAT_SUSHRUTA_SAMHITA</Argument>
+		<String context="Description">LOC_GREATWORK_BHARAT_SUSHRUTA_SAMHITA_NAME</String>
+	</Modifier>
+	<Modifier id="BHARAT_MOD_GRANT_GW_RAMAYANA" collection="COLLECTION_OWNER" effect="EFFECT_GRANT_GREAT_WORK" run-once="true" permanent="true">
+		<Argument name="GreatWork">GREATWORK_BHARAT_RAMAYANA</Argument>
+		<String context="Description">LOC_GREATWORK_BHARAT_RAMAYANA_NAME</String>
+	</Modifier>
+	<Modifier id="BHARAT_MOD_GRANT_GW_MAHABHARATA" collection="COLLECTION_OWNER" effect="EFFECT_GRANT_GREAT_WORK" run-once="true" permanent="true">
+		<Argument name="GreatWork">GREATWORK_BHARAT_MAHABHARATA</Argument>
+		<String context="Description">LOC_GREATWORK_BHARAT_MAHABHARATA_NAME</String>
+	</Modifier>
+	<Modifier id="BHARAT_MOD_GRANT_GW_ARYABHATIYA" collection="COLLECTION_OWNER" effect="EFFECT_GRANT_GREAT_WORK" run-once="true" permanent="true">
+		<Argument name="GreatWork">GREATWORK_BHARAT_ARYABHATIYA</Argument>
+		<String context="Description">LOC_GREATWORK_BHARAT_ARYABHATIYA_NAME</String>
+	</Modifier>
+</GameEffects>

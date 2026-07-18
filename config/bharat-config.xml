@@ -48,6 +48,8 @@
 		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" Type="UNIT_RANI_OF_JHANSI_REGIMENT" Kind="KIND_UNIT" Name="LOC_UNIT_RANI_OF_JHANSI_REGIMENT_NAME" Description="LOC_UNIT_RANI_OF_JHANSI_REGIMENT_DESCRIPTION"/>
 		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" Type="UNIT_AZAD_HIND_NAU_SENA" Kind="KIND_UNIT" Name="LOC_UNIT_AZAD_HIND_NAU_SENA_NAME" Description="LOC_UNIT_AZAD_HIND_NAU_SENA_DESCRIPTION"/>
 		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" Type="UNIT_BAHADUR_GROUP" Kind="KIND_UNIT" Name="LOC_UNIT_BAHADUR_GROUP_NAME" Description="LOC_UNIT_BAHADUR_GROUP_DESCRIPTION"/>
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" Type="UNIT_ANGRE_GALBAT" Kind="KIND_UNIT" Name="LOC_UNIT_ANGRE_GALBAT_NAME" Description="LOC_UNIT_ANGRE_GALBAT_DESCRIPTION"/>
+		<Row CivilizationDomain="ModernAgeCivilizations" CivilizationType="CIVILIZATION_BHARAT" Type="UNIT_ANGRE_GHURAB" Kind="KIND_UNIT" Name="LOC_UNIT_ANGRE_GHURAB_NAME" Description="LOC_UNIT_ANGRE_GHURAB_DESCRIPTION"/>
 		<!-- Unique quarter: National Planning Commission (Stage 3), = Yojana
 		     Bhavan + Vaidyashala. Kind values mirror Mughal/GB's own
 		     CivilizationItems rows for their unique quarter/buildings exactly

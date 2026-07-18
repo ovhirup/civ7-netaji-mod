@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HERITAGE OVERHAUL: the Angre naval line (wave 3). Completes Bharat's
+     naval identity across the Modern melee-naval branch: Angre Galbat (T1,
+     replaces Ironclad) -> Angre Ghurab (T2, replaces Cruiser) -> Azad Hind
+     Nau Sena (T3, replaces Destroyer — already shipped in bharat-units-2.xml).
+     Official multi-tier Modern naval-unique precedent: Meiji's Mikasa
+     (UNIT_MIKASA/UNIT_MIKASA_2 replacing Dreadnought/Battleship,
+     age-modern/data/units.xml:529-530).
+
+     HISTORICAL KERNEL (Tier A, 2026-07-18 research): Sarkhel Kanhoji Angre's
+     Maratha navy (c. 1698-1729) controlled the Konkan coast with fast
+     gallivats (galbat) and gun-ghurabs, forcing European powers to buy
+     sea-passes — documented in East India Company records and B.K. Apte's
+     history of the Maratha navy. Base-game Chola already carries the medieval
+     naval story (3-tier Kalam line + Ottru commander) on this leader's
+     Maurya->Chola->Bharat path; this line is its early-colonial-era
+     continuation. Framing: pre-independence Indian naval tradition, civ-side
+     heritage — no Axis content.
+
+     Stats mirror the replaced base units exactly (Ironclad 45/20/20 r1 cost
+     280 maint 6; Cruiser 50/25/25 r1 cost 340 maint 9 — age-modern/data/
+     units.xml:173,180,289,296,368,375), + the home-waters ability shared with
+     Nau Sena's identity ("Sarkhel's Coast", +3 CS in friendly territory) at
+     the proven Cossack-pattern requirement set. No UnitUpgrades rows — same
+     as bharat-units-2.xml, replacements ride the base upgrade chain
+     (Ironclad->Cruiser->Destroyer). Unit flags: placeholder = nau_sena flag
+     until Grok art lands (IMAGINE-PROMPTS #16). -->
+<Database>
+	<Types>
+		<Row Type="UNIT_ANGRE_GALBAT" Kind="KIND_UNIT"/>
+		<Row Type="UNIT_ANGRE_GHURAB" Kind="KIND_UNIT"/>
+		<Row Type="ABILITY_ANGRE_SQUADRON" Kind="KIND_ABILITY"/>
+	</Types>
+	<Units>
+		<Row UnitType="UNIT_ANGRE_GALBAT" Name="LOC_UNIT_ANGRE_GALBAT_NAME" Description="LOC_UNIT_ANGRE_GALBAT_DESCRIPTION" Tier="1" Maintenance="6" BaseMoves="4" BaseSightRange="3" ZoneOfControl="true" Domain="DOMAIN_SEA" UnitMovementClass="UNIT_MOVEMENT_CLASS_NAVAL" CoreClass="CORE_CLASS_MILITARY" FormationClass="FORMATION_CLASS_NAVAL" TraitType="TRAIT_BHARAT"/>
+		<Row UnitType="UNIT_ANGRE_GHURAB" Name="LOC_UNIT_ANGRE_GHURAB_NAME" Description="LOC_UNIT_ANGRE_GHURAB_DESCRIPTION" Tier="2" Maintenance="9" BaseMoves="4" BaseSightRange="3" ZoneOfControl="true" Domain="DOMAIN_SEA" UnitMovementClass="UNIT_MOVEMENT_CLASS_NAVAL" CoreClass="CORE_CLASS_MILITARY" FormationClass="FORMATION_CLASS_NAVAL" TraitType="TRAIT_BHARAT"/>
+	</Units>
+	<Unit_Stats>
+		<Row UnitType="UNIT_ANGRE_GALBAT" Combat="45" RangedCombat="20" Bombard="20" Range="1"/>
+		<Row UnitType="UNIT_ANGRE_GHURAB" Combat="50" RangedCombat="25" Bombard="25" Range="1"/>
+	</Unit_Stats>
+	<Unit_Costs>
+		<Row UnitType="UNIT_ANGRE_GALBAT" YieldType="YIELD_PRODUCTION" Cost="280"/>
+		<Row UnitType="UNIT_ANGRE_GHURAB" YieldType="YIELD_PRODUCTION" Cost="340"/>
+	</Unit_Costs>
+	<UnitReplaces>
+		<Row CivUniqueUnitType="UNIT_ANGRE_GALBAT" ReplacesUnitType="UNIT_IRONCLAD"/>
+		<Row CivUniqueUnitType="UNIT_ANGRE_GHURAB" ReplacesUnitType="UNIT_CRUISER"/>
+	</UnitReplaces>
+	<Tags>
+		<Row Tag="UNIT_CLASS_ANGRE" Category="UNIT_CLASS"/>
+	</Tags>
+	<TypeTags>
+		<Row Type="UNIT_ANGRE_GALBAT" Tag="UNIT_CLASS_COMBAT"/>
+		<Row Type="UNIT_ANGRE_GALBAT" Tag="UNIT_CLASS_ANGRE"/>
+		<Row Type="UNIT_ANGRE_GALBAT" Tag="UNIT_CLASS_UNIQUE"/>
+		<Row Type="UNIT_ANGRE_GHURAB" Tag="UNIT_CLASS_COMBAT"/>
+		<Row Type="UNIT_ANGRE_GHURAB" Tag="UNIT_CLASS_ANGRE"/>
+		<Row Type="UNIT_ANGRE_GHURAB" Tag="UNIT_CLASS_UNIQUE"/>
+	</TypeTags>
+	<UnitClass_Abilities>
+		<Row UnitAbilityType="ABILITY_ANGRE_SQUADRON" UnitClassType="UNIT_CLASS_ANGRE"/>
+	</UnitClass_Abilities>
+	<UnitAbilities>
+		<Row UnitAbilityType="ABILITY_ANGRE_SQUADRON" Name="LOC_ABILITY_ANGRE_SQUADRON_NAME" Description="LOC_ABILITY_ANGRE_SQUADRON_PREVIEW"/>
+	</UnitAbilities>
+	<UnitAbilityModifiers>
+		<Row UnitAbilityType="ABILITY_ANGRE_SQUADRON" ModifierId="ANGRE_MOD_COMBAT_STRENGTH_IN_FRIENDLY_TERRITORY"/>
+	</UnitAbilityModifiers>
+	<Unit_Advisories>
+		<Row UnitType="UNIT_ANGRE_GALBAT" AdvisoryClassType="ADVISORY_CLASS_MILITARY"/>
+		<Row UnitType="UNIT_ANGRE_GHURAB" AdvisoryClassType="ADVISORY_CLASS_MILITARY"/>
+	</Unit_Advisories>
+</Database>
